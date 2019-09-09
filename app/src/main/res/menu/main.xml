@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-  <item
-      android:id="@+id/action_settings"
-      android:orderInCategory="100"
-      android:title="@string/action_settings"
-      app:showAsAction="never"/>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/bottom_nav_year"
+        android:icon="@drawable/ic_menu_camera"
+        android:title="부위" />
+    <item
+        android:id="@+id/bottom_nav_month"
+        android:icon="@drawable/ic_menu_manage"
+        android:title="팀" />
+    <item
+        android:id="@+id/bottom_nav_day"
+        android:icon="@drawable/ic_menu_gallery"
+        android:title="장르" />
+    <item
+        android:icon="@drawable/ic_menu_share"
+        android:title="다이어" />
+    <item
+        android:icon="@drawable/ic_menu_share"
+        android:title="전신" />
 </menu>
