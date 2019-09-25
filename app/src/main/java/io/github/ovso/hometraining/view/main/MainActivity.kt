@@ -1,4 +1,4 @@
-package io.github.ovso.hometraining.main
+package io.github.ovso.hometraining.view.main
 
 import android.os.Bundle
 import android.view.MenuItem
@@ -10,6 +10,7 @@ import com.google.android.material.navigation.NavigationView
 import io.github.ovso.hometraining.R
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
+import kotlinx.android.synthetic.main.content_main.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -23,7 +24,16 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     private fun setupViewPager() {
+        with(viewpager_main) {
+            adapter = MainPagerAdapter(supportFragmentManager)
+                .apply {
+                items = mutableListOf(
+                    GenderFragment.newInstance(),
+                    GenderFragment.newInstance()
+                )
+            }
 
+        }
     }
 
     private fun setupBottomNavView() {

@@ -1,4 +1,4 @@
-package io.github.ovso.hometraining.main
+package io.github.ovso.hometraining.view.main
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -9,24 +9,24 @@ import android.view.ViewGroup
 
 import io.github.ovso.hometraining.R
 
-class TrainingFragment : Fragment() {
+class GenderFragment : Fragment() {
 
     companion object {
-        fun newInstance() = TrainingFragment()
+        fun newInstance() = GenderFragment()
     }
 
-    private lateinit var viewModel: TrainingViewModel
+    private lateinit var viewModel: GenderViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.training_fragment, container, false)
+        return inflater.inflate(R.layout.gender_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(TrainingViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(GenderViewModel::class.java)
         // TODO: Use the ViewModel
     }
 
