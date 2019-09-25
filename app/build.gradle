@@ -38,6 +38,9 @@ dependencies {
     implementation deps.retrofit.gson
     implementation deps.retrofit.rxjava2
 
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.1.0'
     testImplementation deps.atsl.junit
     androidTestImplementation deps.atsl.runner
     androidTestImplementation deps.atsl.espressocore

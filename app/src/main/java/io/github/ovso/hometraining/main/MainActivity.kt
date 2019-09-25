@@ -1,4 +1,4 @@
-package io.github.ovso.hometraining
+package io.github.ovso.hometraining.main
 
 import android.os.Bundle
 import android.view.MenuItem
@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
+import io.github.ovso.hometraining.R
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 
@@ -18,6 +19,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setupActionBar()
         setupDrawer()
         setupBottomNavView()
+        setupViewPager()
+    }
+
+    private fun setupViewPager() {
+
     }
 
     private fun setupBottomNavView() {
