@@ -34,6 +34,10 @@ dependencies {
     implementation deps.androidx.core_ktx
     implementation deps.androidx.constraintlayout
     implementation deps.jetbrains.anko
+    implementation deps.retrofit.runtime
+    implementation deps.retrofit.gson
+    implementation deps.retrofit.rxjava2
+
     testImplementation deps.atsl.junit
     androidTestImplementation deps.atsl.runner
     androidTestImplementation deps.atsl.espressocore
