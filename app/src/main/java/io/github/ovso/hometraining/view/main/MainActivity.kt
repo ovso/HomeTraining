@@ -27,17 +27,17 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         with(viewpager_main) {
             adapter = MainPagerAdapter(supportFragmentManager)
                 .apply {
-                items = mutableListOf(
-                    GenderFragment.newInstance(),
-                    GenderFragment.newInstance()
-                )
-            }
-
+                    items = mutableListOf(
+                        GenderFragment.newInstance(),
+                        GenderFragment.newInstance()
+                    )
+                }
+            setOnTouchListener { _, _ -> true } // swipe disable
         }
+
     }
 
     private fun setupBottomNavView() {
-
     }
 
     private fun setupDrawer() {
