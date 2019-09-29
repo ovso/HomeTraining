@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="tabs">
+        <item>홈트레이닝 남자 초보</item>
+        <item>홈트레이닝 남자 루틴</item>
+        <item>홈트레이닝 남자 다이어트</item>
+        <item>홈트레이닝 남자 어깨</item>
+        <item>홈트레이닝 남자 복근</item>
+        <item>홈트레이닝 남자 상체</item>
+        <item>홈트레이닝 남자 변</item>
+        <item>홈트레이닝 남자 하체</item>
+        <item>홈트레이닝 남자 유산소</item>
+        <item>홈트레이닝 남자 등</item>
+    </string-array>
+</resources>

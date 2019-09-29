@@ -27,21 +27,27 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
     implementation deps.jetbrains.kotlin_stdlib_jdk8
+    implementation deps.jetbrains.anko
+
     implementation deps.firebase.core
+
     implementation deps.androidx.appcompat
     implementation deps.androidx.material
     implementation deps.androidx.core_ktx
     implementation deps.androidx.constraintlayout
-    implementation deps.jetbrains.anko
-    implementation deps.retrofit.runtime
-    implementation deps.retrofit.gson
-    implementation deps.retrofit.rxjava2
 
     implementation "androidx.fragment:fragment:1.1.0"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.1.0'
+
+    implementation deps.retrofit.runtime
+    implementation deps.retrofit.gson
+    implementation deps.retrofit.rxjava2
+
+    implementation deps.koin.android
 
     testImplementation deps.atsl.junit
     androidTestImplementation deps.atsl.runner

@@ -1,7 +1,11 @@
 package io.github.ovso.hometraining.view.main
 
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 
-class GenderViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+class GenderViewModel(appContext: Application) : AndroidViewModel(appContext) {
+
+    init {
+
+    }
 }
