@@ -1,4 +1,4 @@
-package io.github.ovso.hometraining.view.main
+package io.github.ovso.hometraining.view.gender
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import io.github.ovso.hometraining.R
 import io.github.ovso.hometraining.databinding.GenderFragmentBinding
+import kotlinx.android.synthetic.main.gender_fragment.*
 
 class GenderFragment : Fragment() {
 
@@ -36,5 +37,18 @@ class GenderFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        setupViewpager()
+    }
+
+    private fun setupViewpager() {
+        val adapter = GenderAdapter(childFragmentManager).apply {
+            items = getAdapterItem()
+        }
+        with(viewpager_gender) {
+        }
+    }
+
+    private fun getAdapterItem(): MutableList<GenderAdapter.GenderAdapterItem> {
+        context.resources.getStringArray(R.array.tabs_male)
     }
 }

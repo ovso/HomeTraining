@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="tabs">
+    <string-array name="tabs_male">
         <item>홈트레이닝 남자 초보</item>
         <item>홈트레이닝 남자 루틴</item>
         <item>홈트레이닝 남자 다이어트</item>
@@ -11,5 +11,17 @@
         <item>홈트레이닝 남자 하체</item>
         <item>홈트레이닝 남자 유산소</item>
         <item>홈트레이닝 남자 등</item>
+    </string-array>
+    <string-array name="tabs_female">
+        <item>홈트레이닝 남자 초보</item>
+        <item>홈트레이닝 남자 스트레칭</item>
+        <item>홈트레이닝 남자 복근</item>
+        <item>홈트레이닝 남자 근력</item>
+        <item>홈트레이닝 남자 뱃살</item>
+        <item>홈트레이닝 남자 다이어트</item>
+        <item>홈트레이닝 남자 유산소</item>
+        <item>홈트레이닝 남자 전신</item>
+        <item>홈트레이닝 남자 등운동</item>
+        <item>홈트레이닝 남자 복부</item>
     </string-array>
 </resources>

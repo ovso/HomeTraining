@@ -8,6 +8,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import io.github.ovso.hometraining.R
+import io.github.ovso.hometraining.view.gender.GenderFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*
@@ -25,7 +26,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private fun setupViewPager() {
         with(viewpager_main) {
-            adapter = MainPagerAdapter(supportFragmentManager)
+            adapter = MainAdapter(supportFragmentManager)
                 .apply {
                     items = mutableListOf(
                         GenderFragment.newInstance(),

@@ -7,14 +7,14 @@
 
         <variable
             name="viewModel"
-            type="io.github.ovso.hometraining.view.main.GenderViewModel" />
+            type="io.github.ovso.hometraining.view.gender.GenderViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TableLayout
+        <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs_gender"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
