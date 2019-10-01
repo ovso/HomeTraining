@@ -8,47 +8,63 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import io.github.ovso.hometraining.R
 import io.github.ovso.hometraining.databinding.GenderFragmentBinding
-import kotlinx.android.synthetic.main.gender_fragment.*
+import io.reactivex.Observable
+import timber.log.Timber
 
 class GenderFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = GenderFragment()
+  companion object {
+    fun newInstance() = GenderFragment()
+  }
+
+  private val viewModel by lazy {
+    ViewModelProviders.of(this)
+        .get(GenderViewModel::class.java)
+  }
+
+  override fun onCreateView(
+    inflater: LayoutInflater,
+    container: ViewGroup?,
+    savedInstanceState: Bundle?
+  ) = generateBinding(inflater, container).root
+
+  private fun generateBinding(
+    inflater: LayoutInflater,
+    container: ViewGroup?
+  ) =
+    DataBindingUtil.inflate<GenderFragmentBinding>(
+        inflater,
+        R.layout.gender_fragment,
+        container,
+        false
+    ).apply {
+      this.viewModel = this@GenderFragment.viewModel
     }
 
-    private val viewModel by lazy {
-        ViewModelProviders.of(this).get(GenderViewModel::class.java)
+  override fun onActivityCreated(savedInstanceState: Bundle?) {
+    super.onActivityCreated(savedInstanceState)
+    setupViewpager()
+  }
+
+  private fun setupViewpager() {
+    val adapter = GenderAdapter(childFragmentManager).apply {
+      //            items = getAdapterItem()
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ) = generateBinding(inflater, container).root
+    getAdapterItem()
+  }
 
-    private fun generateBinding(inflater: LayoutInflater, container: ViewGroup?) =
-        DataBindingUtil.inflate<GenderFragmentBinding>(
-            inflater,
-            R.layout.gender_fragment,
-            container,
-            false
-        ).apply {
-            this.viewModel = this@GenderFragment.viewModel
-        }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        setupViewpager()
+  private fun getAdapterItem(): MutableList<GenderAdapter.GenderAdapterItem>? {
+    val tabsOfMale = context?.resources?.getStringArray(R.array.tabs_male)
+        ?.toMutableList()
+    val items = mutableListOf<GenderAdapter.GenderAdapterItem>()
+    tabsOfMale?.let { it ->
+      Observable.fromIterable(it)
+          .subscribe {
+            Timber.d(it)
+          }
     }
 
-    private fun setupViewpager() {
-        val adapter = GenderAdapter(childFragmentManager).apply {
-            items = getAdapterItem()
-        }
-        with(viewpager_gender) {
-        }
-    }
-
-    private fun getAdapterItem(): MutableList<GenderAdapter.GenderAdapterItem> {
-        context.resources.getStringArray(R.array.tabs_male)
-    }
+    return null
+  }
 }
