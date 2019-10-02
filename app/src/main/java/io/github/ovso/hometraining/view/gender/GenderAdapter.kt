@@ -3,7 +3,6 @@ package io.github.ovso.hometraining.view.gender
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import io.github.ovso.hometraining.view.video.VideoFragment
 
 class GenderAdapter(fm: FragmentManager) :
     FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
@@ -17,7 +16,7 @@ class GenderAdapter(fm: FragmentManager) :
   }
 
   class GenderAdapterItem(
-    val fragment: Fragment = VideoFragment.newInstance(),
+    val fragment: Fragment,
     val title: String
   )
 

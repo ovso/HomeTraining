@@ -23,6 +23,11 @@ android {
     dataBinding {
         enabled = true
     }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
 }
 
 dependencies {
@@ -46,6 +51,15 @@ dependencies {
     implementation deps.retrofit.runtime
     implementation deps.retrofit.gson
     implementation deps.retrofit.rxjava2
+
+    implementation deps.rx.rxjava3
+    implementation deps.rx.rxkotlin2
+    implementation deps.rx.rxandroid
+    implementation deps.uber.autodispose
+    implementation deps.uber.autodispose_android
+    implementation deps.uber.autodispose_lifecycle
+    implementation deps.uber.autodispose_android_archc
+
 
     implementation deps.koin.android
 

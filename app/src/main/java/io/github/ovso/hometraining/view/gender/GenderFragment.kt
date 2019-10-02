@@ -6,12 +6,19 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import com.uber.autodispose.android.lifecycle.AndroidLifecycleScopeProvider
+import com.uber.autodispose.autoDispose
 import io.github.ovso.hometraining.R
 import io.github.ovso.hometraining.databinding.GenderFragmentBinding
+import io.github.ovso.hometraining.view.gender.GenderAdapter.GenderAdapterItem
+import io.github.ovso.hometraining.view.video.VideoFragment
 import io.reactivex.Observable
-import timber.log.Timber
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
 class GenderFragment : Fragment() {
+
+  private val scopeProvider by lazy { AndroidLifecycleScopeProvider.from(this) }
 
   companion object {
     fun newInstance() = GenderFragment()
@@ -60,11 +67,24 @@ class GenderFragment : Fragment() {
     val items = mutableListOf<GenderAdapter.GenderAdapterItem>()
     tabsOfMale?.let { it ->
       Observable.fromIterable(it)
-          .subscribe {
-            Timber.d(it)
+          .map {
+            items.add(GenderAdapterItem(VideoFragment.newInstance(), it))
           }
+          .subscribeOn(Schedulers.io())
+          .observeOn(AndroidSchedulers.mainThread())
+          .autoDispose(scopeProvider)
+          .subscribe()
+
     }
 
     return null
   }
 }
+
+/*
+
+  implementation project(':android:autodispose-android')
+  implementation project(':android:autodispose-androidx-lifecycle')
+  implementation project(':autodispose')
+  implementation project(':autodispose-lifecycle')
+* */
