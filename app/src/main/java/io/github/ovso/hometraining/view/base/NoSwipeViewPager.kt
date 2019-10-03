@@ -1,4 +1,4 @@
-package io.github.ovso.hometraining.view.main
+package io.github.ovso.hometraining.view.base
 
 import android.annotation.SuppressLint
 import android.content.Context
