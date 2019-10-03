@@ -8,7 +8,7 @@
     tools:context=".view.main.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
-    <androidx.viewpager.widget.ViewPager
+    <io.github.ovso.hometraining.view.main.NoSwipeViewPager
         android:id="@+id/viewpager_main"
         android:layout_width="0dp"
         android:layout_height="0dp"

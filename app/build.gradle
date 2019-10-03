@@ -24,6 +24,11 @@ android {
         enabled = true
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     kotlinOptions {
         jvmTarget = "1.8"
     }
@@ -52,14 +57,16 @@ dependencies {
     implementation deps.retrofit.gson
     implementation deps.retrofit.rxjava2
 
-    implementation deps.rx.rxjava3
-    implementation deps.rx.rxkotlin2
+    implementation deps.rx.rxjava2
+    implementation deps.rx.rxkotlin
     implementation deps.rx.rxandroid
+
     implementation deps.uber.autodispose
     implementation deps.uber.autodispose_android
     implementation deps.uber.autodispose_lifecycle
     implementation deps.uber.autodispose_android_archc
-
+    implementation 'com.uber.autodispose:autodispose-rxlifecycle:1.4.0'
+    implementation 'com.uber.autodispose:autodispose-rxlifecycle3:1.4.0'
 
     implementation deps.koin.android
 
@@ -71,3 +78,8 @@ dependencies {
 }
 
 apply plugin: 'com.google.gms.google-services'
+
+//implementation project(':android:autodispose-android')
+//implementation project(':android:autodispose-androidx-lifecycle')
+//implementation project(':autodispose')
+//implementation project(':autodispose-lifecycle')

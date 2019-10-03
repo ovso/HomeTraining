@@ -15,8 +15,8 @@ versions.constraintlayout = "1.1.3"
 versions.glide = "4.9.0"
 versions.timber = "4.7.1"
 versions.rxjava2 = "2.2.11"
-versions.rxjava3 = "3.0.0-RC3"
-versions.rxkotlin2 = '2.4.0'
+versions.rxjava3 = "3.0.1"
+versions.rxkotlin = '2.4.0'
 versions.rxandroid = "2.1.1"
 versions.easyprefs = '1.9.0'
 versions.material = '1.1.0-alpha10'
@@ -134,9 +134,9 @@ deps.glide = glide
 
 def rx = [:]
 rx.rxjava2 = "io.reactivex.rxjava2:rxjava:$versions.rxjava2"
-rx.rxandroid = "io.reactivex.rxjava2:rxandroid:$versions.rxandroid"
-rx.rxkotlin2 = "io.reactivex.rxjava2:rxkotlin:$versions.rxkotlin2"
 rx.rxjava3 = "io.reactivex.rxjava3:rxjava:$versions.rxjava3"
+rx.rxandroid = "io.reactivex.rxjava2:rxandroid:$versions.rxandroid"
+rx.rxkotlin = "io.reactivex.rxjava2:rxkotlin:$versions.rxkotlin"
 deps.rx = rx
 
 def uber = [:]

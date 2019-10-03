@@ -33,12 +33,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                         GenderFragment.newInstance()
                     )
                 }
-            setOnTouchListener { _, _ -> true } // swipe disable
-        }
 
+        }
     }
 
     private fun setupBottomNavView() {
+        bnv_main.setOnNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.bottom_nav_male -> viewpager_main.setCurrentItem(0, false)
+                R.id.bottom_nav_female -> viewpager_main.setCurrentItem(1, false)
+            }
+            true
+        }
     }
 
     private fun setupDrawer() {
