@@ -29,8 +29,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             adapter = MainAdapter(supportFragmentManager)
                 .apply {
                     items = mutableListOf(
-                        GenderFragment.newInstance(),
-                        GenderFragment.newInstance()
+                        GenderFragment.newInstance(0),
+                        GenderFragment.newInstance(1)
                     )
                 }
 

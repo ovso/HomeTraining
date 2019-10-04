@@ -25,12 +25,19 @@ class GenderFragment : Fragment() {
 */
 
   companion object {
-    fun newInstance() = GenderFragment()
+    fun newInstance(position: Int): GenderFragment {
+      return GenderFragment().apply {
+        arguments = Bundle().apply { putInt("position", position) }
+      }
+    }
   }
 
   private val viewModel by lazy {
     ViewModelProviders.of(this)
         .get(GenderViewModel::class.java)
+        .apply {
+          type = arguments?.getInt("position") ?: 0
+        }
   }
 
   override fun onCreateView(

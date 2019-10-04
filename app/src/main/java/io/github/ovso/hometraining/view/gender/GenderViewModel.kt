@@ -16,15 +16,17 @@ import timber.log.Timber
 class GenderViewModel(private var app: Application) : AndroidViewModel(app) {
   private val compositeDisposable = CompositeDisposable()
   val initForTabsAndPager = MutableLiveData<MutableList<GenderAdapterItem>>()
-
-  init {
-  }
-
+  var type = 0
   fun fechList() {
     val items = mutableListOf<GenderAdapterItem>()
     compositeDisposable.add(
         Flowable.fromIterable(
-            app.resources.getStringArray(R.array.tabs_male).toMutableList()
+            when (type) {
+              0 -> app.resources.getStringArray(R.array.tabs_title_male)
+                  .toMutableList()
+              else -> app.resources.getStringArray(R.array.tabs_title_female)
+                  .toMutableList()
+            }
         ).map {
           items.add(GenderAdapterItem(VideoFragment.newInstance(), it))
           items
