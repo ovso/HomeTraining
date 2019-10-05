@@ -39,4 +39,8 @@ class VideoFragment : Fragment() {
       this.viewModel = this@VideoFragment.viewModel
     }
 
+  override fun onActivityCreated(savedInstanceState: Bundle?) {
+    super.onActivityCreated(savedInstanceState)
+
+  }
 }

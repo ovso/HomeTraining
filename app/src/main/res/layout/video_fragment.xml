@@ -9,16 +9,9 @@
       type="io.github.ovso.hometraining.view.video.VideoViewModel" />
   </data>
 
-  <FrameLayout
+  <androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/rv_"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.video.VideoFragment">
-
-    <TextView
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:layout_gravity="center"
-      android:text="Video" />
-
-  </FrameLayout>
+    android:layout_height="wrap_content"
+    tools:listitem="@layout/item_video" />
 </layout>

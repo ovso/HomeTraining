@@ -78,8 +78,3 @@ dependencies {
 }
 
 apply plugin: 'com.google.gms.google-services'
-
-//implementation project(':android:autodispose-android')
-//implementation project(':android:autodispose-androidx-lifecycle')
-//implementation project(':autodispose')
-//implementation project(':autodispose-lifecycle')

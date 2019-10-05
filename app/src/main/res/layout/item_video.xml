@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/tv_video_item_title"
+  android:layout_width="match_parent"
+  android:layout_height="?android:attr/actionBarSize"
+  android:text="강진주 강내조 강변"
+  android:textColor="@android:color/white">
+
+</TextView>
