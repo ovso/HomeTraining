@@ -1,33 +1,42 @@
 package io.github.ovso.hometraining.view.video
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import io.github.ovso.hometraining.R
+import io.github.ovso.hometraining.databinding.VideoFragmentBinding
 
 class VideoFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = VideoFragment()
-    }
+  companion object {
+    fun newInstance() = VideoFragment()
+  }
 
-    private lateinit var viewModel: VideoViewModel
+  private val viewModel by lazy {
+    ViewModelProviders.of(this)
+        .get(VideoViewModel::class.java)
+  }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.video_fragment, container, false)
-    }
+  override fun onCreateView(
+    inflater: LayoutInflater,
+    container: ViewGroup?,
+    savedInstanceState: Bundle?
+  ) = generateBinding(inflater, container).root
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(VideoViewModel::class.java)
-        // TODO: Use the ViewModel
+  private fun generateBinding(
+    inflater: LayoutInflater,
+    container: ViewGroup?
+  ) =
+    DataBindingUtil.inflate<VideoFragmentBinding>(
+        inflater,
+        R.layout.video_fragment,
+        container,
+        false
+    ).apply {
+      this.viewModel = this@VideoFragment.viewModel
     }
 
 }
