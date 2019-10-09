@@ -7,6 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import io.github.ovso.hometraining.R
+import io.github.ovso.hometraining.databinding.FragmentPopularBinding
 import io.reactivex.disposables.CompositeDisposable
 
 class PopularFragment : Fragment() {
@@ -39,7 +40,7 @@ class PopularFragment : Fragment() {
     inflater: LayoutInflater,
     container: ViewGroup?
   ) =
-    DataBindingUtil.inflate<PopularFragment>(
+    DataBindingUtil.inflate<FragmentPopularBinding>(
         inflater,
         R.layout.fragment_popular,
         container,
@@ -48,9 +49,6 @@ class PopularFragment : Fragment() {
       this.viewModel = this@PopularFragment.viewModel
     }
 
-  override fun onActivityCreated(savedInstanceState: Bundle?) {
-    super.onActivityCreated(savedInstanceState)
-  }
 
   override fun onDetach() {
     super.onDetach()

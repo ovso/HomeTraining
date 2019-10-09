@@ -9,6 +9,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import io.github.ovso.hometraining.R
 import io.github.ovso.hometraining.view.gender.GenderFragment
+import io.github.ovso.hometraining.view.gender.PopularFragment
 import kotlinx.android.synthetic.main.activity_main.drawer_layout
 import kotlinx.android.synthetic.main.activity_main.nav_view
 import kotlinx.android.synthetic.main.app_bar_main.toolbar
@@ -36,18 +37,22 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 PopularFragment.newInstance(2)
             )
           }
-
     }
   }
 
   private fun setupBottomNavView() {
     bnv_main.setOnNavigationItemSelectedListener {
       when (it.itemId) {
-        R.id.bottom_nv_male -> viewpager_main.setCurrentItem(0, false)
-        R.id.bottom_nv_female -> viewpager_main.setCurrentItem(1, false)
+        R.id.bottom_nv_male -> setCurItemForViewPager(0)
+        R.id.bottom_nv_female -> setCurItemForViewPager(1)
+        R.id.bottom_nv_popular -> setCurItemForViewPager(2)
       }
       true
     }
+  }
+
+  fun setCurItemForViewPager(position: Int) {
+    viewpager_main.setCurrentItem(position, false)
   }
 
   private fun setupDrawer() {
