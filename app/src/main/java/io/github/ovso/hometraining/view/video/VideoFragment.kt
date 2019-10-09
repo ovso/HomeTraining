@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import io.github.ovso.hometraining.R
 import io.github.ovso.hometraining.databinding.VideoFragmentBinding
+import kotlinx.android.synthetic.main.video_fragment.rv_video
 
 class VideoFragment : Fragment() {
 
@@ -18,6 +19,10 @@ class VideoFragment : Fragment() {
   private val viewModel by lazy {
     ViewModelProviders.of(this)
         .get(VideoViewModel::class.java)
+  }
+
+  private val adapter by lazy {
+    VideoAdapter()
   }
 
   override fun onCreateView(
@@ -41,6 +46,12 @@ class VideoFragment : Fragment() {
 
   override fun onActivityCreated(savedInstanceState: Bundle?) {
     super.onActivityCreated(savedInstanceState)
+    setupRv()
+  }
 
+  private fun setupRv() {
+    with(rv_video) {
+      this.adapter = this@VideoFragment.adapter
+    }
   }
 }

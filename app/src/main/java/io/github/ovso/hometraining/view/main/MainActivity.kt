@@ -9,94 +9,97 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import io.github.ovso.hometraining.R
 import io.github.ovso.hometraining.view.gender.GenderFragment
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.app_bar_main.*
-import kotlinx.android.synthetic.main.content_main.*
+import kotlinx.android.synthetic.main.activity_main.drawer_layout
+import kotlinx.android.synthetic.main.activity_main.nav_view
+import kotlinx.android.synthetic.main.app_bar_main.toolbar
+import kotlinx.android.synthetic.main.content_main.bnv_main
+import kotlinx.android.synthetic.main.content_main.viewpager_main
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        setupActionBar()
-        setupDrawer()
-        setupBottomNavView()
-        setupViewPager()
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    setContentView(R.layout.activity_main)
+    setupActionBar()
+    setupDrawer()
+    setupBottomNavView()
+    setupViewPager()
+  }
+
+  private fun setupViewPager() {
+    with(viewpager_main) {
+      adapter = MainAdapter(supportFragmentManager)
+          .apply {
+            items = mutableListOf(
+                GenderFragment.newInstance(0),
+                GenderFragment.newInstance(1),
+                PopularFragment.newInstance(2)
+            )
+          }
+
     }
+  }
 
-    private fun setupViewPager() {
-        with(viewpager_main) {
-            adapter = MainAdapter(supportFragmentManager)
-                .apply {
-                    items = mutableListOf(
-                        GenderFragment.newInstance(0),
-                        GenderFragment.newInstance(1)
-                    )
-                }
-
-        }
+  private fun setupBottomNavView() {
+    bnv_main.setOnNavigationItemSelectedListener {
+      when (it.itemId) {
+        R.id.bottom_nv_male -> viewpager_main.setCurrentItem(0, false)
+        R.id.bottom_nv_female -> viewpager_main.setCurrentItem(1, false)
+      }
+      true
     }
+  }
 
-    private fun setupBottomNavView() {
-        bnv_main.setOnNavigationItemSelectedListener {
-            when (it.itemId) {
-                R.id.bottom_nav_male -> viewpager_main.setCurrentItem(0, false)
-                R.id.bottom_nav_female -> viewpager_main.setCurrentItem(1, false)
-            }
-            true
-        }
+  private fun setupDrawer() {
+    val toggle = ActionBarDrawerToggle(
+        this,
+        drawer_layout,
+        toolbar,
+        R.string.navigation_drawer_open,
+        R.string.navigation_drawer_close
+    )
+    drawer_layout.addDrawerListener(toggle)
+    toggle.syncState()
+    nav_view.setNavigationItemSelectedListener(this)
+  }
+
+  private fun setupActionBar() {
+    setSupportActionBar(toolbar)
+    // title..
+  }
+
+  override fun onBackPressed() {
+    if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
+      drawer_layout.closeDrawer(GravityCompat.START)
+    } else {
+      super.onBackPressed()
     }
+  }
 
-    private fun setupDrawer() {
-        val toggle = ActionBarDrawerToggle(
-            this,
-            drawer_layout,
-            toolbar,
-            R.string.navigation_drawer_open,
-            R.string.navigation_drawer_close
-        )
-        drawer_layout.addDrawerListener(toggle)
-        toggle.syncState()
-        nav_view.setNavigationItemSelectedListener(this)
+  override fun onNavigationItemSelected(item: MenuItem): Boolean {
+    // Handle navigation view item clicks here.
+    when (item.itemId) {
+      R.id.nav_home -> {
+        // Handle the camera action
+      }
+      R.id.nav_gallery -> {
+
+      }
+      R.id.nav_slideshow -> {
+
+      }
+      R.id.nav_tools -> {
+
+      }
+      R.id.nav_share -> {
+
+      }
+      R.id.nav_send -> {
+
+      }
     }
-
-    private fun setupActionBar() {
-        setSupportActionBar(toolbar)
-        // title..
-    }
-
-    override fun onBackPressed() {
-        if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
-            drawer_layout.closeDrawer(GravityCompat.START)
-        } else {
-            super.onBackPressed()
-        }
-    }
-
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        // Handle navigation view item clicks here.
-        when (item.itemId) {
-            R.id.nav_home -> {
-                // Handle the camera action
-            }
-            R.id.nav_gallery -> {
-
-            }
-            R.id.nav_slideshow -> {
-
-            }
-            R.id.nav_tools -> {
-
-            }
-            R.id.nav_share -> {
-
-            }
-            R.id.nav_send -> {
-
-            }
-        }
-        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
-        drawerLayout.closeDrawer(GravityCompat.START)
-        return true
-    }
+    val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
+    drawerLayout.closeDrawer(GravityCompat.START)
+    return true
+  }
 }

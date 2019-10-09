@@ -5,21 +5,17 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import io.github.ovso.hometraining.R
-import io.github.ovso.hometraining.databinding.GenderFragmentBinding
 import io.reactivex.disposables.CompositeDisposable
-import kotlinx.android.synthetic.main.fragment_gender.tabs_gender
-import kotlinx.android.synthetic.main.fragment_gender.viewpager_gender
 
-class GenderFragment : Fragment() {
+class PopularFragment : Fragment() {
 
   private val compositeDisposable = CompositeDisposable()
 
   companion object {
-    fun newInstance(position: Int): GenderFragment {
-      return GenderFragment().apply {
+    fun newInstance(position: Int): PopularFragment {
+      return PopularFragment().apply {
         arguments = Bundle().apply { putInt("position", position) }
       }
     }
@@ -27,7 +23,7 @@ class GenderFragment : Fragment() {
 
   private val viewModel by lazy {
     ViewModelProviders.of(this)
-        .get(GenderViewModel::class.java)
+        .get(PopularViewModel::class.java)
         .apply {
           type = arguments?.getInt("position") ?: 0
         }
@@ -43,40 +39,17 @@ class GenderFragment : Fragment() {
     inflater: LayoutInflater,
     container: ViewGroup?
   ) =
-    DataBindingUtil.inflate<GenderFragmentBinding>(
+    DataBindingUtil.inflate<PopularFragment>(
         inflater,
-        R.layout.fragment_gender,
+        R.layout.fragment_popular,
         container,
         false
     ).apply {
-      this.viewModel = this@GenderFragment.viewModel
+      this.viewModel = this@PopularFragment.viewModel
     }
 
   override fun onActivityCreated(savedInstanceState: Bundle?) {
     super.onActivityCreated(savedInstanceState)
-    setupViewpager()
-    observeLiveData()
-    viewModel.fechList()
-  }
-
-  private fun observeLiveData() {
-    viewModel.initForTabsAndPager.observe(this, Observer {
-      with(viewpager_gender.adapter) {
-        if (this is GenderAdapter) {
-          with(this) {
-            items = it
-            notifyDataSetChanged()
-          }
-        }
-      }
-    })
-  }
-
-  private fun setupViewpager() {
-    with(tabs_gender) {
-      setupWithViewPager(viewpager_gender)
-    }
-    viewpager_gender.adapter = GenderAdapter(childFragmentManager)
   }
 
   override fun onDetach() {

@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:id="@+id/bottom_nav_male"
-        android:icon="@drawable/male"
-        android:title="홈트레이닝 남성" />
-    <item
-        android:id="@+id/bottom_nav_female"
-        android:icon="@drawable/female"
-        android:title="홈트레이닝 여성" />
+  <item
+    android:id="@+id/bottom_nv_male"
+    android:icon="@drawable/male"
+    android:title="@string/main_nav_title_male" />
+  <item
+    android:id="@+id/bottom_nv_female"
+    android:icon="@drawable/female"
+    android:title="@string/main_nav_title_female" />
+  <item
+    android:id="@+id/bottom_nv_popular"
+    android:icon="@drawable/female"
+    android:title="@string/main_nav_title_popular" />
 </menu>
