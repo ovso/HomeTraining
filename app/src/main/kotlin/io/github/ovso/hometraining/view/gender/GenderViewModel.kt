@@ -14,36 +14,39 @@ import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
 
 class GenderViewModel(private var app: Application) : AndroidViewModel(app) {
-  private val compositeDisposable = CompositeDisposable()
-  val initForTabsAndPager = MutableLiveData<MutableList<GenderAdapterItem>>()
-  var type = 0
-  fun fechList() {
-    val items = mutableListOf<GenderAdapterItem>()
-    compositeDisposable.add(
-        Flowable.fromIterable(
-            when (type) {
-              0 -> app.resources.getStringArray(R.array.tabs_title_male)
-                  .toMutableList()
-              else -> app.resources.getStringArray(R.array.tabs_title_female)
-                  .toMutableList()
-            }
-        ).map {
-          items.add(GenderAdapterItem(VideoFragment.newInstance(), it))
-          items
-        }.subscribeOn(Schedulers.io(), true).observeOn(AndroidSchedulers.mainThread())
-            .subscribeBy(onComplete = {
-              Timber.d("onComplete")
-              initForTabsAndPager.postValue(items)
-            }, onNext = {
-              Timber.d("onNext")
-            }, onError = {
-              Timber.d("onNext")
-            })
-    )
-  }
+    private val compositeDisposable = CompositeDisposable()
+    val initForTabsAndPager = MutableLiveData<MutableList<GenderAdapterItem>>()
+    var type = 0
+    fun fechList() {
+        val items = mutableListOf<GenderAdapterItem>()
+        compositeDisposable.add(
+            Flowable.fromIterable(
+                when (type) {
+                    0 -> app.resources.getStringArray(R.array.tabs_title_male)
+                        .toMutableList()
+                    else -> app.resources.getStringArray(R.array.tabs_title_female)
+                        .toMutableList()
+                }
+            ).map {
+                items.add(GenderAdapterItem(VideoFragment.newInstance(), it))
+                items
+            }.subscribeOn(
+                Schedulers.io(),
+                true
+            ).observeOn(AndroidSchedulers.mainThread())
+                .subscribeBy(onComplete = {
+                    Timber.d("onComplete")
+                    initForTabsAndPager.value = items
+                }, onNext = {
+                    Timber.d("onNext")
+                }, onError = {
+                    Timber.d("onError")
+                })
+        )
+    }
 
-  override fun onCleared() {
-    super.onCleared()
-    compositeDisposable.clear()
-  }
+    override fun onCleared() {
+        super.onCleared()
+        compositeDisposable.clear()
+    }
 }
