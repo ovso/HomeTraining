@@ -4,49 +4,47 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import io.github.ovso.hometraining.R
+import io.github.ovso.hometraining.utils.ResourceProvider
+import io.github.ovso.hometraining.utils.SchedulerProvider
 import io.github.ovso.hometraining.view.gender.GenderAdapter.GenderAdapterItem
 import io.github.ovso.hometraining.view.video.VideoFragment
 import io.reactivex.Flowable
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.subscribeBy
-import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
 
-class GenderViewModel(private var app: Application) : AndroidViewModel(app) {
-    private val compositeDisposable = CompositeDisposable()
-    val initForTabsAndPager = MutableLiveData<MutableList<GenderAdapterItem>>()
-    var type = 0
-    fun fechList() {
-        val items = mutableListOf<GenderAdapterItem>()
-        compositeDisposable.add(
-            Flowable.fromIterable(
-                when (type) {
-                    0 -> app.resources.getStringArray(R.array.tabs_title_male)
-                        .toMutableList()
-                    else -> app.resources.getStringArray(R.array.tabs_title_female)
-                        .toMutableList()
-                }
-            ).map {
-                items.add(GenderAdapterItem(VideoFragment.newInstance(), it))
-                items
-            }.subscribeOn(
-                Schedulers.io(),
-                true
-            ).observeOn(AndroidSchedulers.mainThread())
-                .subscribeBy(onComplete = {
-                    Timber.d("onComplete")
-                    initForTabsAndPager.value = items
-                }, onNext = {
-                    Timber.d("onNext")
-                }, onError = {
-                    Timber.d("onError")
-                })
-        )
-    }
+class GenderViewModel(app: Application) : AndroidViewModel(app) {
+  private val compositeDisposable = CompositeDisposable()
+  val initForTabsAndPager = MutableLiveData<MutableList<GenderAdapterItem>>()
+  var type = 0
+  fun fechList() {
+    val items = mutableListOf<GenderAdapterItem>()
+    compositeDisposable.add(
+        Flowable.fromIterable(toList()).map {
+          items.add(GenderAdapterItem(VideoFragment.newInstance(), it))
+              .apply { }
+        }.subscribeOn(SchedulerProvider.io(), true)
+            .observeOn(SchedulerProvider.ui())
+            .subscribeBy(onComplete = {
+              Timber.d("onComplete")
+              initForTabsAndPager.value = items
+            }, onNext = {
+              Timber.d("onNext")
+            }, onError = {
+              Timber.d("onError")
+            })
+    )
+  }
 
-    override fun onCleared() {
-        super.onCleared()
-        compositeDisposable.clear()
-    }
+  fun toList() = when (type) {
+    0 -> ResourceProvider.getStringArray(R.array.tabs_title_male)
+        .toMutableList()
+    else -> ResourceProvider.getStringArray(R.array.tabs_title_female)
+        .toMutableList()
+  }
+
+  override fun onCleared() {
+    super.onCleared()
+    compositeDisposable.clear()
+  }
 }
