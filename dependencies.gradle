@@ -65,13 +65,26 @@ ext {
                     'legacy_support_v4'      : "androidx.legacy:legacy-support-v4:$versions.legacy_support_v4",
             ],
 
+            'anko'          : [
+                    'commons'                : "org.jetbrains.anko:anko-commons:$versions.anko",
+                    'sdk25'                  : "org.jetbrains.anko:anko-sdk25:$versions.anko",
+                    'appcompat'              : "org.jetbrains.anko:anko-appcompat-v7:$versions.anko",
+                    'sqlite'                 : "org.jetbrains.anko:anko-sqlite:$versions.anko",
+                    'sdk25_coroutines'       : "org.jetbrains.anko:anko-sdk25-coroutines:$versions.anko",
+                    'appcompat_v7_coroutines': "org.jetbrains.anko:anko-appcompat-v7-coroutines:$versions.anko"
 
-            'jetbrains'     : [
-                    'kotlin_reflect'            : "org.jetbrains.kotlin:kotlin-reflect:$versions.koltin_reflect",
-                    'anko'                      : "org.jetbrains.anko:anko:$versions.anko",
-                    'kotlin_stdlib_jdk8'        : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$versions.kotlin",
-                    'kotlinx_coroutines_core'   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.coroutines_core",
-                    'kotlinx_coroutines_android': "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.coroutines_core"
+            ],
+
+            'kotlin'        : [
+                    'reflect'    : "org.jetbrains.kotlin:kotlin-reflect:$versions.koltin_reflect",
+                    'stdlib_jdk8': "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$versions.kotlin",
+
+            ],
+
+
+            'coroutines'    : [
+                    'core'   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.coroutines",
+                    'android': "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.coroutines"
             ],
 
 

@@ -36,41 +36,35 @@ android {
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
+
+    packagingOptions {
+        exclude "META-INF/kotlinx-io.kotlin_module"
+        exclude "META-INF/atomicfu.kotlin_module"
+        exclude "META-INF/kotlinx-coroutines-io.kotlin_module"
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation deps.jetbrains.kotlin_stdlib_jdk8
-    implementation deps.jetbrains.anko
+    implementation deps.anko.commons
+    implementation deps.coroutines.values()
+    implementation deps.kotlin.values()
 
-    implementation deps.firebase.core
+    implementation deps.firebase.values()
 
-    implementation deps.androidx.appcompat
-    implementation deps.androidx.material
-    implementation deps.androidx.core_ktx
-    implementation deps.androidx.constraintlayout
+    implementation deps.androidx.values()
 
-    implementation "androidx.fragment:fragment:1.1.0"
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.1.0'
-
-    implementation deps.retrofit.runtime
-    implementation deps.retrofit.gson
-    implementation deps.retrofit.rxjava2
+    implementation deps.retrofit.values()
 
     implementation deps.rx.values()
 
     implementation deps.glide.runtime
     annotationProcessor deps.glide.compiler
 
-    implementation deps.picasso
-    implementation deps.fresco
-
     implementation deps.autodispose.values()
 
-    implementation deps.koin.android
+    implementation deps.koin.values()
 
     implementation deps.timber
 
