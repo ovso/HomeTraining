@@ -62,12 +62,13 @@ dependencies {
 
     implementation deps.rx.values()
 
-    implementation deps.uber.autodispose
-    implementation deps.uber.autodispose_android
-    implementation deps.uber.autodispose_lifecycle
-    implementation deps.uber.autodispose_android_archc
-    implementation 'com.uber.autodispose:autodispose-rxlifecycle:1.4.0'
-    implementation 'com.uber.autodispose:autodispose-rxlifecycle3:1.4.0'
+    implementation deps.glide.runtime
+    annotationProcessor deps.glide.compiler
+
+    implementation deps.picasso
+    implementation deps.fresco
+
+    implementation deps.autodispose.values()
 
     implementation deps.koin.android
 
