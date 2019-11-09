@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
   }
 
-  fun setCurItemForViewPager(position: Int) {
+  private fun setCurItemForViewPager(position: Int) {
     viewpager_main.setCurrentItem(position, false)
   }
 

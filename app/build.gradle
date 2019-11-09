@@ -4,13 +4,13 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion config.compileSdkVersion
     defaultConfig {
-        applicationId "io.github.ovso.hometraining"
-        minSdkVersion 21
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        applicationId config.applicationId
+        minSdkVersion config.minSdkVersion
+        targetSdkVersion config.targetSdkVersion
+        versionCode config.versionCode
+        versionName config.versionsName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -60,9 +60,7 @@ dependencies {
     implementation deps.retrofit.gson
     implementation deps.retrofit.rxjava2
 
-    implementation deps.rx.rxjava2
-    implementation deps.rx.rxkotlin
-    implementation deps.rx.rxandroid
+    implementation deps.rx.values()
 
     implementation deps.uber.autodispose
     implementation deps.uber.autodispose_android
