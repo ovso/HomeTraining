@@ -14,7 +14,7 @@ import io.reactivex.rxkotlin.subscribeBy
 import timber.log.Timber
 
 class GenderViewModel(app: Application) : AndroidViewModel(app) {
-  private val compositeDisposable = CompositeDisposable()
+  private val compositeDisposable by lazy { CompositeDisposable() }
   val initForTabsAndPager = MutableLiveData<MutableList<GenderAdapterItem>>()
   var type = 0
   fun fechList() {

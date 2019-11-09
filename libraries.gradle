@@ -1,226 +1,228 @@
 ext {
-    versions = [
-            'room': '2.0.0',
-            'junit': '4.12',
-            'runner': '1.0.2',
-            'espressocore': '3.1.0',
-            'appcompat': '1.1.0',
-            'lifecycle': '2.0.0',
-            'dagger': '2.17',
-            'espresso': '3.1.0',
-            'retrofit': '2.6.2',
-            'okhttp': '3.12.0',
-            'constraintlayout': '1.1.3',
-            'glide': '4.9.0',
-            'timber': '4.7.1',
-            'rxjava2': '2.2.11',
-            'rxjava3': '3.0.1',
-            'rxkotlin': '2.4.0',
-            'rxandroid': '2.1.1',
-            'easyprefs': '1.9.0',
-            'material': '1.1.0-alpha10',
-            'lottie': '3.0.2',
-            'viewpager2': '1.0.0-alpha04',
-            'paging': '2.1.0',
-            'easydeviceinfo': '2.4.1',
-            'android_gradle': '3.5.2',
-            'kotlin': '1.3.50',
-            'core_ktx': '1.1.0',
-            'lifecycle_viewmodel_ktx': '2.0.0',
-            'lifecycle_extensions': '2.0.0',
-            'annotation': '1.0.2',
-            'legacy_preference_v14': '1.0.0',
-            'legacy_support_v4': '1.0.0',
-            'licensedialog': '2.1.0',
-            'firebase_ads': '18.2.0',
-            'firebase_core': '17.2.0',
-            'google_service': '4.3.0',
-            'rssparser': '2.0.3',
-            'jsoup': '1.11.3',
-            'coroutines': '1.2.0',
-            'fragment': '1.0.0',
-            'koltin_reflect': '1.3.31',
-            'anko': '0.10.8',
-            'threetenabp': '1.2.1',
-            'koin': '2.0.1',
-            'autodispose': '1.4.0',
-            'picasso': '2.71828',
-            'fresco': '2.0.0'
-    ]
+  versions = [
+      'room': '2.0.0',
+      'junit': '4.12',
+      'runner': '1.0.2',
+      'espressocore': '3.1.0',
+      'appcompat': '1.1.0',
+      'lifecycle': '2.0.0',
+      'dagger': '2.17',
+      'espresso': '3.1.0',
+      'retrofit': '2.6.2',
+      'okhttp': '3.12.0',
+      'constraintlayout': '1.1.3',
+      'glide': '4.9.0',
+      'timber': '4.7.1',
+      'rxjava2': '2.2.11',
+      'rxjava3': '3.0.1',
+      'rxkotlin': '2.4.0',
+      'rxandroid': '2.1.1',
+      'easyprefs': '1.9.0',
+      'material': '1.1.0-alpha10',
+      'lottie': '3.0.2',
+      'viewpager2': '1.0.0-alpha04',
+      'paging': '2.1.0',
+      'easydeviceinfo': '2.4.1',
+      'android_gradle': '3.5.2',
+      'kotlin': '1.3.50',
+      'core_ktx': '1.1.0',
+      'lifecycle_viewmodel_ktx': '2.0.0',
+      'lifecycle_extensions': '2.0.0',
+      'annotation': '1.0.2',
+      'legacy_preference_v14': '1.0.0',
+      'legacy_support_v4': '1.0.0',
+      'licensedialog': '2.1.0',
+      'firebase_ads': '18.2.0',
+      'firebase_core': '17.2.0',
+      'google_service': '4.3.0',
+      'rssparser': '2.0.3',
+      'jsoup': '1.11.3',
+      'coroutines': '1.2.0',
+      'fragment': '1.0.0',
+      'koltin_reflect': '1.3.31',
+      'anko': '0.10.8',
+      'threetenabp': '1.2.1',
+      'koin': '2.0.1',
+      'autodispose': '1.4.0',
+      'picasso': '2.71828',
+      'fresco': '2.0.0',
+      'logging_interceptor': '4.2.1'
+  ]
 
-    deps = [
-            'androidx': [
-                    'appcompat': "androidx.appcompat:appcompat:$versions.appcompat",
-                    'constraintlayout': "androidx.constraintlayout:constraintlayout:$versions.constraintlayout",
-                    'material': "com.google.android.material:material:$versions.material",
-                    'viewpager2': "androidx.viewpager2:viewpager2:$versions.viewpager2",
-                    'paging_runtime': "androidx.paging:paging-runtime:$versions.paging",
-                    'paging_rxjava2': "androidx.paging:paging-rxjava2:$versions.paging",
-                    'annotation': "androidx.annotation:annotation:$versions.annotation",
-                    'core_ktx': "androidx.core:core-ktx:$versions.core_ktx",
-                    'lifecycle_viewmodel_ktx': "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycle_viewmodel_ktx",
-                    'lifecycle_extensions': "androidx.lifecycle:lifecycle-extensions:$versions.lifecycle_extensions",
-                    'legacy_preference_v14': "androidx.legacy:legacy-preference-v14:$versions.legacy_preference_v14",
-                    'fragment': "androidx.fragment:fragment:$versions.fragment",
-                    'legacy_support_v4': "androidx.legacy:legacy-support-v4:$versions.legacy_support_v4",
-            ],
+  deps = [
+      'androidx': [
+          'appcompat': "androidx.appcompat:appcompat:$versions.appcompat",
+          'constraintlayout': "androidx.constraintlayout:constraintlayout:$versions.constraintlayout",
+          'material': "com.google.android.material:material:$versions.material",
+          'viewpager2': "androidx.viewpager2:viewpager2:$versions.viewpager2",
+          'paging_runtime': "androidx.paging:paging-runtime:$versions.paging",
+          'paging_rxjava2': "androidx.paging:paging-rxjava2:$versions.paging",
+          'annotation': "androidx.annotation:annotation:$versions.annotation",
+          'core_ktx': "androidx.core:core-ktx:$versions.core_ktx",
+          'lifecycle_viewmodel_ktx': "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycle_viewmodel_ktx",
+          'lifecycle_extensions': "androidx.lifecycle:lifecycle-extensions:$versions.lifecycle_extensions",
+          'legacy_preference_v14': "androidx.legacy:legacy-preference-v14:$versions.legacy_preference_v14",
+          'fragment': "androidx.fragment:fragment:$versions.fragment",
+          'legacy_support_v4': "androidx.legacy:legacy-support-v4:$versions.legacy_support_v4",
+      ],
 
-            'anko': [
-                    'commons': "org.jetbrains.anko:anko-commons:$versions.anko",
-                    'sdk25': "org.jetbrains.anko:anko-sdk25:$versions.anko",
-                    'appcompat': "org.jetbrains.anko:anko-appcompat-v7:$versions.anko",
-                    'sqlite': "org.jetbrains.anko:anko-sqlite:$versions.anko",
-                    'sdk25_coroutines': "org.jetbrains.anko:anko-sdk25-coroutines:$versions.anko",
-                    'appcompat_v7_coroutines': "org.jetbrains.anko:anko-appcompat-v7-coroutines:$versions.anko"
+      'anko': [
+          'commons': "org.jetbrains.anko:anko-commons:$versions.anko",
+          'sdk25': "org.jetbrains.anko:anko-sdk25:$versions.anko",
+          'appcompat': "org.jetbrains.anko:anko-appcompat-v7:$versions.anko",
+          'sqlite': "org.jetbrains.anko:anko-sqlite:$versions.anko",
+          'sdk25_coroutines': "org.jetbrains.anko:anko-sdk25-coroutines:$versions.anko",
+          'appcompat_v7_coroutines': "org.jetbrains.anko:anko-appcompat-v7-coroutines:$versions.anko"
 
-            ],
+      ],
 
-            'kotlin': [
-                    'reflect': "org.jetbrains.kotlin:kotlin-reflect:$versions.koltin_reflect",
-                    'stdlib_jdk8': "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$versions.kotlin",
+      'kotlin': [
+          'reflect': "org.jetbrains.kotlin:kotlin-reflect:$versions.koltin_reflect",
+          'stdlib_jdk8': "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$versions.kotlin",
 
-            ],
-
-
-            'coroutines': [
-                    'core': "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.coroutines",
-                    'android': "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.coroutines"
-            ],
+      ],
 
 
-            'firebase': [
-                    'ads': "com.google.firebase:firebase-ads:$versions.firebase_ads",
-                    'core': "com.google.firebase:firebase-core:$versions.firebase_core",
-            ],
+      'coroutines': [
+          'core': "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.coroutines",
+          'android': "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.coroutines"
+      ],
 
 
-            'atsl': [
-                    'junit': "junit:junit:$versions.junit",
-                    'runner': "androidx.test:runner:$versions.runner",
-                    'espressocore': "androidx.test.espresso:espresso-core:$versions.espressocore"
-            ],
+      'firebase': [
+          'ads': "com.google.firebase:firebase-ads:$versions.firebase_ads",
+          'core': "com.google.firebase:firebase-core:$versions.firebase_core",
+      ],
 
 
-            'dagger': [
-                    'runtime': "com.google.dagger:dagger:$versions.dagger",
-                    'android': "com.google.dagger:dagger-android:$versions.dagger",
-                    'compiler': "com.google.dagger:dagger-compiler:$versions.dagger",
-                    'android_support': "com.google.dagger:dagger-android-support:$versions.dagger",
-                    'android_support_compiler': "com.google.dagger:dagger-android-processor:$versions.dagger"
-            ],
+      'atsl': [
+          'junit': "junit:junit:$versions.junit",
+          'runner': "androidx.test:runner:$versions.runner",
+          'espressocore': "androidx.test.espresso:espresso-core:$versions.espressocore"
+      ],
 
 
-            'koin': [
-                    'core': "org.koin:koin-core:$versions.koin",
-                    'core_ext': "org.koin:koin-core-ext:$versions.koin",
-                    'test': "org.koin:koin-test:$versions.koin",
-                    'java': "org.koin:koin-java:$versions.koin",
-                    'android': "org.koin:koin-android:$versions.koin",
-                    'android_scope': "org.koin:koin-android-scope:$versions.koin",
-                    'android_viewmodel': "org.koin:koin-android-viewmodel:$versions.koin",
-                    'android_ext': "org.koin:koin-android-ext:$versions.koin",
-                    'androidx_scope': "org.koin:koin-androidx-scope:$versions.koin",
-                    'androidx_viewmodel': "org.koin:koin-androidx-viewmodel:$versions.koin",
-                    'androidx_ext': "org.koin:koin-androidx-ext:$versions.koin",
-                    'ktor': "org.koin:koin-ktor:$versions.koin"
-
-            ],
+      'dagger': [
+          'runtime': "com.google.dagger:dagger:$versions.dagger",
+          'android': "com.google.dagger:dagger-android:$versions.dagger",
+          'compiler': "com.google.dagger:dagger-compiler:$versions.dagger",
+          'android_support': "com.google.dagger:dagger-android-support:$versions.dagger",
+          'android_support_compiler': "com.google.dagger:dagger-android-processor:$versions.dagger"
+      ],
 
 
-            'retrofit': [
-                    'runtime': "com.squareup.retrofit2:retrofit:$versions.retrofit",
-                    'gson': "com.squareup.retrofit2:converter-gson:$versions.retrofit",
-                    'rxjava2': "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit"
-            ],
+      'koin': [
+          'core': "org.koin:koin-core:$versions.koin",
+          'core_ext': "org.koin:koin-core-ext:$versions.koin",
+          'test': "org.koin:koin-test:$versions.koin",
+          'java': "org.koin:koin-java:$versions.koin",
+          'android': "org.koin:koin-android:$versions.koin",
+          'android_scope': "org.koin:koin-android-scope:$versions.koin",
+          'android_viewmodel': "org.koin:koin-android-viewmodel:$versions.koin",
+          'android_ext': "org.koin:koin-android-ext:$versions.koin",
+          'androidx_scope': "org.koin:koin-androidx-scope:$versions.koin",
+          'androidx_viewmodel': "org.koin:koin-androidx-viewmodel:$versions.koin",
+          'androidx_ext': "org.koin:koin-androidx-ext:$versions.koin",
+          'ktor': "org.koin:koin-ktor:$versions.koin"
+
+      ],
 
 
-            'okhttp': [
-                    'runtime': "com.squareup.okhttp3:okhttp:$versions.okhttp",
-                    'logging_interceptor': "com.squareup.okhttp3:okhttp:$versions.okhttp"
-            ],
+      'retrofit': [
+          'runtime': "com.squareup.retrofit2:retrofit:$versions.retrofit",
+          'gson': "com.squareup.retrofit2:converter-gson:$versions.retrofit",
+          'rxjava2': "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit",
+          'logging_interceptor': "com.squareup.okhttp3:logging-interceptor:$versions.logging_interceptor"
+      ],
 
 
-            'glide': [
-                    'runtime': "com.github.bumptech.glide:glide:$versions.glide",
-                    'compiler': "com.github.bumptech.glide:compiler:$versions.glide",
-            ],
+      'okhttp': [
+          'runtime': "com.squareup.okhttp3:okhttp:$versions.okhttp",
+          'logging_interceptor': "com.squareup.okhttp3:okhttp:$versions.okhttp"
+      ],
 
 
-            'fresco': "com.facebook.fresco:fresco:$versions.fresco",
+      'glide': [
+          'runtime': "com.github.bumptech.glide:glide:$versions.glide",
+          'compiler': "com.github.bumptech.glide:compiler:$versions.glide",
+      ],
 
 
-            'picasso': "com.squareup.picasso:picasso:$versions.picasso",
+      'fresco': "com.facebook.fresco:fresco:$versions.fresco",
 
 
-            'autodispose': [
-                    'autodispose': "com.uber.autodispose:autodispose:$versions.autodispose",
-                    'lifecycle': "com.uber.autodispose:autodispose-lifecycle:$versions.autodispose",
-                    'android': "com.uber.autodispose:autodispose-android:$versions.autodispose",
-                    'android_archcomponents': "com.uber.autodispose:autodispose-android-archcomponents:$versions.autodispose",
-                    'rxlifecycle': "com.uber.autodispose:autodispose-rxlifecycle:$versions.autodispose",
-                    'rxlifecycle3': "com.uber.autodispose:autodispose-rxlifecycle3:$versions.autodispose"
-            ],
+      'picasso': "com.squareup.picasso:picasso:$versions.picasso",
 
 
-            'rx': [
-                    'rxjava2': "io.reactivex.rxjava2:rxjava:$versions.rxjava2",
-                    'rxandroid': "io.reactivex.rxjava2:rxandroid:$versions.rxandroid",
-                    'rxkotlin': "io.reactivex.rxjava2:rxkotlin:$versions.rxkotlin",
-                    //'rxjava3' : "io.reactivex.rxjava3:rxjava:$versions.rxjava3",
-            ],
+      'autodispose': [
+          'autodispose': "com.uber.autodispose:autodispose:$versions.autodispose",
+          'lifecycle': "com.uber.autodispose:autodispose-lifecycle:$versions.autodispose",
+          'android': "com.uber.autodispose:autodispose-android:$versions.autodispose",
+          'android_archcomponents': "com.uber.autodispose:autodispose-android-archcomponents:$versions.autodispose",
+          'rxlifecycle': "com.uber.autodispose:autodispose-rxlifecycle:$versions.autodispose",
+          'rxlifecycle3': "com.uber.autodispose:autodispose-rxlifecycle3:$versions.autodispose"
+      ],
 
 
-            'timber': "com.jakewharton.timber:timber:$versions.timber",
+      'rx': [
+          'rxjava2': "io.reactivex.rxjava2:rxjava:$versions.rxjava2",
+          'rxandroid': "io.reactivex.rxjava2:rxandroid:$versions.rxandroid",
+          'rxkotlin': "io.reactivex.rxjava2:rxkotlin:$versions.rxkotlin",
+          //'rxjava3' : "io.reactivex.rxjava3:rxjava:$versions.rxjava3",
+      ],
+
+
+      'timber': "com.jakewharton.timber:timber:$versions.timber",
 
 
 
-            'lottie': "com.airbnb.android:lottie:$versions.lottie",
+      'lottie': "com.airbnb.android:lottie:$versions.lottie",
 
 
-            'easydeviceinfo': "com.github.nisrulz:easydeviceinfo:$versions.easydeviceinfo",
+      'easydeviceinfo': "com.github.nisrulz:easydeviceinfo:$versions.easydeviceinfo",
 
 
-            'licensedialog': "de.psdev.licensesdialog:licensesdialog:$versions.licensedialog",
+      'licensedialog': "de.psdev.licensesdialog:licensesdialog:$versions.licensedialog",
 
 
-            'easyprefs': "com.pixplicity.easyprefs:library:$versions.easyprefs",
+      'easyprefs': "com.pixplicity.easyprefs:library:$versions.easyprefs",
 
 
-            'rssparser': "com.prof.rssparser:rssparser:$versions.rssparser",
+      'rssparser': "com.prof.rssparser:rssparser:$versions.rssparser",
 
 
-            'jsoup': "org.jsoup:jsoup:$versions.jsoup",
+      'jsoup': "org.jsoup:jsoup:$versions.jsoup",
 
 
-            'threetenabp': "com.jakewharton.threetenabp:threetenabp:$versions.threetenabp"
-    ]
+      'threetenabp': "com.jakewharton.threetenabp:threetenabp:$versions.threetenabp"
+  ]
 
-    classpath = [
-            'android_gradle': "com.android.tools.build:gradle:$versions.android_gradle",
-            'kotlin_gradle': "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin",
-            'google_service': "com.google.gms:google-services:$versions.google_service",
-    ]
+  classpath = [
+      'android_gradle': "com.android.tools.build:gradle:$versions.android_gradle",
+      'kotlin_gradle': "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin",
+      'google_service': "com.google.gms:google-services:$versions.google_service",
+  ]
 
-    config = [
-            'compileSdkVersion': 29,
-            'applicationId': 'io.github.ovso.hometraining',
-            'targetSdkVersion': 29,
-            'minSdkVersion': 21,
-            'versionCode': 1,
-            "versionNameMajor": 1,
-            "versionNameMinor": 0,
-            "versionNamePatch": 0,
-            'versionName': '1.0.0',
-    ]
+  config = [
+      'compileSdkVersion': 29,
+      'applicationId': 'io.github.ovso.hometraining',
+      'targetSdkVersion': 29,
+      'minSdkVersion': 21,
+      'versionCode': 1,
+      "versionNameMajor": 1,
+      "versionNameMinor": 0,
+      "versionNamePatch": 0,
+      'versionName': '1.0.0',
+  ]
 }
 
 static def addRepos(RepositoryHandler handler) {
-    handler.google()
-    handler.jcenter()
-    handler.mavenCentral()
-    handler.maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
-    handler.maven { url 'https://maven.fabric.io/public' }
-    handler.maven { url "https://jitpack.io" }
+  handler.google()
+  handler.jcenter()
+  handler.mavenCentral()
+  handler.maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+  handler.maven { url 'https://maven.fabric.io/public' }
+  handler.maven { url "https://jitpack.io" }
 }
 
 ext.addRepos = this.&addRepos
