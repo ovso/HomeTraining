@@ -42,6 +42,13 @@ android {
     exclude "META-INF/atomicfu.kotlin_module"
     exclude "META-INF/kotlinx-coroutines-io.kotlin_module"
   }
+
+  externalNativeBuild {
+    cmake {
+      version '3.10.2'
+      path "src/main/cpp/CMakeLists.txt"
+    }
+  }
 }
 
 dependencies {

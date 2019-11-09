@@ -7,6 +7,7 @@ import io.github.ovso.hometraining.utils.SchedulerProvider
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.subscribeBy
 import timber.log.Timber
+import java.lang.Exception
 
 class VideoViewModel : ViewModel() {
   var items = ObservableArrayList<Any>()
@@ -26,4 +27,5 @@ class VideoViewModel : ViewModel() {
   override fun onCleared() {
     compositeDisposable.clear()
   }
+
 }

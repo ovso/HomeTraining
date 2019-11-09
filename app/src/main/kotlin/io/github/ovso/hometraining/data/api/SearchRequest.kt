@@ -19,10 +19,18 @@ class SearchRequest : BaseRequest<SearchService>() {
         "order" to "viewCount",
         "type" to "video",
         "videoSyndicated" to "any",
-        "key" to "AIzaSyA4pdIQO-74kZv7MLpPZs13oEYq2w5ki4E",
+        "key" to stringFromJNI(),
         "part" to "snippet"
     )
     return api.search(qMap)
   }
+
+  private external fun stringFromJNI(): String
+
+  companion object {
+    init {
+      System.loadLibrary("kotlin-jni")
+    }
+  }
+
 }
-//https://www.googleapis.com/youtube/v3/search?key=AIzaSyA4pdIQO-74kZv7MLpPZs13oEYq2w5ki4E&part=snippet&maxResults=50&type=video&order=viewCount&videoSyndicated=any&q=여자%20복근
