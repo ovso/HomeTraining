@@ -99,58 +99,58 @@ def dagger = [
 ]
 deps.dagger = dagger
 
-def koin = [:]
-koin.core = "org.koin:koin-core:$versions.koin"
-koin.core_ext = "org.koin:koin-core-ext:$versions.koin"
-koin.test = "org.koin:koin-test:$versions.koin"
-koin.java = "org.koin:koin-java:$versions.koin"
-koin.android = "org.koin:koin-android:$versions.koin"
-koin.android_scope = "org.koin:koin-android-scope:$versions.koin"
-koin.android_viewmodel = "org.koin:koin-android-viewmodel:$versions.koin"
-koin.android_ext = "org.koin:koin-android-ext:$versions.koin"
-koin.androidx_scope = "org.koin:koin-androidx-scope:$versions.koin"
-koin.androidx_viewmodel = "org.koin:koin-androidx-viewmodel:$versions.koin"
-koin.androidx_ext = "org.koin:koin-androidx-ext:$versions.koin"
-koin.ktor = "org.koin:koin-ktor:$versions.koin"
+def koin = [
+        'core'              : "org.koin:koin-core:$versions.koin",
+        'core_ext'          : "org.koin:koin-core-ext:$versions.koin",
+        'test'              : "org.koin:koin-test:$versions.koin",
+        'java'              : "org.koin:koin-java:$versions.koin",
+        'android'           : "org.koin:koin-android:$versions.koin",
+        'android_scope'     : "org.koin:koin-android-scope:$versions.koin",
+        'android_viewmodel' : "org.koin:koin-android-viewmodel:$versions.koin",
+        'android_ext'       : "org.koin:koin-android-ext:$versions.koin",
+        'androidx_scope'    : "org.koin:koin-androidx-scope:$versions.koin",
+        'androidx_viewmodel': "org.koin:koin-androidx-viewmodel:$versions.koin",
+        'androidx_ext'      : "org.koin:koin-androidx-ext:$versions.koin",
+        'ktor'              : "org.koin:koin-ktor:$versions.koin"
+
+]
 deps.koin = koin
 
-def butterknife = [:]
-butterknife.runtime = "com.jakewharton:butterknife:$versions.butterknife"
-butterknife.compiler = "com.jakewharton:butterknife-compiler:$versions.butterknife"
-deps.butterknife = butterknife
-
-def retrofit = [:]
-retrofit.runtime = "com.squareup.retrofit2:retrofit:$versions.retrofit"
-retrofit.gson = "com.squareup.retrofit2:converter-gson:$versions.retrofit"
-retrofit.rxjava2 = "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit"
+def retrofit = [
+        'runtime': "com.squareup.retrofit2:retrofit:$versions.retrofit",
+        'gson'   : "com.squareup.retrofit2:converter-gson:$versions.retrofit",
+        'rxjava2': "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit"
+]
 deps.retrofit = retrofit
 
-def okhttp = [:]
-okhttp.runtime = "com.squareup.okhttp3:okhttp:$versions.okhttp"
-okhttp.logging_interceptor = "com.squareup.okhttp3:logging-interceptor:$versions.okhttp"
+def okhttp = [
+        'runtime'            : "com.squareup.okhttp3:okhttp:$versions.okhttp",
+        'logging_interceptor': "com.squareup.okhttp3:okhttp:$versions.okhttp"
+]
 deps.okhttp = okhttp
 
-def glide = [:]
-glide.runtime = "com.github.bumptech.glide:glide:$versions.glide"
-glide.compiler = "com.github.bumptech.glide:compiler:$versions.glide"
+def glide = [
+        'runtime' : "com.github.bumptech.glide:glide:$versions.glide",
+        'compiler': "com.github.bumptech.glide:compiler:$versions.glide",
+]
 deps.glide = glide
 
-def rx = [:]
-rx.rxjava2 = "io.reactivex.rxjava2:rxjava:$versions.rxjava2"
-//rx.rxjava3 = "io.reactivex.rxjava3:rxjava:$dependencies.rxjava3"
-rx.rxandroid = "io.reactivex.rxjava2:rxandroid:$versions.rxandroid"
-rx.rxkotlin = "io.reactivex.rxjava2:rxkotlin:$versions.rxkotlin"
+def rx = [
+        'rxjava2'  : "io.reactivex.rxjava2:rxjava:$versions.rxjava2",
+        'rxandroid': "io.reactivex.rxjava2:rxandroid:$versions.rxandroid",
+        'rxkotlin' : "io.reactivex.rxjava2:rxkotlin:$versions.rxkotlin",
+        //'rxjava3' : "io.reactivex.rxjava3:rxjava:$versions.rxjava3",
+]
 deps.rx = rx
 
-def uber = [:]
-uber.autodispose = "com.uber.autodispose:autodispose:$versions.autodispose"
-uber.autodispose_lifecycle = "com.uber.autodispose:autodispose-lifecycle:$versions.autodispose"
-uber.autodispose_android = "com.uber.autodispose:autodispose-android:$versions.autodispose"
-uber.autodispose_android_archc = "com.uber.autodispose:autodispose-android-archcomponents:$versions.autodispose"
+def uber = [
+        'autodispose'              : "com.uber.autodispose:autodispose:$versions.autodispose",
+        'autodispose_lifecycle'    : "com.uber.autodispose:autodispose-lifecycle:$versions.autodispose",
+        'autodispose_android'      : "com.uber.autodispose:autodispose-android:$versions.autodispose",
+        'autodispose_android_archc': "com.uber.autodispose:autodispose-android-archcomponents:$versions.autodispose"
+]
 deps.uber = uber
-/*
-implementation 'com.uber.autodispose:autodispose:x.y.z'
-* */
+
 deps.timber = "com.jakewharton.timber:timber:$versions.timber"
 deps.jsr250_api = "javax.annotation:jsr250-api:$versions.jsr250_api"
 deps.lottie = "com.airbnb.android:lottie:$versions.lottie"
