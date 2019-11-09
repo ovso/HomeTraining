@@ -51,8 +51,6 @@ dependencies {
     implementation deps.coroutines.values()
     implementation deps.kotlin.values()
 
-    implementation deps.firebase.values()
-
     implementation deps.androidx.values()
 
     implementation deps.retrofit.values()
