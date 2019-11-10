@@ -5,6 +5,7 @@ ext {
       'runner': '1.2.0',
       'rules': '1.2.0',
       'espresso': '3.1.0',
+      'work_testing': '2.2.0',
       'appcompat': '1.1.0',
       'lifecycle': '2.0.0',
       'dagger': '2.17',
@@ -111,14 +112,14 @@ ext {
           'espresso_core': "androidx.test.espresso:espresso-core:$versions.espresso",
           'espresso_contrib': "androidx.test.espresso:espresso-contrib:$versions.espresso",
           'espresso_intents': "androidx.test.espresso:espresso-intents:$versions.espresso",
-
           'coroutines_test': "org.jetbrains.kotlinx:kotlinx-coroutines-test:$versions.coroutines",
-          'testing': "androidx.arch.core:core-testing:$versions.arch_core",
+          'core_testing': "androidx.arch.core:core-testing:$versions.arch_core",
+          'work_testing': "androidx.work:work-testing:$versions.work_testing",
       ],
 
       'arch_core': [
-          'runtime': "androidx.arch.core:core-runtime:$versions.arch_core",
-          'testing': "androidx.arch.core:core-testing:$versions.arch_core"
+          'core_runtime': "androidx.arch.core:core-runtime:$versions.arch_core",
+          'core_testing': "androidx.arch.core:core-testing:$versions.arch_core"
       ],
 
 
