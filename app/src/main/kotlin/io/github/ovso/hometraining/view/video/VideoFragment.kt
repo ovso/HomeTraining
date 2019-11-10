@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProviders
 import io.github.ovso.hometraining.R
 import io.github.ovso.hometraining.databinding.VideoFragmentBinding
 import kotlinx.android.synthetic.main.video_fragment.rv_video
+import org.jetbrains.anko.doAsync
 
 class VideoFragment : Fragment() {
 
@@ -47,6 +48,9 @@ class VideoFragment : Fragment() {
   override fun onActivityCreated(savedInstanceState: Bundle?) {
     super.onActivityCreated(savedInstanceState)
     setupRv()
+    doAsync {
+
+    }
   }
 
   private fun setupRv() {

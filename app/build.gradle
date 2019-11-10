@@ -73,9 +73,8 @@ dependencies {
 
   implementation deps.timber
 
-  testImplementation deps.atsl.junit
-  androidTestImplementation deps.atsl.runner
-  androidTestImplementation deps.atsl.espressocore
+  testImplementation deps.tsl.values()
+  androidTestImplementation deps.atsl.values()
 }
 
 apply plugin: 'com.google.gms.google-services'
