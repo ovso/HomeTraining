@@ -36,7 +36,7 @@ class VideoViewModel : ViewModel() {
     uiScope.launch {
       val searchCoroutine = searchRequest.searchCoroutine(title ?: "")
       val body = searchCoroutine.body()
-      Timber.d(searchCoroutine.errorBody().toString())
+      Timber.d(searchCoroutine.errorBody()?.string())
       body?.asJsonObject?.get("items")
           ?.asJsonArray?.let {
         itemsObField.set(it)
