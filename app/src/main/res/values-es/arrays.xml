@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="query_male">
+    <string-array name="queries_male">
         <item>홈트레이닝 남자 초보</item>
         <item>홈트레이닝 남자 루틴</item>
         <item>홈트레이닝 남자 다이어트</item>
@@ -12,7 +12,7 @@
         <item>홈트레이닝 남자 유산소</item>
         <item>홈트레이닝 남자 등</item>
     </string-array>
-    <string-array name="query_female">
+    <string-array name="queries_female">
         <item>홈트레이닝 여자 초보</item>
         <item>홈트레이닝 여자 스트레칭</item>
         <item>홈트레이닝 여자 복근</item>

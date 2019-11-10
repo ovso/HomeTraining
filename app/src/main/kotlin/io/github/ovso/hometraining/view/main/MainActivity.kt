@@ -8,8 +8,10 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import io.github.ovso.hometraining.R
-import io.github.ovso.hometraining.view.gender.GenderFragment
-import io.github.ovso.hometraining.view.gender.PopularFragment
+import io.github.ovso.hometraining.view.gender.MainFragment
+import io.github.ovso.hometraining.view.main.BottomMenu.FEMALE
+import io.github.ovso.hometraining.view.main.BottomMenu.MALE
+import io.github.ovso.hometraining.view.main.BottomMenu.POPULAR
 import kotlinx.android.synthetic.main.activity_main.drawer_layout
 import kotlinx.android.synthetic.main.activity_main.nav_view
 import kotlinx.android.synthetic.main.app_bar_main.toolbar
@@ -32,9 +34,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
       adapter = MainAdapter(supportFragmentManager)
           .apply {
             items = mutableListOf(
-                GenderFragment.newInstance(0),
-                GenderFragment.newInstance(1),
-                PopularFragment.newInstance(2)
+                MainFragment.newInstance(MALE),
+                MainFragment.newInstance(FEMALE),
+                MainFragment.newInstance(POPULAR)
             )
           }
     }
@@ -43,9 +45,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
   private fun setupBottomNavView() {
     bnv_main.setOnNavigationItemSelectedListener {
       when (it.itemId) {
-        R.id.bottom_nv_male -> setCurItemForViewPager(0)
-        R.id.bottom_nv_female -> setCurItemForViewPager(1)
-        R.id.bottom_nv_popular -> setCurItemForViewPager(2)
+        R.id.bottom_nv_male -> setCurItemForViewPager(MALE.position)
+        R.id.bottom_nv_female -> setCurItemForViewPager(FEMALE.position)
+        R.id.bottom_nv_popular -> setCurItemForViewPager(POPULAR.position)
       }
       true
     }
@@ -70,7 +72,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
   private fun setupActionBar() {
     setSupportActionBar(toolbar)
-    // title..
+    // query..
   }
 
   override fun onBackPressed() {

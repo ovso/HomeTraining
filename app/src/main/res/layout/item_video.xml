@@ -9,9 +9,9 @@
   <FrameLayout
       android:layout_width="0dp"
       android:layout_height="0dp"
-      android:background="?android:attr/selectableItemBackground"
       android:clickable="true"
       android:focusable="true"
+      android:foreground="?android:attr/selectableItemBackground"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintDimensionRatio="480:360"
       app:layout_constraintEnd_toEndOf="parent"

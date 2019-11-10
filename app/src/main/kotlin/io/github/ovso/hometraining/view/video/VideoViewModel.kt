@@ -13,7 +13,7 @@ import timber.log.Timber
 
 class VideoViewModel : ViewModel() {
   val itemsObField = ObservableField<JsonArray>()
-  var title: String? = null
+  var query: String? = null
   private val compositeDisposable by lazy { CompositeDisposable() }
   private val searchRequest by lazy { SearchRequest() }
 
@@ -34,7 +34,7 @@ class VideoViewModel : ViewModel() {
 */
 
     uiScope.launch {
-      val searchCoroutine = searchRequest.searchCoroutine(title ?: "")
+      val searchCoroutine = searchRequest.searchCoroutine(query ?: "")
       val body = searchCoroutine.body()
       Timber.d(searchCoroutine.errorBody()?.string())
       body?.asJsonObject?.get("items")

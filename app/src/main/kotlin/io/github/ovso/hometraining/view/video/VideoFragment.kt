@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProviders
 import io.github.ovso.hometraining.R
 import io.github.ovso.hometraining.databinding.FragmentVideoBinding
 import kotlinx.android.synthetic.main.fragment_video.rv_video
+import timber.log.Timber
 
 class VideoFragment : Fragment() {
 
@@ -20,7 +21,8 @@ class VideoFragment : Fragment() {
     ViewModelProviders.of(this)
         .get(VideoViewModel::class.java)
         .apply {
-          title = arguments?.getString("title")
+          query = arguments?.getString("query")
+          Timber.d("query = $query")
         }
   }
 
