@@ -1,15 +1,19 @@
 package io.github.ovso.hometraining.view.video
 
-import androidx.databinding.ObservableArrayList
-import androidx.lifecycle.MutableLiveData
+import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel
+import com.google.gson.JsonArray
 import io.github.ovso.hometraining.data.api.SearchRequest
 import io.reactivex.disposables.CompositeDisposable
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import timber.log.Timber
 
 class VideoViewModel : ViewModel() {
-  val _snackbar: MutableLiveData<String> = MutableLiveData()
-  var items = ObservableArrayList<Any>()
+  val itemsObField = ObservableField<JsonArray>()
+  var title: String? = null
   private val compositeDisposable by lazy { CompositeDisposable() }
   private val searchRequest by lazy { SearchRequest() }
 
@@ -30,25 +34,18 @@ class VideoViewModel : ViewModel() {
 */
 
     uiScope.launch {
-      delay(10000)
-      println("launch")
+      val searchCoroutine = searchRequest.searchCoroutine(title ?: "")
+      val body = searchCoroutine.body()
+      Timber.d(searchCoroutine.errorBody().toString())
+      body?.asJsonObject?.get("items")
+          ?.asJsonArray?.let {
+        itemsObField.set(it)
+      }
     }
-
   }
 
   override fun onCleared() {
     compositeDisposable.clear()
     viewModelJob.cancel()
-  }
-
-  fun onMainViewClicked() {
-    // launch a coroutine in viewModelScope
-    uiScope.launch {
-      // suspend this coroutine for one second
-      delay(1_000)
-      // resume in the main dispatcher
-      // _snackbar.value can be called directly from main thread
-      _snackbar.value = "Hello, from coroutines!"
-    }
   }
 }

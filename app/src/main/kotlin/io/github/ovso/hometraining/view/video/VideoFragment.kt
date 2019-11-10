@@ -7,9 +7,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import io.github.ovso.hometraining.R
-import io.github.ovso.hometraining.databinding.VideoFragmentBinding
-import kotlinx.android.synthetic.main.video_fragment.rv_video
-import org.jetbrains.anko.doAsync
+import io.github.ovso.hometraining.databinding.FragmentVideoBinding
+import kotlinx.android.synthetic.main.fragment_video.rv_video
 
 class VideoFragment : Fragment() {
 
@@ -20,6 +19,9 @@ class VideoFragment : Fragment() {
   private val viewModel by lazy {
     ViewModelProviders.of(this)
         .get(VideoViewModel::class.java)
+        .apply {
+          title = arguments?.getString("title")
+        }
   }
 
   private val adapter by lazy {
@@ -36,9 +38,9 @@ class VideoFragment : Fragment() {
     inflater: LayoutInflater,
     container: ViewGroup?
   ) =
-    DataBindingUtil.inflate<VideoFragmentBinding>(
+    DataBindingUtil.inflate<FragmentVideoBinding>(
         inflater,
-        R.layout.video_fragment,
+        R.layout.fragment_video,
         container,
         false
     ).apply {
@@ -48,9 +50,6 @@ class VideoFragment : Fragment() {
   override fun onActivityCreated(savedInstanceState: Bundle?) {
     super.onActivityCreated(savedInstanceState)
     setupRv()
-    doAsync {
-
-    }
   }
 
   private fun setupRv() {

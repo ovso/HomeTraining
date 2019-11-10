@@ -1,9 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-  android:id="@+id/tv_video_item_title"
-  android:layout_width="match_parent"
-  android:layout_height="?android:attr/actionBarSize"
-  android:text="강진주 강내조 강변"
-  android:textColor="@android:color/white">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
 
-</TextView>
+  <FrameLayout
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:background="?android:attr/selectableItemBackground"
+      android:clickable="true"
+      android:focusable="true"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintDimensionRatio="480:360"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      >
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_video_item"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitCenter"
+        tools:srcCompat="@drawable/female"
+        />
+  </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

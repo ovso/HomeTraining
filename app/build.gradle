@@ -49,6 +49,10 @@ android {
       path "src/main/cpp/CMakeLists.txt"
     }
   }
+
+  androidExtensions {
+    experimental = true
+  }
 }
 
 dependencies {
