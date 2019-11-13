@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.JsonArray
-import com.google.gson.JsonObject
 import io.github.ovso.hometraining.R
 import io.github.ovso.hometraining.databinding.ItemVideoBinding
 import io.github.ovso.hometraining.view.video.VideoAdapter.MyViewHolder
@@ -30,19 +29,16 @@ class VideoAdapter : RecyclerView.Adapter<MyViewHolder>() {
     private fun getItem(
         items: JsonArray?,
         position: Int
-    ): JsonObject {
+    ) = VideoItemViewModel(items!![position].asJsonObject)
 
-
-        return items!![position].asJsonObject
-    }
 
     class MyViewHolder(
         var binding: ItemVideoBinding?
     ) : RecyclerView.ViewHolder(binding!!.root) {
 
-        fun bind(json: JsonObject) {
+        fun bind(viewModel: VideoItemViewModel) {
             binding?.apply {
-                this.viewModel = VideoItemViewModel(json)
+                this.viewModel = viewModel
             }
         }
 
