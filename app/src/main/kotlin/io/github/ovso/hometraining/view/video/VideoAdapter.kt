@@ -1,66 +1,66 @@
 package io.github.ovso.hometraining.view.video
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 import io.github.ovso.hometraining.R
+import io.github.ovso.hometraining.databinding.ItemVideoBinding
 import io.github.ovso.hometraining.view.video.VideoAdapter.MyViewHolder
-import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.item_video.*
-import kotlinx.android.synthetic.main.item_video.view.iv_video_item
-import timber.log.Timber
 
 class VideoAdapter : RecyclerView.Adapter<MyViewHolder>() {
-  var items: JsonArray? = null
-  override fun getItemCount() = items?.size() ?: 0
-
-  override fun onCreateViewHolder(
-    parent: ViewGroup,
-    viewType: Int
-  ) = MyViewHolder.create(parent)
-
-  override fun onBindViewHolder(
-    holder: MyViewHolder,
-    position: Int
-  ) {
-    holder.bind(getItem(items, position))
-  }
-
-  private fun getItem(
-    items: JsonArray?,
-    position: Int
-  ): JsonObject {
-    return items!![position].asJsonObject
-  }
-
-  class MyViewHolder(
-    override val containerView: View?
-  ) : RecyclerView.ViewHolder(containerView!!), LayoutContainer {
-
-    fun bind(json: JsonObject) {
-      val videoId = json["id"].asJsonObject["videoId"].asString
-      val url =
-        json["snippet"].asJsonObject["thumbnails"].asJsonObject["high"].asJsonObject["url"].asString
-      Timber.d("url = $url")
-      containerView?.let {
-        Glide.with(it)
-            .load(url)
-            .into(iv_video_item)
-      }
+    var items: JsonArray? = null
+    override fun getItemCount() = items?.size() ?: 0
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): MyViewHolder {
+        return MyViewHolder.create(parent)
     }
 
-    companion object {
-      fun create(parent: ViewGroup) =
-        MyViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.item_video, parent, false)
-        )
+    override fun onBindViewHolder(
+        holder: MyViewHolder,
+        position: Int
+    ) {
+        holder.bind(getItem(items, position))
     }
 
-  }
+    private fun getItem(
+        items: JsonArray?,
+        position: Int
+    ): JsonObject {
+
+
+        return items!![position].asJsonObject
+    }
+
+    class MyViewHolder(
+        var binding: ItemVideoBinding?
+    ) : RecyclerView.ViewHolder(binding!!.root) {
+
+        fun bind(json: JsonObject) {
+            binding?.apply {
+                this.viewModel = VideoItemViewModel(json)
+            }
+        }
+
+        companion object {
+            fun create(parent: ViewGroup): MyViewHolder {
+                return MyViewHolder(
+                    DataBindingUtil.bind(
+                        LayoutInflater.from(parent.context).inflate(
+                            R.layout.item_video,
+                            parent,
+                            false
+                        )
+                    )
+                )
+            }
+        }
+
+    }
 }
 
 /*
