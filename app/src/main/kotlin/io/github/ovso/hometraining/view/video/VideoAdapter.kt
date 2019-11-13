@@ -1,8 +1,11 @@
 package io.github.ovso.hometraining.view.video
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.JsonArray
 import io.github.ovso.hometraining.R
@@ -23,13 +26,20 @@ class VideoAdapter : RecyclerView.Adapter<MyViewHolder>() {
         holder: MyViewHolder,
         position: Int
     ) {
-        holder.bind(getItem(items, position))
+        holder.bind(getItem(holder.itemView, position))
     }
 
     private fun getItem(
-        items: JsonArray?,
+        view: View,
         position: Int
-    ) = VideoItemViewModel(items!![position].asJsonObject)
+    ): VideoItemViewModel {
+        return ViewModelProviders.of(view.context as FragmentActivity)[VideoItemViewModel::class.java].apply {
+            val json = items!![position].asJsonObject
+            videoId = json["id"].asJsonObject["videoId"].asString
+            imgUrl = json["snippet"].asJsonObject["thumbnails"]
+                .asJsonObject["high"].asJsonObject["url"].asString
+        }
+    }
 
 
     class MyViewHolder(
@@ -41,6 +51,7 @@ class VideoAdapter : RecyclerView.Adapter<MyViewHolder>() {
                 this.viewModel = viewModel
             }
         }
+
 
         companion object {
             fun create(parent: ViewGroup): MyViewHolder {
