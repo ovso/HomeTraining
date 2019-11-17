@@ -11,17 +11,16 @@ class VideoItemViewModel(var app: Application) : AndroidViewModel(app) {
     var imgUrl: String? = null
 
     fun setData(json: JsonObject) {
-        videoId = json["id"].asJsonObject["videoId"].asString
+        videoId = json["id"]
+            ?.asJsonObject?.get("videoId")
+            ?.asString
         imgUrl =
-            json["snippet"].asJsonObject["thumbnails"].asJsonObject["high"].asJsonObject["url"].asString
+            json["snippet"]?.asJsonObject?.get("thumbnails")
+                ?.asJsonObject?.get("high")
+                ?.asJsonObject?.get("url")?.asString
     }
 
     fun onClick() {
-        Toast.makeText(app, "onClick", Toast.LENGTH_SHORT).show()
+        Toast.makeText(app, "엑소플레이어 시작", Toast.LENGTH_SHORT).show()
     }
-
-//    videoId = json["id"].asJsonObject["videoId"].asString
-//    imgUrl = json["snippet"].asJsonObject["thumbnails"]
-//    .asJsonObject["high"].asJsonObject["url"].asString
-
 }
