@@ -34,22 +34,17 @@ class VideoAdapter : RecyclerView.Adapter<MyViewHolder>() {
         position: Int
     ): VideoItemViewModel {
         return ViewModelProviders.of(view.context as FragmentActivity)[VideoItemViewModel::class.java].apply {
-            val json = items!![position].asJsonObject
-            videoId = json["id"].asJsonObject["videoId"].asString
-            imgUrl = json["snippet"].asJsonObject["thumbnails"]
-                .asJsonObject["high"].asJsonObject["url"].asString
+            setData(items!![position].asJsonObject!!)
         }
     }
 
 
     class MyViewHolder(
-        var binding: ItemVideoBinding?
+        private var binding: ItemVideoBinding?
     ) : RecyclerView.ViewHolder(binding!!.root) {
 
         fun bind(viewModel: VideoItemViewModel) {
-            binding?.apply {
-                this.viewModel = viewModel
-            }
+            binding?.viewModel = viewModel
         }
 
 
