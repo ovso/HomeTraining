@@ -1,9 +1,13 @@
 package io.github.ovso.hometraining.view.video
 
 import android.app.Application
-import android.widget.Toast
+import android.view.View
 import androidx.lifecycle.AndroidViewModel
 import com.google.gson.JsonObject
+import io.github.ovso.hometraining.view.player.PlayerActivity
+import org.jetbrains.anko.clearTop
+import org.jetbrains.anko.intentFor
+import org.jetbrains.anko.singleTop
 
 class VideoItemViewModel(var app: Application) : AndroidViewModel(app) {
 
@@ -20,7 +24,8 @@ class VideoItemViewModel(var app: Application) : AndroidViewModel(app) {
                 ?.asJsonObject?.get("url")?.asString
     }
 
-    fun onClick() {
-        Toast.makeText(app, "엑소플레이어 시작", Toast.LENGTH_SHORT).show()
+    fun onClick(v: View) {
+        val ctx = v.context
+        ctx.startActivity(ctx.intentFor<PlayerActivity>().clearTop().singleTop())
     }
 }
