@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="io.github.ovso.hometraining.view.gender.MainFragmentViewModel" />
+            type="io.github.ovso.hometraining.view.male.MaleFragmentViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

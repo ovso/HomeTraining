@@ -1,4 +1,4 @@
-package io.github.ovso.hometraining.view.gender
+package io.github.ovso.hometraining.view.male
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

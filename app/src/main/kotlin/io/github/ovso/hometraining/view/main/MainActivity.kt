@@ -6,17 +6,14 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.Fragment
 import com.google.android.material.navigation.NavigationView
 import io.github.ovso.hometraining.R
-import io.github.ovso.hometraining.view.gender.MainFragment
-import io.github.ovso.hometraining.view.main.BottomMenu.FEMALE
-import io.github.ovso.hometraining.view.main.BottomMenu.MALE
-import io.github.ovso.hometraining.view.main.BottomMenu.POPULAR
+import io.github.ovso.hometraining.exts.FragmentExtensions.attach
+import io.github.ovso.hometraining.exts.FragmentExtensions.detach
 import kotlinx.android.synthetic.main.activity_main.drawer_layout
-import kotlinx.android.synthetic.main.activity_main.nav_view
+//import kotlinx.android.synthetic.main.activity_main.nav_view
 import kotlinx.android.synthetic.main.app_bar_main.toolbar
-import kotlinx.android.synthetic.main.content_main.bnv_main
-import kotlinx.android.synthetic.main.content_main.viewpager_main
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -25,36 +22,34 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     setContentView(R.layout.activity_main)
     setupActionBar()
     setupDrawer()
-    setupBottomNavView()
-    setupViewPager()
+
+/*
+    MaleFragment.newInstance(MALE),
+    MaleFragment.newInstance(FEMALE),
+    MaleFragment.newInstance(POPULAR)
+*/
+
+    initFragment(savedInstanceState)
   }
 
-  private fun setupViewPager() {
-    with(viewpager_main) {
-      adapter = MainAdapter(supportFragmentManager)
-          .apply {
-            items = mutableListOf(
-                MainFragment.newInstance(MALE),
-                MainFragment.newInstance(FEMALE),
-                MainFragment.newInstance(POPULAR)
-            )
-          }
+  private fun initFragment(savedInstanceState: Bundle?) {
+    savedInstanceState ?: switchFragment(BottomNavPosition.MALE)
+  }
+
+  /**
+   * Immediately execute transactions with FragmentManager#executePendingTransactions.
+   */
+  private fun switchFragment(navPosition: BottomNavPosition): Boolean {
+    return findFragment(navPosition).let {
+      if (it.isAdded) return false
+      supportFragmentManager.detach() // Extension function
+      supportFragmentManager.attach(it, navPosition.getTag()) // Extension function
+      supportFragmentManager.executePendingTransactions()
     }
   }
 
-  private fun setupBottomNavView() {
-    bnv_main.setOnNavigationItemSelectedListener {
-      when (it.itemId) {
-        R.id.bottom_nv_male -> setCurItemForViewPager(MALE.position)
-        R.id.bottom_nv_female -> setCurItemForViewPager(FEMALE.position)
-        R.id.bottom_nv_popular -> setCurItemForViewPager(POPULAR.position)
-      }
-      true
-    }
-  }
-
-  private fun setCurItemForViewPager(position: Int) {
-    viewpager_main.setCurrentItem(position, false)
+  private fun findFragment(position: BottomNavPosition): Fragment {
+    return supportFragmentManager.findFragmentByTag(position.getTag()) ?: position.createFragment()
   }
 
   private fun setupDrawer() {
@@ -67,7 +62,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     )
     drawer_layout.addDrawerListener(toggle)
     toggle.syncState()
-    nav_view.setNavigationItemSelectedListener(this)
+//    nav_view.setNavigationItemSelectedListener(this)
   }
 
   private fun setupActionBar() {
