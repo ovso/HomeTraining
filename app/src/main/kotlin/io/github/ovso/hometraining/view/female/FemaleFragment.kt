@@ -1,4 +1,4 @@
-package io.github.ovso.hometraining.view.male
+package io.github.ovso.hometraining.view.female
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,23 +7,25 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import io.github.ovso.hometraining.R
-import io.github.ovso.hometraining.databinding.FragmentMainBinding
+import io.github.ovso.hometraining.databinding.FragmentFemaleBinding
+import io.github.ovso.hometraining.view.male.FemaleFragmentAdapter
+import io.github.ovso.hometraining.view.male.FemaleFragmentViewModel
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.fragment_male.tabs_gender
 import kotlinx.android.synthetic.main.fragment_male.viewpager_main_fragment
 
-class MaleFragment : Fragment() {
+class FemaleFragment : Fragment() {
 
   private val compositeDisposable = CompositeDisposable()
 
   companion object {
-    val TAG: String = MaleFragment::class.java.simpleName
-    fun newInstance() = MaleFragment()
+    val TAG: String = FemaleFragment::class.java.simpleName
+    fun newInstance() = FemaleFragment()
   }
 
   private val viewModel by lazy {
     ViewModelProviders.of(this)
-        .get(MaleFragmentViewModel::class.java)
+        .get(FemaleFragmentViewModel::class.java)
   }
 
   override fun onCreateView(
@@ -36,13 +38,13 @@ class MaleFragment : Fragment() {
     inflater: LayoutInflater,
     container: ViewGroup?
   ) =
-    DataBindingUtil.inflate<FragmentMainBinding>(
+    DataBindingUtil.inflate<FragmentFemaleBinding>(
         inflater,
         R.layout.fragment_male,
         container,
         false
     ).apply {
-      this.viewModel = this@MaleFragment.viewModel
+      this.viewModel = this@FemaleFragment.viewModel
     }
 
   override fun onActivityCreated(savedInstanceState: Bundle?) {

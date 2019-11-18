@@ -8,7 +8,7 @@ import io.github.ovso.hometraining.R
 import io.github.ovso.hometraining.utils.ResourceProvider
 import io.github.ovso.hometraining.view.video.VideoFragment
 
-class MaleFragmentAdapter(fm: FragmentManager) :
+class FemaleFragmentAdapter(fm: FragmentManager) :
     FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
   private val titles by lazy {
     ResourceProvider.getStringArray(R.array.tabs_title_male)
