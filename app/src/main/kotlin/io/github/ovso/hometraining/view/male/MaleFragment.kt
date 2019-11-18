@@ -53,16 +53,16 @@ class MaleFragment : Fragment() {
   }
 
   private fun observeLiveData() {
-    viewModel.typeLiveData.observe(this, Observer {
-      (viewpager_main_fragment.adapter as? MaleFragmentAdapter)?.handleData(it)
-    })
+
   }
 
   private fun setupViewpager() {
     with(tabs_gender) {
       setupWithViewPager(viewpager_main_fragment)
     }
-    viewpager_main_fragment.adapter = MaleFragmentAdapter(childFragmentManager)
+    with(viewpager_main_fragment) {
+      adapter = MaleFragmentAdapter(childFragmentManager)
+    }
   }
 
   override fun onDetach() {

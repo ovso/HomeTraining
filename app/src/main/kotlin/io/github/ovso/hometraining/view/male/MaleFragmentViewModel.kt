@@ -9,11 +9,7 @@ import io.reactivex.disposables.CompositeDisposable
 
 class MaleFragmentViewModel(app: Application) : AndroidViewModel(app) {
   private val compositeDisposable by lazy { CompositeDisposable() }
-  var typeLiveData = MutableLiveData<BottomNavPosition>()
 
-  init {
-    typeLiveData.postValue(MALE)
-  }
   override fun onCleared() {
     super.onCleared()
     compositeDisposable.clear()
