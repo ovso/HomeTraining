@@ -7,7 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import io.github.ovso.hometraining.R
-import io.github.ovso.hometraining.databinding.FragmentMainBinding
+import io.github.ovso.hometraining.databinding.FragmentMaleBinding
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.fragment_male.tabs_gender
 import kotlinx.android.synthetic.main.fragment_male.viewpager_main_fragment
@@ -36,7 +36,7 @@ class MaleFragment : Fragment() {
     inflater: LayoutInflater,
     container: ViewGroup?
   ) =
-    DataBindingUtil.inflate<FragmentMainBinding>(
+    DataBindingUtil.inflate<FragmentMaleBinding>(
         inflater,
         R.layout.fragment_male,
         container,
