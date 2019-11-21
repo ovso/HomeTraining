@@ -4,8 +4,24 @@ import com.google.gson.JsonElement
 import io.reactivex.Flowable
 import okhttp3.Headers
 import retrofit2.Response
+import timber.log.Timber
 
 class SearchRequest : BaseRequest<SearchService>() {
+
+  private var apiKeyIndex = 3
+  private val apiKeys by lazy {
+    apiKeys().split("//".toRegex())
+  }
+
+  private fun nextApiKey(): String {
+    Timber.d("apiKeyIndex = $apiKeyIndex")
+    if ((apiKeyIndex == apiKeys.count())) {
+      apiKeyIndex = 0
+    }
+    val key = apiKeys[apiKeyIndex]
+    ++ apiKeyIndex
+    return key
+  }
 
   override val apiClass: Class<SearchService> = SearchService::class.java
 
@@ -20,27 +36,29 @@ class SearchRequest : BaseRequest<SearchService>() {
         "order" to "viewCount",
         "type" to "video",
         "videoSyndicated" to "any",
-        "key" to stringFromJNI(),
+        "key" to nextApiKey(),
         "part" to "snippet"
     )
     return api.search(qMap)
   }
 
   suspend fun searchCoroutine(q: String): Response<JsonElement> {
+    val key = nextApiKey()
+    Timber.d("key = $key")
     val qMap = hashMapOf(
         "q" to q,
         "maxResults" to 50,
         "order" to "viewCount",
         "type" to "video",
         "videoSyndicated" to "any",
-        "key" to stringFromJNI(),
+        "key" to key,
         "part" to "snippet"
     )
 
     return api.searchCoroutine(qMap)
   }
 
-  private external fun stringFromJNI(): String
+  private external fun apiKeys(): String
 
   companion object {
     init {

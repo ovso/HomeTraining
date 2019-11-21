@@ -1,51 +1,52 @@
 package io.github.ovso.hometraining.view.video
 
 import androidx.databinding.ObservableField
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.MutableLiveData
 import com.google.gson.JsonArray
+import com.google.gson.JsonElement
+import io.github.ovso.hometraining.R
 import io.github.ovso.hometraining.data.api.SearchRequest
-import io.reactivex.disposables.CompositeDisposable
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
+import io.github.ovso.hometraining.utils.ResourceProvider
+import io.github.ovso.hometraining.utils.SchedulerProvider
+import io.github.ovso.hometraining.view.base.DisposableViewModel
+import io.reactivex.rxkotlin.subscribeBy
 import timber.log.Timber
 
-class VideoViewModel : ViewModel() {
+class VideoViewModel : DisposableViewModel() {
   val itemsObField = ObservableField<JsonArray>()
   var query: String? = null
-  private val compositeDisposable by lazy { CompositeDisposable() }
   private val searchRequest by lazy { SearchRequest() }
-
-  private val viewModelJob = Job()
-  private val uiScope by lazy {
-    CoroutineScope(Dispatchers.Main + viewModelJob)
-  }
+  val errorDialogLive = MutableLiveData<Throwable>()
 
   init {
-/*
-    val subscribeBy = searchRequest.search("여자 복근")
-        .subscribeOn(SchedulerProvider.io())
-        .subscribeBy {
-          Timber.d("$it")
-        }
+    reqSearch()
+  }
 
-    compositeDisposable.add(subscribeBy)
-*/
+  private fun reqSearch() {
+    val disposable =
+      searchRequest.search(query ?: ResourceProvider.getString(R.string.main_nav_title_male))
+          .subscribeOn(SchedulerProvider.io())
+          .subscribeBy(
+              onError = ::onError,
+              onNext = ::onSuccess,
+              onComplete = ::onComplete
+          )
+    addDispose(disposable)
+  }
 
-    uiScope.launch {
-      val searchCoroutine = searchRequest.searchCoroutine(query ?: "")
-      val body = searchCoroutine.body()
-      Timber.d(searchCoroutine.errorBody()?.string())
-      body?.asJsonObject?.get("items")
-          ?.asJsonArray?.let {
-        itemsObField.set(it)
-      }
+  private fun onError(throwable: Throwable) {
+    Timber.d("throwable = ${throwable.message}")
+    errorDialogLive.postValue(throwable)
+  }
+
+  private fun onSuccess(json: JsonElement?) {
+    json?.let {
+      itemsObField.set(it.asJsonObject["items"].asJsonArray)
     }
   }
 
-  override fun onCleared() {
-    compositeDisposable.clear()
-    viewModelJob.cancel()
+  private fun onComplete() {
+    Timber.d("onComplete()")
   }
+
 }
