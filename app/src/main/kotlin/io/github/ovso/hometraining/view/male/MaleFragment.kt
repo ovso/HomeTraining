@@ -60,7 +60,7 @@ class MaleFragment : Fragment() {
       setupWithViewPager(viewpager_main_fragment)
     }
     with(viewpager_main_fragment) {
-      adapter = FemaleFragmentAdapter(childFragmentManager)
+      adapter = MaleFragmentAdapter(childFragmentManager)
     }
   }
 

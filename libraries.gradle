@@ -25,7 +25,7 @@ ext {
             'paging'                 : '2.1.0',
             'easydeviceinfo'         : '2.4.1',
             'android_gradle'         : '3.5.2',
-            'kotlin'                 : '1.3.60',
+            'kotlin'                 : '1.3.41',
             'core_ktx'               : '1.1.0',
             'lifecycle_viewmodel_ktx': '2.0.0',
             'lifecycle_extensions'   : '2.0.0',
@@ -69,11 +69,11 @@ ext {
 
             'anko'          : [
                     'commons'                : "org.jetbrains.anko:anko-commons:$versions.anko",
-                    'sdk25'                  : "org.jetbrains.anko:anko-sdk25:$versions.anko",
-                    'appcompat'              : "org.jetbrains.anko:anko-appcompat-v7:$versions.anko",
-                    'sqlite'                 : "org.jetbrains.anko:anko-sqlite:$versions.anko",
-                    'sdk25_coroutines'       : "org.jetbrains.anko:anko-sdk25-coroutines:$versions.anko",
-                    'appcompat_v7_coroutines': "org.jetbrains.anko:anko-appcompat-v7-coroutines:$versions.anko"
+//                    'sdk25'                  : "org.jetbrains.anko:anko-sdk25:$versions.anko",
+//                    'appcompat'              : "org.jetbrains.anko:anko-appcompat-v7:$versions.anko",
+//                    'sqlite'                 : "org.jetbrains.anko:anko-sqlite:$versions.anko",
+//                    'sdk25_coroutines'       : "org.jetbrains.anko:anko-sdk25-coroutines:$versions.anko",
+//                    'appcompat_v7_coroutines': "org.jetbrains.anko:anko-appcompat-v7-coroutines:$versions.anko"
 
             ],
 

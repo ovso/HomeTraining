@@ -11,10 +11,10 @@ import io.github.ovso.hometraining.view.video.VideoFragment
 class FemaleFragmentAdapter(fm: FragmentManager) :
     FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
   private val titles by lazy {
-    ResourceProvider.getStringArray(R.array.tabs_title_male)
+    ResourceProvider.getStringArray(R.array.tabs_title_female)
   }
   private val queries by lazy {
-    ResourceProvider.getStringArray(R.array.queries_male)
+    ResourceProvider.getStringArray(R.array.queries_female)
   }
 
   override fun getItem(position: Int) = VideoFragment.newInstance().apply {

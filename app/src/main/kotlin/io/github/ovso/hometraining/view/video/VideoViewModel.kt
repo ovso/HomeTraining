@@ -9,10 +9,15 @@ import io.github.ovso.hometraining.data.api.SearchRequest
 import io.github.ovso.hometraining.utils.ResourceProvider
 import io.github.ovso.hometraining.utils.SchedulerProvider
 import io.github.ovso.hometraining.view.base.DisposableViewModel
+import io.reactivex.functions.Consumer
 import io.reactivex.rxkotlin.subscribeBy
 import timber.log.Timber
 
 class VideoViewModel : DisposableViewModel() {
+
+  private val dddd: (Consumer<in Throwable>?) -> Unit = {
+
+  }
   val itemsObField = ObservableField<JsonArray>()
   var query: String? = null
   private val searchRequest by lazy { SearchRequest() }
@@ -27,19 +32,19 @@ class VideoViewModel : DisposableViewModel() {
       searchRequest.search(query ?: ResourceProvider.getString(R.string.main_nav_title_male))
           .subscribeOn(SchedulerProvider.io())
           .subscribeBy(
-              onError = onError,
-              onNext = onSuccess,
+              onError = ::onError,
+              onNext = ::onSuccess,
               onComplete = ::onComplete
           )
     addDispose(disposable)
   }
 
-  private val onError: (Throwable) -> Unit = {
-    errorDialogLive.postValue(it)
+  private fun onError(t: Throwable) {
+    errorDialogLive.postValue(t)
   }
 
-  private val onSuccess: (JsonElement) -> Unit = {
-    itemsObField.set(it.asJsonObject["items"].asJsonArray)
+  private fun onSuccess(json: JsonElement) {
+    itemsObField.set(json.asJsonObject["items"].asJsonArray)
   }
 
   private fun onComplete() {

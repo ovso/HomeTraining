@@ -2,6 +2,7 @@ package io.github.ovso.hometraining.view.main
 
 import androidx.fragment.app.Fragment
 import io.github.ovso.hometraining.R
+import io.github.ovso.hometraining.view.female.FemaleFragment
 import io.github.ovso.hometraining.view.main.BottomNavPosition.FEMALE
 import io.github.ovso.hometraining.view.main.BottomNavPosition.MALE
 import io.github.ovso.hometraining.view.main.BottomNavPosition.POPULAR
@@ -25,12 +26,12 @@ fun findNavigationPositionById(id: Int): BottomNavPosition = when (id) {
 
 fun BottomNavPosition.createFragment(): Fragment = when (this) {
   MALE -> MaleFragment.newInstance()
-  FEMALE -> MaleFragment.newInstance()
+  FEMALE -> FemaleFragment.newInstance()
   POPULAR -> MaleFragment.newInstance()
 }
 
 fun BottomNavPosition.getTag(): String = when (this) {
   MALE -> MaleFragment.TAG
-  FEMALE -> MaleFragment.TAG
+  FEMALE -> FemaleFragment.TAG
   POPULAR -> MaleFragment.TAG
 }
