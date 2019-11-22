@@ -27,22 +27,19 @@ class VideoViewModel : DisposableViewModel() {
       searchRequest.search(query ?: ResourceProvider.getString(R.string.main_nav_title_male))
           .subscribeOn(SchedulerProvider.io())
           .subscribeBy(
-              onError = ::onError,
-              onNext = ::onSuccess,
+              onError = onError,
+              onNext = onSuccess,
               onComplete = ::onComplete
           )
     addDispose(disposable)
   }
 
-  private fun onError(throwable: Throwable) {
-    Timber.d("throwable = ${throwable.message}")
-    errorDialogLive.postValue(throwable)
+  private val onError: (Throwable) -> Unit = {
+    errorDialogLive.postValue(it)
   }
 
-  private fun onSuccess(json: JsonElement?) {
-    json?.let {
-      itemsObField.set(it.asJsonObject["items"].asJsonArray)
-    }
+  private val onSuccess: (JsonElement) -> Unit = {
+    itemsObField.set(it.asJsonObject["items"].asJsonArray)
   }
 
   private fun onComplete() {
