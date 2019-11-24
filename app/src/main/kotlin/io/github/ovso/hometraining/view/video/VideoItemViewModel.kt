@@ -8,6 +8,7 @@ import io.github.ovso.hometraining.view.player.PlayerActivity
 import org.jetbrains.anko.clearTop
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.singleTop
+import timber.log.Timber
 
 class VideoItemViewModel(var app: Application) : AndroidViewModel(app) {
 
@@ -22,10 +23,12 @@ class VideoItemViewModel(var app: Application) : AndroidViewModel(app) {
             json["snippet"]?.asJsonObject?.get("thumbnails")
                 ?.asJsonObject?.get("high")
                 ?.asJsonObject?.get("url")?.asString
+
+        Timber.d(json["snippet"]?.toString())
     }
 
     fun onClick(v: View) {
         val ctx = v.context
-        ctx.startActivity(ctx.intentFor<PlayerActivity>().clearTop().singleTop())
+        v.context.startActivity(ctx.intentFor<PlayerActivity>().clearTop().singleTop())
     }
 }

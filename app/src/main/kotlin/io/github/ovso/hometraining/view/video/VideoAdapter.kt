@@ -3,66 +3,82 @@ package io.github.ovso.hometraining.view.video
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.FragmentActivity
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.google.gson.JsonArray
+import com.google.gson.JsonObject
 import io.github.ovso.hometraining.R
-import io.github.ovso.hometraining.databinding.ItemVideoBinding
+import io.github.ovso.hometraining.view.player.PlayerActivity
 import io.github.ovso.hometraining.view.video.VideoAdapter.MyViewHolder
+import kotlinx.android.extensions.LayoutContainer
+import kotlinx.android.synthetic.main.item_video.fl_video_item_img_container
+import kotlinx.android.synthetic.main.item_video.iv_video_item
+import org.jetbrains.anko.clearTop
+import org.jetbrains.anko.intentFor
+import org.jetbrains.anko.singleTop
 
 class VideoAdapter : RecyclerView.Adapter<MyViewHolder>() {
-    var items: JsonArray? = null
-    override fun getItemCount() = items?.size() ?: 0
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): MyViewHolder {
-        return MyViewHolder.create(parent)
+  var items: JsonArray? = null
+  override fun getItemCount() = items?.size() ?: 0
+  override fun onCreateViewHolder(
+    parent: ViewGroup,
+    viewType: Int
+  ): MyViewHolder {
+    return MyViewHolder.create(parent)
+  }
+
+  override fun onBindViewHolder(
+    holder: MyViewHolder,
+    position: Int
+  ) {
+    holder.bind(items!![position].asJsonObject!!)
+  }
+
+  class MyViewHolder(
+    override val containerView: View?
+  ) : RecyclerView.ViewHolder(containerView!!), LayoutContainer {
+
+    private lateinit var json: JsonObject
+    fun bind(_json: JsonObject) {
+      json = _json
+      loadImg()
+      setClick()
     }
 
-    override fun onBindViewHolder(
-        holder: MyViewHolder,
-        position: Int
-    ) {
-        holder.bind(getItem(holder.itemView, position))
+    private fun loadImg() {
+      Glide.with(itemView)
+          .load(getImgUrl())
+          .into(iv_video_item)
     }
 
-    private fun getItem(
-        view: View,
-        position: Int
-    ): VideoItemViewModel {
-        return ViewModelProviders.of(view.context as FragmentActivity)[VideoItemViewModel::class.java].apply {
-            setData(items!![position].asJsonObject!!)
-        }
+    private fun setClick() {
+      fl_video_item_img_container.setOnClickListener {
+        val context = it.context
+        context.startActivity(context.intentFor<PlayerActivity>().clearTop().singleTop())
+      }
     }
 
-
-    class MyViewHolder(
-        private var binding: ItemVideoBinding?
-    ) : RecyclerView.ViewHolder(binding!!.root) {
-
-        fun bind(viewModel: VideoItemViewModel) {
-            binding?.viewModel = viewModel
-        }
-
-
-        companion object {
-            fun create(parent: ViewGroup): MyViewHolder {
-                return MyViewHolder(
-                    DataBindingUtil.bind(
-                        LayoutInflater.from(parent.context).inflate(
-                            R.layout.item_video,
-                            parent,
-                            false
-                        )
-                    )
-                )
-            }
-        }
-
+    private fun getImgUrl(): String? {
+      return json["snippet"]?.asJsonObject?.get("thumbnails")
+          ?.asJsonObject?.get("high")
+          ?.asJsonObject?.get("url")
+          ?.asString
     }
+
+    companion object {
+      fun create(parent: ViewGroup): MyViewHolder {
+        val view = LayoutInflater.from(parent.context)
+            .inflate(
+                R.layout.item_video,
+                parent,
+                false
+            )
+
+        return MyViewHolder(view)
+      }
+    }
+
+  }
 }
 
 /*
