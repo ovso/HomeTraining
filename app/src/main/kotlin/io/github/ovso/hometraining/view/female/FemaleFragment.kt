@@ -11,8 +11,8 @@ import io.github.ovso.hometraining.databinding.FragmentFemaleBinding
 import io.github.ovso.hometraining.view.male.FemaleFragmentAdapter
 import io.github.ovso.hometraining.view.male.FemaleFragmentViewModel
 import io.reactivex.disposables.CompositeDisposable
+import kotlinx.android.synthetic.main.fragment_female.viewpager_female_fragment
 import kotlinx.android.synthetic.main.fragment_male.tabs_gender
-import kotlinx.android.synthetic.main.fragment_male.viewpager_main_fragment
 
 class FemaleFragment : Fragment() {
 
@@ -40,7 +40,7 @@ class FemaleFragment : Fragment() {
   ) =
     DataBindingUtil.inflate<FragmentFemaleBinding>(
         inflater,
-        R.layout.fragment_male,
+        R.layout.fragment_female,
         container,
         false
     ).apply {
@@ -59,9 +59,9 @@ class FemaleFragment : Fragment() {
 
   private fun setupViewpager() {
     with(tabs_gender) {
-      setupWithViewPager(viewpager_main_fragment)
+      setupWithViewPager(viewpager_female_fragment)
     }
-    with(viewpager_main_fragment) {
+    with(viewpager_female_fragment) {
       adapter = FemaleFragmentAdapter(childFragmentManager)
     }
   }

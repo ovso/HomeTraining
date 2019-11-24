@@ -28,6 +28,7 @@ class VideoViewModel : DisposableViewModel() {
   }
 
   private fun reqSearch() {
+    Timber.d("reqSearch query = $query")
     val disposable =
       searchRequest.search(query ?: ResourceProvider.getString(R.string.main_nav_title_male))
           .subscribeOn(SchedulerProvider.io())

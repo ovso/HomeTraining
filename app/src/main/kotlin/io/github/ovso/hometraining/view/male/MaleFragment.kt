@@ -9,8 +9,7 @@ import androidx.lifecycle.ViewModelProviders
 import io.github.ovso.hometraining.R
 import io.github.ovso.hometraining.databinding.FragmentMaleBinding
 import io.reactivex.disposables.CompositeDisposable
-import kotlinx.android.synthetic.main.fragment_male.tabs_gender
-import kotlinx.android.synthetic.main.fragment_male.viewpager_main_fragment
+import kotlinx.android.synthetic.main.fragment_male.*
 
 class MaleFragment : Fragment() {
 
@@ -57,9 +56,10 @@ class MaleFragment : Fragment() {
 
   private fun setupViewpager() {
     with(tabs_gender) {
-      setupWithViewPager(viewpager_main_fragment)
+      setupWithViewPager(viewpager_male_fragment)
     }
-    with(viewpager_main_fragment) {
+    with(viewpager_male_fragment) {
+      offscreenPageLimit = 1
       adapter = MaleFragmentAdapter(childFragmentManager)
     }
   }

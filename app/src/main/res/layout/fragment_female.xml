@@ -24,7 +24,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewpager_main_fragment"
+            android:id="@+id/viewpager_female_fragment"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
