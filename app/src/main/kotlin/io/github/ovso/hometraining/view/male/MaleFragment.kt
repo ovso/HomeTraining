@@ -55,12 +55,12 @@ class MaleFragment : Fragment() {
   }
 
   private fun setupViewpager() {
-    with(tabs_gender) {
-      setupWithViewPager(viewpager_male_fragment)
-    }
     with(viewpager_male_fragment) {
       offscreenPageLimit = 1
       adapter = MaleFragmentAdapter(childFragmentManager)
+    }
+    with(tabs_gender) {
+      setupWithViewPager(viewpager_male_fragment)
     }
   }
 

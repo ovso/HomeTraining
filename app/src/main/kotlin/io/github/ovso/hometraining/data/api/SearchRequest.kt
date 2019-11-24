@@ -3,7 +3,6 @@ package io.github.ovso.hometraining.data.api
 import com.google.gson.JsonElement
 import io.reactivex.Flowable
 import okhttp3.Headers
-import retrofit2.Response
 import timber.log.Timber
 
 class SearchRequest : BaseRequest<SearchService>() {
@@ -19,7 +18,7 @@ class SearchRequest : BaseRequest<SearchService>() {
       apiKeyIndex = 0
     }
     val key = apiKeys[apiKeyIndex]
-    ++ apiKeyIndex
+    ++apiKeyIndex
     return key
   }
 
@@ -40,22 +39,6 @@ class SearchRequest : BaseRequest<SearchService>() {
         "part" to "snippet"
     )
     return api.search(qMap)
-  }
-
-  suspend fun searchCoroutine(q: String): Response<JsonElement> {
-    val key = nextApiKey()
-    Timber.d("key = $key")
-    val qMap = hashMapOf(
-        "q" to q,
-        "maxResults" to 50,
-        "order" to "viewCount",
-        "type" to "video",
-        "videoSyndicated" to "any",
-        "key" to key,
-        "part" to "snippet"
-    )
-
-    return api.searchCoroutine(qMap)
   }
 
   private external fun apiKeys(): String

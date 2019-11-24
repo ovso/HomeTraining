@@ -17,9 +17,10 @@ class MaleFragmentAdapter(fm: FragmentManager) :
     ResourceProvider.getStringArray(R.array.queries_male)
   }
 
-  override fun getItem(position: Int) = VideoFragment.newInstance().apply {
-    arguments = bundleOf("query" to queries[position])
-  }
+  override fun getItem(position: Int) =
+    VideoFragment.newInstance().apply {
+      arguments = bundleOf("query" to queries[position])
+    }
 
   override fun getCount() = titles.size
 

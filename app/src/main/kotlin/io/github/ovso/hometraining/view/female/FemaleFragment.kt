@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import io.github.ovso.hometraining.R
 import io.github.ovso.hometraining.databinding.FragmentFemaleBinding
-import io.github.ovso.hometraining.view.male.FemaleFragmentAdapter
 import io.github.ovso.hometraining.view.male.FemaleFragmentViewModel
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.fragment_female.viewpager_female_fragment

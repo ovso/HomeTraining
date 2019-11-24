@@ -1,4 +1,4 @@
-package io.github.ovso.hometraining.view.male
+package io.github.ovso.hometraining.view.female
 
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
@@ -17,9 +17,10 @@ class FemaleFragmentAdapter(fm: FragmentManager) :
     ResourceProvider.getStringArray(R.array.queries_female)
   }
 
-  override fun getItem(position: Int) = VideoFragment.newInstance().apply {
-    arguments = bundleOf("query" to queries[position])
-  }
+  override fun getItem(position: Int) =
+    VideoFragment.newInstance().apply {
+      arguments = bundleOf("query" to queries[position])
+    }
 
   override fun getCount() = titles.size
 
