@@ -11,9 +11,13 @@ import com.google.android.material.navigation.NavigationView
 import io.github.ovso.hometraining.R
 import io.github.ovso.hometraining.exts.FragmentExtensions.attach
 import io.github.ovso.hometraining.exts.FragmentExtensions.detach
+import io.github.ovso.hometraining.view.main.BottomNavPosition.FEMALE
+import io.github.ovso.hometraining.view.main.BottomNavPosition.MALE
+import io.github.ovso.hometraining.view.main.BottomNavPosition.POPULAR
 import kotlinx.android.synthetic.main.activity_main.drawer_layout
 //import kotlinx.android.synthetic.main.activity_main.nav_view
 import kotlinx.android.synthetic.main.app_bar_main.toolbar
+import kotlinx.android.synthetic.main.content_main.bottom_nav_main
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -23,17 +27,23 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     setupActionBar()
     setupDrawer()
 
-/*
-    MaleFragment.newInstance(MALE),
-    MaleFragment.newInstance(FEMALE),
-    MaleFragment.newInstance(POPULAR)
-*/
-
     initFragment(savedInstanceState)
+    addEvent()
+  }
+
+  private fun addEvent() {
+    bottom_nav_main.setOnNavigationItemSelectedListener {
+      when (it.itemId) {
+        R.id.bottom_nv_male -> switchFragment(MALE)
+        R.id.bottom_nv_female -> switchFragment(FEMALE)
+        else -> switchFragment(POPULAR)
+      }
+      true
+    }
   }
 
   private fun initFragment(savedInstanceState: Bundle?) {
-    savedInstanceState ?: switchFragment(BottomNavPosition.MALE)
+    savedInstanceState ?: switchFragment(MALE)
   }
 
   /**
