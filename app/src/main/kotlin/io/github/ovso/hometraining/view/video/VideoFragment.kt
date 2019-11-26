@@ -13,6 +13,7 @@ import io.github.ovso.hometraining.databinding.FragmentVideoBinding
 import kotlinx.android.synthetic.main.fragment_video.rv_video
 import org.jetbrains.anko.alert
 import org.jetbrains.anko.okButton
+import retrofit2.HttpException
 import timber.log.Timber
 
 class VideoFragment : Fragment() {
@@ -65,13 +66,19 @@ class VideoFragment : Fragment() {
 
   private fun observe() {
     viewModel.errorDialogLive.observe(this, Observer {
-      activity?.alert {
-        message = it.message.toString()
-        okButton {
-          it.dismiss()
-        }
+      /*
+            activity?.alert {
+              message = it.message.toString()
+              okButton {
+                it.dismiss()
+              }
+            }
+                ?.show()
+      */
+
+      if (it is HttpException) {
+        Timber.e(it.response()?.errorBody()?.string())
       }
-          ?.show()
     })
   }
 

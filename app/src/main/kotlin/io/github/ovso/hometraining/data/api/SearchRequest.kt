@@ -7,7 +7,7 @@ import timber.log.Timber
 
 class SearchRequest : BaseRequest<SearchService>() {
 
-  private var apiKeyIndex = 3
+  private var apiKeyIndex = 1
   private val apiKeys by lazy {
     apiKeys().split("//".toRegex())
   }

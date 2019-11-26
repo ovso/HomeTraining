@@ -7,6 +7,7 @@ import io.github.ovso.hometraining.view.main.BottomNavPosition.FEMALE
 import io.github.ovso.hometraining.view.main.BottomNavPosition.MALE
 import io.github.ovso.hometraining.view.main.BottomNavPosition.POPULAR
 import io.github.ovso.hometraining.view.male.MaleFragment
+import io.github.ovso.hometraining.view.male.PopularFragment
 
 enum class BottomNavPosition(
   val position: Int,
@@ -27,11 +28,11 @@ fun findNavigationPositionById(id: Int): BottomNavPosition = when (id) {
 fun BottomNavPosition.createFragment(): Fragment = when (this) {
   MALE -> MaleFragment.newInstance()
   FEMALE -> FemaleFragment.newInstance()
-  POPULAR -> MaleFragment.newInstance()
+  POPULAR -> PopularFragment.newInstance()
 }
 
 fun BottomNavPosition.getTag(): String = when (this) {
   MALE -> MaleFragment.TAG
   FEMALE -> FemaleFragment.TAG
-  POPULAR -> MaleFragment.TAG
+  POPULAR -> PopularFragment.TAG
 }

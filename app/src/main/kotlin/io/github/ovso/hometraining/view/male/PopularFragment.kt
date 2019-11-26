@@ -15,11 +15,8 @@ class PopularFragment : Fragment() {
   private val compositeDisposable = CompositeDisposable()
 
   companion object {
-    fun newInstance(position: Int): PopularFragment {
-      return PopularFragment().apply {
-        arguments = Bundle().apply { putInt("position", position) }
-      }
-    }
+    val TAG: String = PopularFragment::class.java.simpleName
+    fun newInstance() = PopularFragment()
   }
 
   private val viewModel by lazy {
