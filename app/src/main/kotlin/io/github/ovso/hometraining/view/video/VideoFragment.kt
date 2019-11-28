@@ -3,16 +3,13 @@ package io.github.ovso.hometraining.view.video
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import io.github.ovso.hometraining.R
 import io.github.ovso.hometraining.databinding.FragmentVideoBinding
-import kotlinx.android.synthetic.main.fragment_video.rv_video
-import org.jetbrains.anko.alert
-import org.jetbrains.anko.okButton
+import kotlinx.android.synthetic.main.fragment_video.*
 import retrofit2.HttpException
 import timber.log.Timber
 
