@@ -5,11 +5,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import io.github.ovso.hometraining.R
 import io.github.ovso.hometraining.databinding.FragmentMaleBinding
 import io.reactivex.disposables.CompositeDisposable
-import kotlinx.android.synthetic.main.fragment_male.*
 
 class MaleFragment : Fragment() {
 
@@ -21,8 +20,7 @@ class MaleFragment : Fragment() {
   }
 
   private val viewModel by lazy {
-    ViewModelProviders.of(this)
-        .get(MaleFragmentViewModel::class.java)
+    ViewModelProvider(this)[MaleFragmentViewModel::class.java]
   }
 
   override fun onCreateView(
@@ -52,16 +50,6 @@ class MaleFragment : Fragment() {
 
   private fun observeLiveData() {
 
-  }
-
-  private fun setupViewpager() {
-    with(viewpager_male_fragment) {
-      offscreenPageLimit = 1
-      adapter = MaleFragmentAdapter(childFragmentManager)
-    }
-    with(tabs_gender) {
-      setupWithViewPager(viewpager_male_fragment)
-    }
   }
 
   override fun onDetach() {
