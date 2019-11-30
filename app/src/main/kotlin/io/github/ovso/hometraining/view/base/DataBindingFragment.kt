@@ -1,4 +1,4 @@
-package kr.co.mybroccoli.transfer.ui.base
+package io.github.ovso.hometraining.view.base
 
 import android.os.Bundle
 import android.view.LayoutInflater
