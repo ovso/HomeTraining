@@ -1,10 +1,6 @@
 package io.github.ovso.hometraining.view.ui.video
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import io.github.ovso.hometraining.BR
@@ -24,9 +20,6 @@ class VideoFragment : DataBindingDialogFragment<FragmentVideoBinding, VideoViewM
   private val viewModel by lazy {
     ViewModelProviders.of(this)
         .get(VideoViewModel::class.java)
-        .apply {
-          query = arguments?.getString("query")
-        }
   }
 
   private val adapter by lazy {
@@ -42,7 +35,6 @@ class VideoFragment : DataBindingDialogFragment<FragmentVideoBinding, VideoViewM
   }
 
   private fun fetchList() {
-    viewModel.reqSearch()
   }
 
   private fun observe() {

@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class AllRvAdapter : RecyclerView.Adapter<AllViewHolder>() {
   val titles = mutableListOf<String>()
+  val queries = mutableListOf<String>()
 
   override fun onCreateViewHolder(
     parent: ViewGroup,
@@ -17,7 +18,8 @@ class AllRvAdapter : RecyclerView.Adapter<AllViewHolder>() {
     holder: AllViewHolder,
     position: Int
   ) {
-    holder.bind(title = titles[position])
+    holder.bind(
+        AllViewHolder.toBindData(title = titles[position], query = queries[position])
+    )
   }
-
 }

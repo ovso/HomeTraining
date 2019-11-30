@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModelProvider
 import io.github.ovso.hometraining.BR
 import io.github.ovso.hometraining.R
 import io.github.ovso.hometraining.databinding.ActivityVideoBinding
-import io.github.ovso.hometraining.utils.ResourceProvider
 import io.github.ovso.hometraining.view.base.DataBindingActivity
 
 class VideoActivity : DataBindingActivity<ActivityVideoBinding, VideoViewModel>() {
@@ -18,7 +17,6 @@ class VideoActivity : DataBindingActivity<ActivityVideoBinding, VideoViewModel>(
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     supportActionBar?.setDisplayHomeAsUpEnabled(true)
-    supportActionBar?.title = ResourceProvider.getString(R.string.video_title)
   }
 
   override fun getLayoutId() = R.layout.activity_video

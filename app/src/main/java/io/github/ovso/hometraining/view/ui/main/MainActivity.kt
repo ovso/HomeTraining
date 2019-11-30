@@ -16,7 +16,6 @@ import io.github.ovso.hometraining.view.ui.main.BottomNavPosition.FEMALE
 import io.github.ovso.hometraining.view.ui.main.BottomNavPosition.MALE
 import io.github.ovso.hometraining.view.ui.main.BottomNavPosition.POPULAR
 import kotlinx.android.synthetic.main.activity_main.drawer_layout
-//import kotlinx.android.synthetic.main.activity_main.nav_view
 import kotlinx.android.synthetic.main.app_bar_main.toolbar
 import kotlinx.android.synthetic.main.content_main.bottom_nav_main
 

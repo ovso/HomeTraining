@@ -3,9 +3,9 @@ package io.github.ovso.hometraining.view.base
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import io.github.ovso.hometraining.R
+import io.github.ovso.hometraining.utils.RxBusBehavior
 import io.github.ovso.hometraining.view.ui.video.VideoActivity
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_all.card_all_item_container
@@ -15,12 +15,14 @@ import org.jetbrains.anko.startActivity
 class AllViewHolder(override val containerView: View?) : RecyclerView.ViewHolder(containerView!!),
     LayoutContainer {
 
-  fun bind(title: String) {
-    tv_all_item_title.text = title
+  fun bind(data: TitleAndQuery) {
+    tv_all_item_title.text = data.title
     card_all_item_container.setOnClickListener {
-      val ctx = it.context
-      ctx.startActivity<VideoActivity>()
+      RxBusBehavior.send(data)
+      it.context.startActivity<VideoActivity>()
     }
+  }
+  fun bind(title:String, query:String) {
   }
 
   companion object {
@@ -29,5 +31,15 @@ class AllViewHolder(override val containerView: View?) : RecyclerView.ViewHolder
           LayoutInflater.from(parent.context).inflate(R.layout.item_all, parent, false)
       )
     }
+
+    fun toBindData(
+      title: String,
+      query: String
+    ) = TitleAndQuery(title, query)
   }
+
+  data class TitleAndQuery(
+    val title: String,
+    val query: String
+  )
 }
