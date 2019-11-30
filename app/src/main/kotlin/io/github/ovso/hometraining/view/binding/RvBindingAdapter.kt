@@ -4,7 +4,7 @@ import androidx.databinding.BindingAdapter
 import androidx.databinding.ObservableList
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
-import io.github.ovso.hometraining.view.ui.male.MaleRvAdapter
+import io.github.ovso.hometraining.view.base.AllRvAdapter
 
 object RvBindingAdapter {
 
@@ -15,6 +15,6 @@ object RvBindingAdapter {
     items: ObservableList<String>
   ) {
     rv.addItemDecoration(DividerItemDecoration(rv.context, DividerItemDecoration.VERTICAL))
-    rv.adapter = MaleRvAdapter().apply { titles.addAll(items) }
+    rv.adapter = AllRvAdapter().apply { titles.addAll(items) }
   }
 }
