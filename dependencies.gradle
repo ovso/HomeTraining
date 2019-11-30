@@ -132,12 +132,7 @@ ext {
             'koin'          : [
                     'core'              : "org.koin:koin-core:$versions.koin",
                     'core_ext'          : "org.koin:koin-core-ext:$versions.koin",
-                    'test'              : "org.koin:koin-test:$versions.koin",
-                    'java'              : "org.koin:koin-java:$versions.koin",
                     'android'           : "org.koin:koin-android:$versions.koin",
-                    'android_scope'     : "org.koin:koin-android-scope:$versions.koin",
-                    'android_viewmodel' : "org.koin:koin-android-viewmodel:$versions.koin",
-                    'android_ext'       : "org.koin:koin-android-ext:$versions.koin",
                     'androidx_scope'    : "org.koin:koin-androidx-scope:$versions.koin",
                     'androidx_viewmodel': "org.koin:koin-androidx-viewmodel:$versions.koin",
                     'androidx_ext'      : "org.koin:koin-androidx-ext:$versions.koin",

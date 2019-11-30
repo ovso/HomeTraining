@@ -29,7 +29,7 @@ class VideoViewModel : DisposableViewModel() {
               onNext = ::onSuccess,
               onComplete = ::onComplete
           )
-    addDispose(disposable)
+    addDisposable(disposable)
   }
 
   private fun onError(t: Throwable) {
