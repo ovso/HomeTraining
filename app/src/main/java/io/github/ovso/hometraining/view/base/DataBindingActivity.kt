@@ -5,6 +5,7 @@ import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import kotlinx.android.synthetic.main.app_bar_main.toolbar
 
 abstract class DataBindingActivity<T : ViewDataBinding, V : DisposableViewModel> : AppCompatActivity() {
 
@@ -20,6 +21,7 @@ abstract class DataBindingActivity<T : ViewDataBinding, V : DisposableViewModel>
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     performDataBinding()
+    setSupportActionBar(toolbar)
   }
 
   private fun performDataBinding() {

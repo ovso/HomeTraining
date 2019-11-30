@@ -11,6 +11,7 @@ import com.google.android.material.navigation.NavigationView
 import io.github.ovso.hometraining.R
 import io.github.ovso.hometraining.exts.FragmentExtensions.attach
 import io.github.ovso.hometraining.exts.FragmentExtensions.detach
+import io.github.ovso.hometraining.utils.ResourceProvider
 import io.github.ovso.hometraining.view.ui.main.BottomNavPosition.FEMALE
 import io.github.ovso.hometraining.view.ui.main.BottomNavPosition.MALE
 import io.github.ovso.hometraining.view.ui.main.BottomNavPosition.POPULAR
@@ -77,6 +78,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
   private fun setupActionBar() {
     setSupportActionBar(toolbar)
+    supportActionBar?.title = ResourceProvider.getString(R.string.app_name)
     // query..
   }
 
