@@ -16,33 +16,38 @@ import timber.log.Timber
 
 class VideoViewModel : DisposableViewModel() {
 
+  val itemsObField = ObservableField<JsonArray>()
+  private val searchRequest by lazy { SearchRequest() }
+  val errorDialogLive = MutableLiveData<Throwable>()
+
   private lateinit var titleAndQuery: TitleAndQuery
   val titleOb = ObservableField<String>()
-  val queryOb = ObservableField<String>()
+  var query:String? = null
 
   init {
     addDisposable(
         RxBusBehavior.toObservable().subscribe {
           if (it is TitleAndQuery) {
             titleOb.set(it.title)
-            queryOb.set(it.query)
-            Timber.d("title = ${titleOb.get()}, query = ${queryOb.get()}")
+            query = it.query
+            Timber.d("title = ${it.title}, query = ${it.query}")
+            reqSearch()
           }
         }
     )
   }
 
-  val itemsObField = ObservableField<JsonArray>()
-  private val searchRequest by lazy { SearchRequest() }
-  val errorDialogLive = MutableLiveData<Throwable>()
-
-  fun reqSearch() {
-    Timber.d("reqSearch query = ${queryOb.get()}")
+  private fun reqSearch() {
+    Timber.d("reqSearch query = $query")
     val disposable =
       searchRequest.search(
-          queryOb.get() ?: ResourceProvider.getString(R.string.main_nav_title_male)
+          query ?: ResourceProvider.getString(R.string.main_nav_title_male)
       )
+          .doOnError {
+            Timber.e(it)
+          }
           .subscribeOn(SchedulerProvider.io())
+          .observeOn(SchedulerProvider.ui())
           .subscribeBy(
               onError = ::onError,
               onNext = ::onSuccess,
