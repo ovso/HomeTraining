@@ -1,4 +1,4 @@
-package io.github.ovso.hometraining.view.player
+package io.github.ovso.hometraining.view.ui.player
 
 import android.os.Bundle
 import android.view.View.SYSTEM_UI_FLAG_FULLSCREEN

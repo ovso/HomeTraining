@@ -1,4 +1,4 @@
-package io.github.ovso.hometraining.view.video
+package io.github.ovso.hometraining.view.ui.video
 
 import androidx.databinding.ObservableField
 import androidx.lifecycle.MutableLiveData

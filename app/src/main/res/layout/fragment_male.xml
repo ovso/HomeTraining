@@ -7,7 +7,7 @@
 
     <variable
         name="viewModel"
-        type="io.github.ovso.hometraining.view.male.MaleFragmentViewModel"
+        type="io.github.ovso.hometraining.view.ui.male.MaleViewModel"
         />
   </data>
 

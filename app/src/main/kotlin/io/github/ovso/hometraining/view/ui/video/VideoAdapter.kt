@@ -1,4 +1,4 @@
-package io.github.ovso.hometraining.view.video
+package io.github.ovso.hometraining.view.ui.video
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,8 +8,8 @@ import com.bumptech.glide.Glide
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 import io.github.ovso.hometraining.R
-import io.github.ovso.hometraining.view.player.PlayerActivity
-import io.github.ovso.hometraining.view.video.VideoAdapter.MyViewHolder
+import io.github.ovso.hometraining.view.ui.player.PlayerActivity
+import io.github.ovso.hometraining.view.ui.video.VideoAdapter.MyViewHolder
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_video.fl_video_item_img_container
 import kotlinx.android.synthetic.main.item_video.iv_video_item

@@ -5,7 +5,7 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.gson.JsonArray
-import io.github.ovso.hometraining.view.video.VideoAdapter
+import io.github.ovso.hometraining.view.ui.video.VideoAdapter
 
 object VideoBindingAdapter {
 

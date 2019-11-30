@@ -4,7 +4,7 @@ import androidx.databinding.BindingAdapter
 import androidx.databinding.ObservableList
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
-import io.github.ovso.hometraining.view.male.MaleRvAdapter
+import io.github.ovso.hometraining.view.ui.male.MaleRvAdapter
 
 object RvBindingAdapter {
 

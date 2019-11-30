@@ -1,4 +1,4 @@
-package io.github.ovso.hometraining.view.video
+package io.github.ovso.hometraining.view.ui.video
 
 import android.os.Bundle
 import android.view.LayoutInflater

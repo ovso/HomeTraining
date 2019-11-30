@@ -1,4 +1,4 @@
-package io.github.ovso.hometraining.view.male
+package io.github.ovso.hometraining.view.ui.male
 
 import androidx.databinding.ObservableArrayList
 import io.github.ovso.hometraining.R
@@ -6,7 +6,7 @@ import io.github.ovso.hometraining.utils.ResourceProvider
 import io.github.ovso.hometraining.view.base.DisposableViewModel
 import io.reactivex.disposables.CompositeDisposable
 
-class MaleFragmentViewModel : DisposableViewModel() {
+class MaleViewModel : DisposableViewModel() {
   private val compositeDisposable by lazy { CompositeDisposable() }
 
   val items = ObservableArrayList<String>()

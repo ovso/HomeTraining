@@ -8,7 +8,7 @@
 
     <variable
         name="viewModel"
-        type="io.github.ovso.hometraining.view.video.VideoViewModel"
+        type="io.github.ovso.hometraining.view.ui.video.VideoViewModel"
         />
   </data>
 

@@ -1,13 +1,13 @@
-package io.github.ovso.hometraining.view.main
+package io.github.ovso.hometraining.view.ui.main
 
 import androidx.fragment.app.Fragment
 import io.github.ovso.hometraining.R
-import io.github.ovso.hometraining.view.female.FemaleFragment
-import io.github.ovso.hometraining.view.main.BottomNavPosition.FEMALE
-import io.github.ovso.hometraining.view.main.BottomNavPosition.MALE
-import io.github.ovso.hometraining.view.main.BottomNavPosition.POPULAR
-import io.github.ovso.hometraining.view.male.MaleFragment
-import io.github.ovso.hometraining.view.pop.PopularFragment
+import io.github.ovso.hometraining.view.ui.female.FemaleFragment
+import io.github.ovso.hometraining.view.ui.main.BottomNavPosition.FEMALE
+import io.github.ovso.hometraining.view.ui.main.BottomNavPosition.MALE
+import io.github.ovso.hometraining.view.ui.main.BottomNavPosition.POPULAR
+import io.github.ovso.hometraining.view.ui.male.MaleFragment
+import io.github.ovso.hometraining.view.ui.pop.PopularFragment
 
 enum class BottomNavPosition(
   val position: Int,

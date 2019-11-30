@@ -7,7 +7,7 @@
 
     <variable
       name="viewModel"
-      type="io.github.ovso.hometraining.view.pop.PopularViewModel" />
+      type="io.github.ovso.hometraining.view.ui.pop.PopularViewModel" />
   </data>
 
   <androidx.constraintlayout.widget.ConstraintLayout
