@@ -7,7 +7,7 @@ import io.github.ovso.hometraining.view.main.BottomNavPosition.FEMALE
 import io.github.ovso.hometraining.view.main.BottomNavPosition.MALE
 import io.github.ovso.hometraining.view.main.BottomNavPosition.POPULAR
 import io.github.ovso.hometraining.view.male.MaleFragment
-import io.github.ovso.hometraining.view.male.PopularFragment
+import io.github.ovso.hometraining.view.pop.PopularFragment
 
 enum class BottomNavPosition(
   val position: Int,

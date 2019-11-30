@@ -1,4 +1,4 @@
-package io.github.ovso.hometraining.view.male
+package io.github.ovso.hometraining.view.pop
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
