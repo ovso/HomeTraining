@@ -19,6 +19,7 @@ object VideoBindingAdapter {
       rv.adapter = VideoAdapter().apply {
         this.items = it
       }
+      rv.adapter?.notifyDataSetChanged()
     }
   }
 
