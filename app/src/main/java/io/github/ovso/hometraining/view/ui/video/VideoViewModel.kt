@@ -12,6 +12,7 @@ import io.github.ovso.hometraining.utils.SchedulerProvider
 import io.github.ovso.hometraining.view.base.AllViewHolder.TitleAndQuery
 import io.github.ovso.hometraining.view.base.DisposableViewModel
 import io.reactivex.rxkotlin.subscribeBy
+import retrofit2.HttpException
 import timber.log.Timber
 
 class VideoViewModel : DisposableViewModel() {
@@ -20,9 +21,8 @@ class VideoViewModel : DisposableViewModel() {
   private val searchRequest by lazy { SearchRequest() }
   val errorDialogLive = MutableLiveData<Throwable>()
 
-  private lateinit var titleAndQuery: TitleAndQuery
   val titleOb = ObservableField<String>()
-  var query:String? = null
+  private var query: String? = null
 
   init {
     addDisposable(
@@ -40,12 +40,10 @@ class VideoViewModel : DisposableViewModel() {
   private fun reqSearch() {
     Timber.d("reqSearch query = $query")
     val disposable =
-      searchRequest.search(
-          query ?: ResourceProvider.getString(R.string.main_nav_title_male)
-      )
-          .doOnError {
-            Timber.e(it)
-          }
+      searchRequest
+          .search(
+              query ?: ResourceProvider.getString(R.string.main_nav_title_male)
+          )
           .subscribeOn(SchedulerProvider.io())
           .observeOn(SchedulerProvider.ui())
           .subscribeBy(
@@ -57,12 +55,15 @@ class VideoViewModel : DisposableViewModel() {
   }
 
   private fun onError(t: Throwable) {
-    errorDialogLive.postValue(t)
+//    errorDialogLive.postValue(t)
+    if (t is HttpException) {
+      Timber.d("onError = ${t.response()?.errorBody()?.string()}")
+    }
   }
 
   private fun onSuccess(json: JsonElement) {
     Timber.d("onSuccess")
-    itemsObField.set(json.asJsonObject["items"].asJsonArray)
+    //itemsObField.set(json.asJsonObject["items"].asJsonArray)
   }
 
   private fun onComplete() {

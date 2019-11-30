@@ -42,7 +42,7 @@ class VideoFragment : DataBindingDialogFragment<FragmentVideoBinding, VideoViewM
       if (it is HttpException) {
         Timber.e(it.response()?.errorBody()?.string())
       }
-      Timber.e(it)
+      Timber.e("error msg = ${it.message}")
     })
   }
 
