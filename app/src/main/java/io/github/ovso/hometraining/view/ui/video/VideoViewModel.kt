@@ -17,7 +17,7 @@ import timber.log.Timber
 
 class VideoViewModel : DisposableViewModel() {
 
-  val itemsObField = ObservableField<JsonArray>()
+  val items = ObservableField<JsonArray>()
   private val searchRequest by lazy { SearchRequest() }
   val errorDialogLive = MutableLiveData<Throwable>()
 
@@ -63,7 +63,7 @@ class VideoViewModel : DisposableViewModel() {
 
   private fun onSuccess(json: JsonElement) {
     Timber.d("onSuccess")
-    itemsObField.set(json.asJsonObject["items"].asJsonArray)
+    items.set(json.asJsonObject["items"].asJsonArray)
   }
 
   private fun onComplete() {
