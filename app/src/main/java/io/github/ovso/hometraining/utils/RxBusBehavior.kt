@@ -19,4 +19,7 @@ object RxBusBehavior {
     val title: String,
     val query: String
   )
+
+  class VideoId(val id: String)
+
 }

@@ -8,6 +8,8 @@ import com.bumptech.glide.Glide
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 import io.github.ovso.hometraining.R
+import io.github.ovso.hometraining.utils.RxBusBehavior
+import io.github.ovso.hometraining.utils.RxBusBehavior.VideoId
 import io.github.ovso.hometraining.view.ui.player.PlayerActivity
 import io.github.ovso.hometraining.view.ui.video.VideoAdapter.MyViewHolder
 import kotlinx.android.extensions.LayoutContainer
@@ -39,6 +41,7 @@ class VideoAdapter : RecyclerView.Adapter<MyViewHolder>() {
   ) : RecyclerView.ViewHolder(containerView!!), LayoutContainer {
 
     private lateinit var json: JsonObject
+
     fun bind(_json: JsonObject) {
       json = _json
       loadImg()
@@ -53,10 +56,13 @@ class VideoAdapter : RecyclerView.Adapter<MyViewHolder>() {
 
     private fun setClick() {
       fl_video_item_img_container.setOnClickListener {
+        RxBusBehavior.send(toVideoId())
         val context = it.context
         context.startActivity(context.intentFor<PlayerActivity>().clearTop().singleTop())
       }
     }
+
+    private fun toVideoId() = VideoId(json["id"].asJsonObject["videoId"].asString)
 
     private fun getImgUrl(): String? {
       return json["snippet"]?.asJsonObject?.get("thumbnails")
