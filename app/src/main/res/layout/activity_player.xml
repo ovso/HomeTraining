@@ -1,27 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#0099cc"
-    tools:context=".view.ui.player.PlayerActivity"
-    >
+<layout>
 
-<!--
-  <kr.co.prnd.YouTubePlayerView
-      android:id="@+id/youtube_player"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      app:videoId="m2SZ6RV_J7I"
-      />
--->
+  <data>
 
-  <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-      android:id="@+id/youtube_player"
+    <variable
+        name="viewModel"
+        type="io.github.ovso.hometraining.view.ui.player.PlayerViewModel"
+        />
+  </data>
+
+  <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
       android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      app:videoId="m2SZ6RV_J7I"
-      app:autoPlay="true"
-      app:showFullScreenButton="false" />
-</FrameLayout>
+      android:layout_height="match_parent"
+      android:background="#0099cc"
+      tools:context=".view.ui.player.PlayerActivity"
+      >
+
+    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+        android:id="@+id/youtube_player"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:autoPlay="true"
+        app:showFullScreenButton="false"
+        app:videoId="dddd"
+        />
+  </FrameLayout>
+</layout>
