@@ -60,7 +60,7 @@ class VideoAdapter : RecyclerView.Adapter<MyViewHolder>() {
 
     private fun getImgUrl(): String? {
       return json["snippet"]?.asJsonObject?.get("thumbnails")
-          ?.asJsonObject?.get("default")
+          ?.asJsonObject?.get("medium")
           ?.asJsonObject?.get("url")
           ?.asString
     }

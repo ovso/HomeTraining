@@ -63,7 +63,7 @@ class VideoViewModel : DisposableViewModel() {
 
   private fun onSuccess(json: JsonElement) {
     Timber.d("onSuccess")
-    //itemsObField.set(json.asJsonObject["items"].asJsonArray)
+    itemsObField.set(json.asJsonObject["items"].asJsonArray)
   }
 
   private fun onComplete() {

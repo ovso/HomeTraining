@@ -37,7 +37,7 @@ class SearchRequest : BaseRequest<SearchService>() {
         "videoSyndicated" to "any",
         "key" to nextApiKey(),
         "part" to "snippet",
-        "fields" to "items(id,snippet(title,thumbnails(default)))"
+        "fields" to "items(id,snippet(title,thumbnails(medium)))"
     )
     return api.search(qMap)
   }
