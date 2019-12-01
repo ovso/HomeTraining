@@ -22,8 +22,6 @@ class AllViewHolder(override val containerView: View?) : RecyclerView.ViewHolder
       it.context.startActivity<VideoActivity>()
     }
   }
-  fun bind(title:String, query:String) {
-  }
 
   companion object {
     fun create(parent: ViewGroup): AllViewHolder {

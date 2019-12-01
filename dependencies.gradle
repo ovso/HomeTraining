@@ -45,7 +45,8 @@ ext {
             'fresco'                 : '2.0.0',
             'logging_interceptor'    : '4.2.1',
             'arch_core'              : '2.1.0',
-            'koap'                   : '1.0.1'
+            'koap'                   : '1.0.1',
+            'youtube_player'         : '10.0.5'
     ]
 
     deps = [
@@ -165,6 +166,9 @@ ext {
 
 
             'picasso'       : "com.squareup.picasso:picasso:$versions.picasso",
+
+
+            'youtube_player' : "com.pierfrancescosoffritti.androidyoutubeplayer:core:$versions.youtube_player",
 
 
             'autodispose'   : [
