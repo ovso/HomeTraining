@@ -57,6 +57,7 @@ android {
 
 dependencies {
   implementation fileTree(dir: 'libs', include: ['*.jar'])
+  implementation files('libs/YouTubeAndroidPlayerApi.jar')
 
   implementation deps.anko.values()
   implementation deps.coroutines.values()

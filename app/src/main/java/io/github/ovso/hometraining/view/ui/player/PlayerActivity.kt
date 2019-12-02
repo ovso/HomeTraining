@@ -1,19 +1,18 @@
 package io.github.ovso.hometraining.view.ui.player
 
 import android.os.Bundle
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants.PlayerState
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
-import com.uber.autodispose.android.lifecycle.autoDispose
+import com.google.android.youtube.player.YouTubeInitializationResult
+import com.google.android.youtube.player.YouTubePlayer
+import com.google.android.youtube.player.YouTubePlayer.Provider
+import com.google.android.youtube.player.YouTubePlayerFragment
 import io.github.ovso.hometraining.BR
 import io.github.ovso.hometraining.R
 import io.github.ovso.hometraining.databinding.ActivityPlayerBinding
-import io.github.ovso.hometraining.utils.RxBusBehavior
-import io.github.ovso.hometraining.utils.RxBusBehavior.VideoId
 import io.github.ovso.hometraining.view.base.DataBindingActivity
-import kotlinx.android.synthetic.main.activity_player.*
+import kotlinx.android.synthetic.main.activity_player.fragment_player_youtube
+import org.koin.androidx.viewmodel.ext.android.getViewModel
 import timber.log.Timber
 
 class PlayerActivity : DataBindingActivity<ActivityPlayerBinding, PlayerViewModel>() {
@@ -25,39 +24,36 @@ class PlayerActivity : DataBindingActivity<ActivityPlayerBinding, PlayerViewMode
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
 //    youtube_player.enterFullScreen()
-    RxBusBehavior.toObservable()
-        .autoDispose(this)
-        .subscribe {
-          if (it is VideoId) {
-            youtube_player.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
-              override fun onReady(youTubePlayer: YouTubePlayer) {
-                youTubePlayer.cueVideo(it.id, 0F)
+
+    observe()
+  }
+
+  private fun observe() {
+    viewModel.videoIdLive.observe(this, Observer {
+      Timber.d("fragment_player_youtube = $fragment_player_youtube")
+      if (fragment_player_youtube is YouTubePlayerFragment) {
+        (fragment_player_youtube as YouTubePlayerFragment).initialize(
+            "AIzaSyCjXfwsCDjTWElpjFWdgr1ZMBBQGjsnS60",
+            object : YouTubePlayer.OnInitializedListener {
+              override fun onInitializationSuccess(
+                provider: Provider?,
+                player: YouTubePlayer?,
+                p2: Boolean
+              ) {
+                Timber.d("onInitializationSuccess")
+                player?.loadVideo(it)
               }
 
-              override fun onError(
-                youTubePlayer: YouTubePlayer,
-                error: PlayerConstants.PlayerError
+              override fun onInitializationFailure(
+                provider: Provider?,
+                result: YouTubeInitializationResult?
               ) {
-                Timber.d("error name = ${error.name}")
-              }
-
-              override fun onVideoId(
-                youTubePlayer: YouTubePlayer,
-                videoId: String
-              ) {
-                Timber.d("onVideoId = $videoId")
-              }
-
-              override fun onStateChange(
-                youTubePlayer: YouTubePlayer,
-                state: PlayerState
-              ) {
-                Timber.d("onStateChange = $state")
+                Timber.d("onInitializationFailure = ${result?.name}")
               }
             })
-          }
-        }
 
+      }
+    })
   }
 
   override fun getLayoutId() = R.layout.activity_player
