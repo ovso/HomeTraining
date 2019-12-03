@@ -18,11 +18,9 @@
       tools:context=".view.ui.player.PlayerActivity"
       >
 
-    <fragment
-        android:id="@+id/fragment_player_youtube"
-        android:name="com.google.android.youtube.player.YouTubePlayerFragment"
+    <kr.co.prnd.YouTubePlayerView
+        android:id="@+id/you_tube_player_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
+        android:layout_height="wrap_content" />
   </FrameLayout>
 </layout>

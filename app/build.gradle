@@ -11,6 +11,7 @@ android {
     targetSdkVersion config.targetSdkVersion
     versionCode config.versionCode
     versionName config.versionsName
+    multiDexEnabled true
     testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
   }
   buildTypes {
@@ -57,7 +58,7 @@ android {
 
 dependencies {
   implementation fileTree(dir: 'libs', include: ['*.jar'])
-  implementation files('libs/YouTubeAndroidPlayerApi.jar')
+//  implementation files('libs/YouTubeAndroidPlayerApi.jar')
 
   implementation deps.anko.values()
   implementation deps.coroutines.values()
