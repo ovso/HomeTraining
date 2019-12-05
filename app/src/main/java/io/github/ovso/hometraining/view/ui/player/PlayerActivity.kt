@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModelProvider
 import io.github.ovso.hometraining.R
 import io.github.ovso.hometraining.databinding.ActivityPlayerBinding
 import io.github.ovso.hometraining.view.base.DataBindingActivity2
-import kotlinx.android.synthetic.main.activity_player.you_tube_player_view
 
 class PlayerActivity : DataBindingActivity2<ActivityPlayerBinding>(
     layoutResId = R.layout.activity_player,
@@ -21,12 +20,17 @@ class PlayerActivity : DataBindingActivity2<ActivityPlayerBinding>(
     super.onCreate(savedInstanceState)
 //    youtube_player.enterFullScreen()
 
-    observe()
+    if (savedInstanceState == null) {
+      supportFragmentManager.beginTransaction()
+        .replace(R.id.container, Sample2Fragment.newInstance())
+        .commitNow()
+    }
+
   }
 
   private fun observe() {
     viewModel.videoIdLive.observe(this, Observer {
-      you_tube_player_view.play("m2SZ6RV_J7I")
+
     })
   }
 }
