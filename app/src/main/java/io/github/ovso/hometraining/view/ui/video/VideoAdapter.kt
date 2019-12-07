@@ -10,11 +10,10 @@ import com.google.gson.JsonObject
 import io.github.ovso.hometraining.R
 import io.github.ovso.hometraining.utils.RxBusBehavior
 import io.github.ovso.hometraining.utils.RxBusBehavior.VideoId
-import io.github.ovso.hometraining.view.ui.player.PlayerActivity
+import io.github.ovso.hometraining.view.ui.player.Player2Activity
 import io.github.ovso.hometraining.view.ui.video.VideoAdapter.MyViewHolder
 import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.item_video.fl_video_item_img_container
-import kotlinx.android.synthetic.main.item_video.iv_video_item
+import kotlinx.android.synthetic.main.item_video.*
 import org.jetbrains.anko.clearTop
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.singleTop
@@ -58,7 +57,7 @@ class VideoAdapter : RecyclerView.Adapter<MyViewHolder>() {
       fl_video_item_img_container.setOnClickListener {
         RxBusBehavior.send(toVideoId())
         val context = it.context
-        context.startActivity(context.intentFor<PlayerActivity>().clearTop().singleTop())
+        context.startActivity(context.intentFor<Player2Activity>().clearTop().singleTop())
       }
     }
 

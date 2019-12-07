@@ -18,13 +18,6 @@ class PlayerActivity : DataBindingActivity2<ActivityPlayerBinding>(
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-//    youtube_player.enterFullScreen()
-
-    if (savedInstanceState == null) {
-      supportFragmentManager.beginTransaction()
-        .replace(R.id.container, Sample2Fragment.newInstance())
-        .commitNow()
-    }
 
   }
 
