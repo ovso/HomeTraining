@@ -14,9 +14,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".view.ui.player.Player2Activity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".view.ui.video.VideoActivity"
             android:screenOrientation="portrait" />
         <activity

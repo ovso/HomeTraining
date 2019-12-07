@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import io.github.ovso.hometraining.R
 import io.github.ovso.hometraining.databinding.ActivityPlayerBinding
 import io.github.ovso.hometraining.view.base.DataBindingActivity2
+import timber.log.Timber
 
 class PlayerActivity : DataBindingActivity2<ActivityPlayerBinding>(
     layoutResId = R.layout.activity_player,
@@ -23,7 +24,7 @@ class PlayerActivity : DataBindingActivity2<ActivityPlayerBinding>(
 
   private fun observe() {
     viewModel.videoIdLive.observe(this, Observer {
-
+      Timber.d("videoId = $it")
     })
   }
 }

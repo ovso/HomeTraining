@@ -12,15 +12,12 @@ class PlayerViewModel : DisposableViewModel() {
   val videoIdLive = MutableLiveData<String>()
 
   init {
-/*
     addDisposable(
         RxBusBehavior.toObservable().subscribe {
           if (it is VideoId) {
-            Timber.d("videoId = ${it.id}")
             videoIdLive.postValue(it.id)
           }
         }
     )
-*/
   }
 }
