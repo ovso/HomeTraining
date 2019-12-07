@@ -9,12 +9,13 @@
         />
   </data>
 
-  <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:tools="http://schemas.android.com/tools"
       android:id="@+id/container"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:background="#0099cc"
+      android:orientation="vertical"
       tools:context=".view.ui.player.PlayerActivity"
       >
 
@@ -22,8 +23,40 @@
         android:id="@+id/wv_player"
         load_url="@{viewModel.videoUrlOb}"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         />
 
-  </FrameLayout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@android:color/darker_gray"
+        android:gravity="center"
+        android:orientation="horizontal"
+        tools:ignore="ContentDescription"
+        >
+
+      <com.google.android.material.button.MaterialButton
+          android:id="@+id/btn_web_back"
+          style="@style/WebNavBtn"
+          android:enabled="@{viewModel.canGoBackOb}"
+          app:icon="@drawable/ic_arrow_back"
+          />
+
+      <com.google.android.material.button.MaterialButton
+          android:id="@+id/btn_web_forward"
+          style="@style/WebNavBtn"
+          android:enabled="@{viewModel.canGoForwardOb}"
+          app:icon="@drawable/ic_arrow_forward"
+          />
+
+      <com.google.android.material.button.MaterialButton
+          android:id="@+id/btn_web_share"
+          style="@style/WebNavBtn"
+          app:icon="@drawable/ic_share"
+          />
+    </LinearLayout>
+  </androidx.appcompat.widget.LinearLayoutCompat>
 </layout>
