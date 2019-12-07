@@ -11,6 +11,7 @@ import io.github.ovso.hometraining.R
 import io.github.ovso.hometraining.utils.RxBusBehavior
 import io.github.ovso.hometraining.utils.RxBusBehavior.VideoId
 import io.github.ovso.hometraining.view.ui.player.PlayerActivity
+import io.github.ovso.hometraining.view.ui.player2.Player2Activity
 import io.github.ovso.hometraining.view.ui.video.VideoAdapter.MyViewHolder
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_video.fl_video_item_img_container
@@ -55,7 +56,7 @@ class VideoAdapter : RecyclerView.Adapter<MyViewHolder>() {
     private fun setClick() {
       fl_video_item_img_container.setOnClickListener {
         RxBusBehavior.send(toVideoId())
-        it.context.startActivity<PlayerActivity>()
+        it.context.startActivity<Player2Activity>()
       }
     }
 
