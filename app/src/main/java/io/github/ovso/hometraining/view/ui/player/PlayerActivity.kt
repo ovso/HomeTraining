@@ -1,12 +1,18 @@
 package io.github.ovso.hometraining.view.ui.player
 
+import android.annotation.SuppressLint
+import android.net.Uri
 import android.os.Bundle
+import android.webkit.WebChromeClient
+import android.webkit.WebViewClient
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import io.github.ovso.hometraining.R
 import io.github.ovso.hometraining.databinding.ActivityPlayerBinding
 import io.github.ovso.hometraining.view.base.DataBindingActivity2
-import timber.log.Timber
+import kotlinx.android.synthetic.main.activity_player.wv_player
+
+private const val BASE_URL_YOUTUBE = "https://www.youtube.com/watch?v="
 
 class PlayerActivity : DataBindingActivity2<ActivityPlayerBinding>(
     layoutResId = R.layout.activity_player,
@@ -19,12 +25,24 @@ class PlayerActivity : DataBindingActivity2<ActivityPlayerBinding>(
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
+    setupWebView()
+    observe()
+  }
 
+  @SuppressLint("SetJavaScriptEnabled")
+  private fun setupWebView() {
+    wv_player.settings.apply {
+      javaScriptEnabled = true
+    }
+    with(wv_player) {
+      webViewClient = WebViewClient()
+      webChromeClient = WebChromeClient()
+    }
   }
 
   private fun observe() {
     viewModel.videoIdLive.observe(this, Observer {
-      Timber.d("videoId = $it")
+      wv_player.loadUrl("$BASE_URL_YOUTUBE$it")
     })
   }
 }

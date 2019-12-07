@@ -12,18 +12,18 @@
   <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto"
       xmlns:tools="http://schemas.android.com/tools"
+      android:id="@+id/container"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:id="@+id/container"
       android:background="#0099cc"
       tools:context=".view.ui.player.PlayerActivity"
       >
 
-<!--
-    <kr.co.prnd.YouTubePlayerView
-        android:id="@+id/you_tube_player_view"
+    <WebView
+        android:id="@+id/wv_player"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
--->
+        android:layout_height="match_parent"
+        />
+
   </FrameLayout>
 </layout>
