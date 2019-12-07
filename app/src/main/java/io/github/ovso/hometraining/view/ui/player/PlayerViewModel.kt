@@ -1,18 +1,20 @@
 package io.github.ovso.hometraining.view.ui.player
 
-import androidx.lifecycle.MutableLiveData
+import androidx.databinding.ObservableField
 import io.github.ovso.hometraining.utils.RxBusBehavior
 import io.github.ovso.hometraining.utils.RxBusBehavior.VideoId
 import io.github.ovso.hometraining.view.base.DisposableViewModel
 
+private const val BASE_URL_YOUTUBE = "https://www.youtube.com/watch?v="
+
 class PlayerViewModel : DisposableViewModel() {
-  val videoIdLive = MutableLiveData<String>()
+  val videoUrlOb = ObservableField<String>()
 
   init {
     addDisposable(
         RxBusBehavior.toObservable().subscribe {
           if (it is VideoId) {
-            videoIdLive.postValue(it.id)
+            videoUrlOb.set("$BASE_URL_YOUTUBE${it.id}")
           }
         }
     )
