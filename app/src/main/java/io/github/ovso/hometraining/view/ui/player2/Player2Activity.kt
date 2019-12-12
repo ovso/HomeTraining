@@ -9,6 +9,7 @@ import io.github.ovso.hometraining.R
 import io.github.ovso.hometraining.databinding.ActivityPlayer2Binding
 import io.github.ovso.hometraining.view.base.DataBindingActivity2
 import kotlinx.android.synthetic.main.activity_player2.youtube_player_view
+import timber.log.Timber
 
 class Player2Activity : DataBindingActivity2<ActivityPlayer2Binding>(
     layoutResId = R.layout.activity_player2,
@@ -23,6 +24,7 @@ class Player2Activity : DataBindingActivity2<ActivityPlayer2Binding>(
         override fun onReady(youTubePlayer: YouTubePlayer) {
           super.onReady(youTubePlayer)
           youTubePlayer.loadOrCueVideo(lifecycle, it, binding!!.viewModel!!.second)
+          Timber.d("loadOrCueVideo")
         }
 
         override fun onCurrentSecond(
