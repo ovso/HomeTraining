@@ -8,25 +8,24 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import io.github.ovso.hometraining.BR
 
-abstract class DataBindingFragment<T : ViewDataBinding, V : DisposableViewModel> : Fragment() {
+abstract class DataBindingFragment<T : ViewDataBinding>(
+  @LayoutRes private val layoutRes: Int,
+  private val modelClass: Class<out ViewModel>
+) : Fragment() {
 
-  private lateinit var viewDataBinding: T
-
-  @LayoutRes
-  abstract fun getLayoutId(): Int
-
-  abstract fun getVariableValue(): V
-
-  abstract fun getVariableId(): Int
+  private lateinit var binding: T
 
   override fun onCreateView(
     inflater: LayoutInflater,
     container: ViewGroup?,
     savedInstanceState: Bundle?
   ): View? {
-    viewDataBinding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false)
-    return viewDataBinding.root
+    binding = DataBindingUtil.inflate(inflater, layoutRes, container, false)
+    return binding.root
   }
 
   override fun onViewCreated(
@@ -34,9 +33,10 @@ abstract class DataBindingFragment<T : ViewDataBinding, V : DisposableViewModel>
     savedInstanceState: Bundle?
   ) {
     super.onViewCreated(view, savedInstanceState)
-    with(viewDataBinding) {
-      setVariable(getVariableId(), getVariableValue())
-      lifecycleOwner = this@DataBindingFragment
+    val owner = this
+    with(binding) {
+      setVariable(BR.viewModel, ViewModelProvider(owner)[modelClass])
+      lifecycleOwner = owner
       executePendingBindings()
     }
   }

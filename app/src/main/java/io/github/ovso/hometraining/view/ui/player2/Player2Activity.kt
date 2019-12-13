@@ -7,11 +7,11 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.Abs
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.utils.loadOrCueVideo
 import io.github.ovso.hometraining.R
 import io.github.ovso.hometraining.databinding.ActivityPlayer2Binding
-import io.github.ovso.hometraining.view.base.DataBindingActivity2
+import io.github.ovso.hometraining.view.base.DataBindingActivity
 import kotlinx.android.synthetic.main.activity_player2.youtube_player_view
 import timber.log.Timber
 
-class Player2Activity : DataBindingActivity2<ActivityPlayer2Binding>(
+class Player2Activity : DataBindingActivity<ActivityPlayer2Binding>(
     layoutResId = R.layout.activity_player2,
     viewModelCls = Player2ViewModel::class.java
 ) {
