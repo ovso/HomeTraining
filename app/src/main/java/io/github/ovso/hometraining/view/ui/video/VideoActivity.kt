@@ -2,28 +2,19 @@ package io.github.ovso.hometraining.view.ui.video
 
 import android.os.Bundle
 import android.view.MenuItem
-import androidx.lifecycle.ViewModelProvider
-import io.github.ovso.hometraining.BR
 import io.github.ovso.hometraining.R
 import io.github.ovso.hometraining.databinding.ActivityVideoBinding
-import io.github.ovso.hometraining.view.base.DataBindingActivity
+import io.github.ovso.hometraining.view.base.DataBindingActivity2
 
-class VideoActivity : DataBindingActivity<ActivityVideoBinding, VideoViewModel>() {
-
-  private val viewModel by lazy {
-    ViewModelProvider(this)[VideoViewModel::class.java]
-  }
+class VideoActivity : DataBindingActivity2<ActivityVideoBinding>(
+    layoutResId = R.layout.activity_video,
+    viewModelCls = VideoViewModel::class.java
+) {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     supportActionBar?.setDisplayHomeAsUpEnabled(true)
   }
-
-  override fun getLayoutId() = R.layout.activity_video
-
-  override fun getVariableValue() = viewModel
-
-  override fun getVariableId() = BR.viewModel
 
   override fun onOptionsItemSelected(item: MenuItem): Boolean {
     finish()

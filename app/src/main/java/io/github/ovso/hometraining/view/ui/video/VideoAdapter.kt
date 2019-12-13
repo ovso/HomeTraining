@@ -10,7 +10,6 @@ import com.google.gson.JsonObject
 import io.github.ovso.hometraining.R
 import io.github.ovso.hometraining.utils.RxBusBehavior
 import io.github.ovso.hometraining.utils.RxBusBehavior.VideoId
-import io.github.ovso.hometraining.view.ui.player.PlayerActivity
 import io.github.ovso.hometraining.view.ui.player2.Player2Activity
 import io.github.ovso.hometraining.view.ui.video.VideoAdapter.MyViewHolder
 import kotlinx.android.extensions.LayoutContainer
