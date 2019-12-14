@@ -1,11 +1,10 @@
 package io.github.ovso.hometraining.view.base
 
 import androidx.databinding.ObservableField
-import androidx.lifecycle.ViewModel
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
-abstract class DisposableViewModel : ViewModel() {
+abstract class DisposableViewModel : AutoDisposeViewModel() {
 
   private val compositeDisposable = CompositeDisposable()
   val isLoading = ObservableField<Boolean>(false)

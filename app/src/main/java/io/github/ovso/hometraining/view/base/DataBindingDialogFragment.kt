@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.DialogFragment
 
-abstract class DataBindingFragment<T : ViewDataBinding, V : DisposableViewModel> : Fragment() {
+abstract class DataBindingDialogFragment<T : ViewDataBinding, V : DisposableViewModel> : DialogFragment() {
 
   private lateinit var viewDataBinding: T
 
@@ -36,7 +36,7 @@ abstract class DataBindingFragment<T : ViewDataBinding, V : DisposableViewModel>
     super.onViewCreated(view, savedInstanceState)
     with(viewDataBinding) {
       setVariable(getVariableId(), getVariableValue())
-      lifecycleOwner = this@DataBindingFragment
+      lifecycleOwner = this@DataBindingDialogFragment
       executePendingBindings()
     }
   }
