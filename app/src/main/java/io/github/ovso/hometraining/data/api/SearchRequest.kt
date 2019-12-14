@@ -1,7 +1,7 @@
 package io.github.ovso.hometraining.data.api
 
 import com.google.gson.JsonElement
-import io.reactivex.Flowable
+import io.reactivex.Single
 import okhttp3.Headers
 import timber.log.Timber
 
@@ -28,7 +28,7 @@ class SearchRequest : BaseRequest<SearchService>() {
 
   override fun createHeaders() = Headers.Builder().build()
 
-  fun search(q: String): Flowable<JsonElement> {
+  fun search(q: String): Single<JsonElement> {
     val qMap = hashMapOf(
         "q" to q,
         "maxResults" to 50,

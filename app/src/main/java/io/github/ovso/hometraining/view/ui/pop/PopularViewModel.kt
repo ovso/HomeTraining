@@ -2,7 +2,6 @@ package io.github.ovso.hometraining.view.ui.pop
 
 import androidx.databinding.ObservableField
 import com.google.gson.JsonArray
-import com.google.gson.JsonElement
 import io.github.ovso.hometraining.R
 import io.github.ovso.hometraining.data.api.SearchRequest
 import io.github.ovso.hometraining.utils.ResourceProvider
@@ -17,7 +16,7 @@ class PopularViewModel : DisposableViewModel() {
   private val searchRequest by lazy { SearchRequest() }
 
   init {
-      reqSearch()
+    reqSearch()
   }
 
   private fun reqSearch() {
@@ -26,28 +25,14 @@ class PopularViewModel : DisposableViewModel() {
           .search(ResourceProvider.getString(R.string.popular_query))
           .subscribeOn(SchedulerProvider.io())
           .observeOn(SchedulerProvider.ui())
-          .subscribeBy(
-              onError = ::onError,
-              onNext = ::onSuccess,
-              onComplete = ::onComplete
-          )
+          .doOnError {
+            Timber.e(it)
+            Timber.d((it as? HttpException)?.response()?.errorBody()?.string())
+          }
+          .subscribeBy {
+            items.set(it.asJsonObject["items"].asJsonArray)
+          }
     addDisposable(disposable)
-  }
-
-  private fun onError(t: Throwable) {
-//    errorDialogLive.postValue(t)
-    if (t is HttpException) {
-      Timber.d("onError = ${t.response()?.errorBody()?.string()}")
-    }
-  }
-
-  private fun onSuccess(json: JsonElement) {
-    Timber.d("onSuccess")
-    items.set(json.asJsonObject["items"].asJsonArray)
-  }
-
-  private fun onComplete() {
-    Timber.d("onComplete()")
   }
 
 }
