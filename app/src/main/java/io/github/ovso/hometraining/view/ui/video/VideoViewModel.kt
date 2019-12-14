@@ -3,6 +3,7 @@ package io.github.ovso.hometraining.view.ui.video
 import androidx.databinding.ObservableField
 import androidx.lifecycle.MutableLiveData
 import com.google.gson.JsonArray
+import com.google.gson.JsonElement
 import io.github.ovso.hometraining.R
 import io.github.ovso.hometraining.data.api.SearchRequest
 import io.github.ovso.hometraining.utils.ResourceProvider
@@ -10,7 +11,6 @@ import io.github.ovso.hometraining.utils.RxBusBehavior
 import io.github.ovso.hometraining.utils.SchedulerProvider
 import io.github.ovso.hometraining.view.base.AllViewHolder.TitleAndQuery
 import io.github.ovso.hometraining.view.base.DisposableViewModel
-import io.reactivex.rxkotlin.subscribeBy
 import retrofit2.HttpException
 import timber.log.Timber
 
@@ -38,19 +38,23 @@ class VideoViewModel : DisposableViewModel() {
   }
 
   private fun reqSearch() {
-    Timber.d("reqSearch query = $query")
-    val disposable = searchRequest
-        .search(
-            query ?: ResourceProvider.getString(R.string.main_nav_title_male)
-        )
+    val q = query ?: ResourceProvider.getString(R.string.main_nav_title_male)
+    Timber.d("reqSearch q = $q")
+    searchRequest.search(q)
         .subscribeOn(SchedulerProvider.io())
         .observeOn(SchedulerProvider.ui())
-        .doOnError {
-          Timber.d((it as? HttpException)?.response()?.errorBody()?.string())
+        .subscribe(::onSuccess, ::onError)
+        .apply {
+          addDisposable(this)
         }
-        .subscribeBy {
-          items.set(it.asJsonObject["items"].asJsonArray)
-        }
+  }
 
+  private fun onSuccess(it: JsonElement) {
+    items.set(it.asJsonObject["items"].asJsonArray)
+  }
+
+  private fun onError(it: Throwable) {
+    Timber.e(it)
+    Timber.d((it as? HttpException)?.response()?.errorBody()?.string())
   }
 }

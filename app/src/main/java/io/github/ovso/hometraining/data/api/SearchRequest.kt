@@ -1,8 +1,7 @@
 package io.github.ovso.hometraining.data.api
 
 import com.google.gson.JsonElement
-import io.reactivex.Single
-import okhttp3.Headers
+import io.reactivex.rxjava3.core.Single
 import timber.log.Timber
 
 class SearchRequest : BaseRequest<SearchService>() {
@@ -25,8 +24,6 @@ class SearchRequest : BaseRequest<SearchService>() {
   override val apiClass: Class<SearchService> = SearchService::class.java
 
   override val baseUrl: String = "https://www.googleapis.com/"
-
-  override fun createHeaders() = Headers.Builder().build()
 
   fun search(q: String): Single<JsonElement> {
     val qMap = hashMapOf(

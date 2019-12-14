@@ -1,10 +1,9 @@
 package io.github.ovso.hometraining.data.api
 
-import okhttp3.Headers
+import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
@@ -20,14 +19,12 @@ abstract class BaseRequest<T> {
   protected val isInterceptor: Boolean
     get() = false
 
-  protected abstract fun createHeaders(): Headers
-
   private fun createRetrofit(): Retrofit {
 
     return Retrofit.Builder()
         .baseUrl(baseUrl)
         .addConverterFactory(GsonConverterFactory.create())
-        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+        .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
         .client(createClient())
         .build()
   }
@@ -40,7 +37,6 @@ abstract class BaseRequest<T> {
       val original = chain.request()
       val requestBuilder = original.newBuilder()
           .header("Content-Type", "plain/text")
-          .headers(this@BaseRequest.createHeaders())
       val request = requestBuilder.build()
       chain.proceed(request)
     }
@@ -55,6 +51,6 @@ abstract class BaseRequest<T> {
   }
 
   companion object {
-    val TIMEOUT_SECONDS = 7
+    private const val TIMEOUT_SECONDS = 30
   }
 }
