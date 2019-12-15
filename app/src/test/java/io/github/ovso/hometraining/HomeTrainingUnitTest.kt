@@ -9,7 +9,7 @@ import retrofit2.HttpException
  *
  * See [testing documentation](http://d.android.com/tools/testing).
  */
-class ExampleUnitTest {
+class HomeTrainingUnitTest {
   private val searchRequest = SearchRequest2()
 
   @Test
