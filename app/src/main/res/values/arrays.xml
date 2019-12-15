@@ -1,51 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="queries_male">
-        <item>홈트레이닝 남자 초보</item>
-        <item>홈트레이닝 남자 루틴</item>
-        <item>홈트레이닝 남자 다이어트</item>
-        <item>홈트레이닝 남자 어깨</item>
-        <item>홈트레이닝 남자 복근</item>
-        <item>홈트레이닝 남자 상체</item>
-        <item>홈트레이닝 남자 변화</item>
-        <item>홈트레이닝 남자 하체</item>
-        <item>홈트레이닝 남자 유산소</item>
-        <item>홈트레이닝 남자 등</item>
-    </string-array>
-    <string-array name="queries_female">
-        <item>홈트레이닝 여자 초보</item>
-        <item>홈트레이닝 여자 스트레칭</item>
-        <item>홈트레이닝 여자 복근</item>
-        <item>홈트레이닝 여자 근력</item>
-        <item>홈트레이닝 여자 뱃살</item>
-        <item>홈트레이닝 여자 다이어트</item>
-        <item>홈트레이닝 여자 유산소</item>
-        <item>홈트레이닝 여자 전신</item>
-        <item>홈트레이닝 여자 등운동</item>
-        <item>홈트레이닝 여자 복부</item>
-    </string-array>
-    <string-array name="tabs_title_male">
-        <item>남성 초보</item>
-        <item>남성 루틴</item>
-        <item>남성 다이어트</item>
-        <item>남성 어깨</item>
-        <item>남성 복근</item>
-        <item>남성 상체</item>
-        <item>남성 변화</item>
-        <item>남성 하체</item>
-        <item>남성 유산소</item>
-        <item>남성 등</item>
-    </string-array>
-    <string-array name="tabs_title_female">
-        <item>여성 초보</item>
-        <item>여성 스트레칭</item>
-        <item>여성 복근</item>
-        <item>여성 근력</item>
-        <item>여성 뱃살</item>
-        <item>여성 다이어트</item>
-        <item>여성 유산소</item>
-        <item>여성 전신</item>
-        <item>여성 등운동</item>
-        <item>여성 복부</item>
-    </string-array>
+  <string-array name="queries_male">
+    <item>홈트레이닝 남자 초보</item>
+    <item>홈트레이닝 남자 루틴</item>
+    <item>홈트레이닝 남자 다이어트</item>
+    <item>홈트레이닝 남자 어깨</item>
+    <item>홈트레이닝 남자 복근</item>
+    <item>홈트레이닝 남자 상체</item>
+    <item>홈트레이닝 남자 변화</item>
+    <item>홈트레이닝 남자 하체</item>
+    <item>홈트레이닝 남자 유산소</item>
+    <item>홈트레이닝 남자 등</item>
+  </string-array>
+  <string-array name="queries_female">
+    <item>홈트레이닝 여자 초보</item>
+    <item>홈트레이닝 여자 스트레칭</item>
+    <item>홈트레이닝 여자 복근</item>
+    <item>홈트레이닝 여자 근력</item>
+    <item>홈트레이닝 여자 뱃살</item>
+    <item>홈트레이닝 여자 다이어트</item>
+    <item>홈트레이닝 여자 유산소</item>
+    <item>홈트레이닝 여자 전신</item>
+    <item>홈트레이닝 여자 등운동</item>
+    <item>홈트레이닝 여자 복부</item>
+  </string-array>
+  <string-array name="tabs_title_male">
+    <item>남성 초보</item>
+    <item>남성 루틴</item>
+    <item>남성 다이어트</item>
+    <item>남성 어깨</item>
+    <item>남성 복근</item>
+    <item>남성 상체</item>
+    <item>남성 변화</item>
+    <item>남성 하체</item>
+    <item>남성 유산소</item>
+    <item>남성 등</item>
+  </string-array>
+  <string-array name="tabs_title_female">
+    <item>여성 초보</item>
+    <item>여성 스트레칭</item>
+    <item>여성 복근</item>
+    <item>여성 근력</item>
+    <item>여성 뱃살</item>
+    <item>여성 다이어트</item>
+    <item>여성 유산소</item>
+    <item>여성 전신</item>
+    <item>여성 등운동</item>
+    <item>여성 복부</item>
+  </string-array>
+  <string-array name="keys">
+    <item>AIzaSyA4pdIQO-74kZv7MLpPZs13oEYq2w5ki4E</item>
+    <item>AIzaSyCDlPMTU-TsKp8k7t6875jkAIRWrl2XCfE</item>
+    <item>AIzaSyCe8fJ3dw_8YzFq1L7X3Iip9Bs_KZ66bNM</item>
+    <item>AIzaSyBT2wy_F43ouGtgmNBmklik6qYHYFIVtbA</item>
+  </string-array>
 </resources>

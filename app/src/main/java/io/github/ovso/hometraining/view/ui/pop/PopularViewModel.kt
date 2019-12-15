@@ -7,6 +7,7 @@ import io.github.ovso.hometraining.R
 import io.github.ovso.hometraining.data.api.SearchRequest
 import io.github.ovso.hometraining.utils.ResourceProvider
 import io.github.ovso.hometraining.utils.SchedulerProvider
+import io.github.ovso.hometraining.utils.prefs.KeyPreferences
 import io.github.ovso.hometraining.view.base.DisposableViewModel
 import retrofit2.HttpException
 import timber.log.Timber
@@ -34,20 +35,13 @@ class PopularViewModel : DisposableViewModel() {
   }
 
   private fun getQueryMap(): Map<String, Any> {
-
-    fun getApiKey(): String {
-      val keys =
-        "AIzaSyA4pdIQO-74kZv7MLpPZs13oEYq2w5ki4E//AIzaSyCDlPMTU-TsKp8k7t6875jkAIRWrl2XCfE//AIzaSyCe8fJ3dw_8YzFq1L7X3Iip9Bs_KZ66bNM//AIzaSyBT2wy_F43ouGtgmNBmklik6qYHYFIVtbA"
-      return keys.split("//")[0]
-    }
-
     return hashMapOf(
         "q" to ResourceProvider.getString(R.string.popular_query),
         "maxResults" to 50,
         "order" to "viewCount",
         "type" to "video",
         "videoSyndicated" to "any",
-        "key" to getApiKey(),
+        "key" to ResourceProvider.getStringArray(R.array.keys)[KeyPreferences.index],
         "part" to "snippet",
         "fields" to "items(id,snippet(title,thumbnails(medium)))"
     )
