@@ -1,6 +1,6 @@
 package io.github.ovso.hometraining
 
-import io.github.ovso.hometraining.data.api.SearchRequest2
+import io.github.ovso.hometraining.data.api.SearchRequest
 import org.junit.Test
 import retrofit2.HttpException
 
@@ -10,7 +10,7 @@ import retrofit2.HttpException
  * See [testing documentation](http://d.android.com/tools/testing).
  */
 class HomeTrainingUnitTest {
-  private val searchRequest = SearchRequest2()
+  private val searchRequest = SearchRequest()
 
   @Test
   fun search_request() {

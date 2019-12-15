@@ -2,25 +2,20 @@ package io.github.ovso.hometraining.data.api
 
 import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory
 import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-abstract class BaseRequest<T> {
+const val BASE_URL = "https://www.googleapis.com"
 
-  val api: T
-    get() = createRetrofit().create(apiClass)
+abstract class BaseRequest2<T>(
+  private val baseUrl: String,
+  private val cls: Class<T>
+) {
 
-  protected abstract val apiClass: Class<T>
-
-  protected abstract val baseUrl: String
-
-  protected val isInterceptor: Boolean
-    get() = false
+  fun api(): T = createRetrofit().create(cls)
 
   private fun createRetrofit(): Retrofit {
-
     return Retrofit.Builder()
         .baseUrl(baseUrl)
         .addConverterFactory(GsonConverterFactory.create())
@@ -33,6 +28,7 @@ abstract class BaseRequest<T> {
     val httpClient = OkHttpClient.Builder()
     httpClient.readTimeout(TIMEOUT_SECONDS.toLong(), TimeUnit.SECONDS)
     httpClient.connectTimeout(TIMEOUT_SECONDS.toLong(), TimeUnit.SECONDS)
+    httpClient.followRedirects(false)
     httpClient.addInterceptor { chain ->
       val original = chain.request()
       val requestBuilder = original.newBuilder()
@@ -40,17 +36,10 @@ abstract class BaseRequest<T> {
       val request = requestBuilder.build()
       chain.proceed(request)
     }
-    val interceptor = HttpLoggingInterceptor()
-    interceptor.level = HttpLoggingInterceptor.Level.BODY
-
-    if (isInterceptor) {
-      httpClient.addInterceptor(interceptor)
-    }
-
     return httpClient.build()
   }
 
   companion object {
-    private const val TIMEOUT_SECONDS = 30
+    const val TIMEOUT_SECONDS = 30
   }
 }

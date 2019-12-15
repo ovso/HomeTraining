@@ -6,7 +6,6 @@ import com.google.gson.JsonArray
 import com.google.gson.JsonElement
 import io.github.ovso.hometraining.R
 import io.github.ovso.hometraining.data.api.SearchRequest
-import io.github.ovso.hometraining.data.api.SearchRequest2
 import io.github.ovso.hometraining.utils.ResourceProvider
 import io.github.ovso.hometraining.utils.RxBusBehavior
 import io.github.ovso.hometraining.utils.SchedulerProvider
@@ -18,9 +17,8 @@ import timber.log.Timber
 class VideoViewModel : DisposableViewModel() {
 
   val items = ObservableField<JsonArray>()
-  private val searchRequest by lazy { SearchRequest() }
   private val searchRequest2 by lazy {
-    SearchRequest2()
+    SearchRequest()
   }
 
   val errorDialogLive = MutableLiveData<Throwable>()
@@ -72,18 +70,6 @@ class VideoViewModel : DisposableViewModel() {
         "part" to "snippet",
         "fields" to "items(id,snippet(title,thumbnails(medium)))"
     )
-  }
-
-  private fun reqSearch() {
-    val q = query ?: ResourceProvider.getString(R.string.main_nav_title_male)
-    Timber.d("reqSearch q = $q")
-    searchRequest.search(q)
-        .subscribeOn(SchedulerProvider.io())
-        .observeOn(SchedulerProvider.ui())
-        .subscribe(::onSuccess, ::onError)
-        .apply {
-          addDisposable(this)
-        }
   }
 
   private fun onSuccess(it: JsonElement) {
