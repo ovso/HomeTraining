@@ -71,8 +71,7 @@ dependencies {
   implementation deps.koin.values()
   implementation deps.timber
   implementation deps.youtube_player
-  implementation "com.github.akarnokd:rxjava3-retrofit-adapter:3.0.0-RC6"
-  //    implementation 'kr.co.prnd:youtube-player-view:1.3.0'
+  implementation deps.koap
   testImplementation deps.tsl.values()
   androidTestImplementation deps.atsl.values()
 }

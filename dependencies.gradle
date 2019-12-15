@@ -147,7 +147,8 @@ ext {
                     'runtime'            : "com.squareup.retrofit2:retrofit:$versions.retrofit",
                     'gson'               : "com.squareup.retrofit2:converter-gson:$versions.retrofit",
                     'rxjava2'            : "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit",
-                    'logging_interceptor': "com.squareup.okhttp3:logging-interceptor:$versions.logging_interceptor"
+                    'logging_interceptor': "com.squareup.okhttp3:logging-interceptor:$versions.logging_interceptor",
+                    'rxjava3'            : "com.github.akarnokd:rxjava3-retrofit-adapter:3.0.0-RC6"
             ],
 
 
