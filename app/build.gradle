@@ -40,13 +40,6 @@ android {
     exclude "META-INF/kotlinx-coroutines-io.kotlin_module"
   }
 
-  externalNativeBuild {
-    cmake {
-      version '3.10.2'
-      path "src/main/cpp/CMakeLists.txt"
-    }
-  }
-
   androidExtensions {
     experimental = true
   }
@@ -58,7 +51,6 @@ android {
 
 dependencies {
   implementation fileTree(dir: 'libs', include: ['*.jar'])
-  //  implementation files('libs/YouTubeAndroidPlayerApi.jar')
   implementation deps.anko.values()
   implementation deps.coroutines.values()
   implementation deps.kotlin.values()
