@@ -5,6 +5,7 @@ import android.view.MenuItem
 import io.github.ovso.hometraining.R
 import io.github.ovso.hometraining.databinding.ActivityVideoBinding
 import io.github.ovso.hometraining.view.base.DataBindingActivity2
+import kotlinx.android.synthetic.main.activity_video.toolbar
 
 class VideoActivity : DataBindingActivity2<ActivityVideoBinding>(
     layoutResId = R.layout.activity_video,
@@ -13,6 +14,7 @@ class VideoActivity : DataBindingActivity2<ActivityVideoBinding>(
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
+    setSupportActionBar(toolbar)
     supportActionBar?.setDisplayHomeAsUpEnabled(true)
   }
 

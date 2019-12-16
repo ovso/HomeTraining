@@ -1,54 +1,9 @@
 package io.github.ovso.hometraining.data.api
 
-import com.google.gson.JsonElement
-import io.reactivex.rxjava3.core.Single
-import timber.log.Timber
-
-class SearchRequest : BaseRequest<SearchService>() {
-
-  private var apiKeyIndex = 1
-  private val apiKeys by lazy {
-    apiKeys().split("//".toRegex())
-  }
-
-  private fun nextApiKey(): String {
-    Timber.d("apiKeyIndex = $apiKeyIndex")
-    if ((apiKeyIndex == apiKeys.count())) {
-      apiKeyIndex = 0
-    }
-    val key = apiKeys[apiKeyIndex]
-    ++apiKeyIndex
-    return key
-  }
-
-  override val apiClass: Class<SearchService> = SearchService::class.java
-
-  override val baseUrl: String = "https://www.googleapis.com/"
-
-  fun search(q: String): Single<JsonElement> {
-    val qMap = hashMapOf(
-        "q" to q,
-        "maxResults" to 50,
-        "order" to "viewCount",
-        "type" to "video",
-        "videoSyndicated" to "any",
-        "key" to nextApiKey(),
-        "part" to "snippet",
-        "fields" to "items(id,snippet(title,thumbnails(medium)))"
-    )
-    return api.search(qMap)
-  }
-
-  private external fun apiKeys(): String
-
-  companion object {
-    init {
-      System.loadLibrary("kotlin-jni")
-    }
-  }
-
-}
-
+class SearchRequest : BaseRequest2<SearchService>(
+    BASE_URL,
+    SearchService::class.java
+)
 /*
 
             "kind": "youtube#searchResult",
