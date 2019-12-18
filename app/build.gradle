@@ -64,8 +64,7 @@ dependencies {
   implementation deps.timber
   implementation deps.youtube_player
   implementation deps.koap
-  implementation 'io.supercharge:shimmerlayout:2.1.0'
-  implementation 'com.facebook.shimmer:shimmer:0.5.0'
+  implementation deps.shimmer
   testImplementation deps.tsl.values()
   androidTestImplementation deps.atsl.values()
 }
