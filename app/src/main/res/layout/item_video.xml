@@ -31,7 +31,7 @@
           android:layout_width="match_parent"
           android:layout_height="match_parent"
           android:scaleType="fitCenter"
-          tools:srcCompat="@drawable/female"
+          tools:srcCompat="@android:drawable/ic_menu_share"
           />
     </FrameLayout>
 

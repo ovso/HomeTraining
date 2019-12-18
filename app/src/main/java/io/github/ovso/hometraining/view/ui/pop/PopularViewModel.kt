@@ -1,5 +1,6 @@
 package io.github.ovso.hometraining.view.ui.pop
 
+import android.view.View
 import androidx.databinding.ObservableField
 import com.google.gson.JsonArray
 import com.google.gson.JsonElement
@@ -28,6 +29,9 @@ class PopularViewModel : DisposableViewModel() {
         .search(getQueryMap())
         .subscribeOn(SchedulerProvider.io())
         .observeOn(SchedulerProvider.ui())
+        .doOnSubscribe { isLoadingView.set(View.VISIBLE) }
+        .doOnError { isLoadingView.set(View.GONE) }
+        .doFinally { isLoadingView.set(View.GONE) }
         .subscribe(::onSuccess, ::onError)
         .apply {
           addDisposable(this)

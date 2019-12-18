@@ -1,6 +1,9 @@
 package io.github.ovso.hometraining.view.ui.video
 
+import android.view.View
+import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
+import androidx.databinding.ObservableInt
 import androidx.lifecycle.MutableLiveData
 import com.google.gson.JsonArray
 import com.google.gson.JsonElement
@@ -35,17 +38,20 @@ class VideoViewModel : DisposableViewModel() {
                 titleOb.set(it.title)
                 query = it.query
                 Timber.d("title = ${it.title}, query = ${it.query}")
-                reqSearch2()
+                reqSearch()
               }
             }
     )
   }
 
-  private fun reqSearch2() {
+  private fun reqSearch() {
     searchRequest2.api()
         .search(getQueryMap())
         .subscribeOn(SchedulerProvider.io())
         .observeOn(SchedulerProvider.ui())
+        .doOnSubscribe { isLoadingView.set(View.VISIBLE) }
+        .doOnError { isLoadingView.set(View.GONE) }
+        .doFinally { isLoadingView.set(View.GONE) }
         .subscribe(::onSuccess, ::onError)
         .apply {
           addDisposable(this)

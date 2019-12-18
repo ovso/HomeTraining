@@ -1,6 +1,8 @@
 package io.github.ovso.hometraining.view.base
 
-import androidx.databinding.ObservableField
+import android.view.View
+import androidx.databinding.ObservableBoolean
+import androidx.databinding.ObservableInt
 import androidx.lifecycle.ViewModel
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.disposables.Disposable
@@ -8,7 +10,8 @@ import io.reactivex.rxjava3.disposables.Disposable
 abstract class DisposableViewModel : ViewModel() {
 
   private val compositeDisposable = CompositeDisposable()
-  val isLoading = ObservableField<Boolean>(false)
+  val isLoading = ObservableBoolean(false)
+  val isLoadingView = ObservableInt(View.GONE)
 
   override fun onCleared() {
     clearDisposable()

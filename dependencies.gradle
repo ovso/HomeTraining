@@ -47,7 +47,9 @@ ext {
             'logging_interceptor'  : '4.2.1',
             'arch_core'            : '2.1.0',
             'koap'                 : '1.0.1',
-            'youtube_player'       : '10.0.5'
+            'youtube_player'       : '10.0.5',
+            'shimmer'              : '0.5.0',
+            'shimmer_layout'       : '2.1.0'
     ]
 
     deps = [
@@ -213,7 +215,13 @@ ext {
             'threetenabp'   : "com.jakewharton.threetenabp:threetenabp:$versions.threetenabp",
 
 
-            'koap'          : "com.github.AgustaRC.koap:koap:$versions.koap"
+            'koap'          : "com.github.AgustaRC.koap:koap:$versions.koap",
+
+
+            'loading'       : [
+                    'shimmer' : "com.facebook.shimmer:shimmer:$versions.shimmer",
+                    'shimmer_layout' : "io.supercharge:shimmerlayout:$versions.shimmer_layout"
+            ]
     ]
 
     classpath = [

@@ -64,6 +64,7 @@ dependencies {
   implementation deps.timber
   implementation deps.youtube_player
   implementation deps.koap
+  implementation deps.lottie
   testImplementation deps.tsl.values()
   androidTestImplementation deps.atsl.values()
 }
