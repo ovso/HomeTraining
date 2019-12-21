@@ -5,6 +5,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
+import androidx.core.view.get
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.google.android.material.navigation.NavigationView
@@ -12,12 +13,16 @@ import io.github.ovso.hometraining.R
 import io.github.ovso.hometraining.exts.FragmentExtensions.attach
 import io.github.ovso.hometraining.exts.FragmentExtensions.detach
 import io.github.ovso.hometraining.utils.ResourceProvider
+import io.github.ovso.hometraining.utils.prefs.NavPreferences
 import io.github.ovso.hometraining.view.ui.main.BottomNavPosition.FEMALE
 import io.github.ovso.hometraining.view.ui.main.BottomNavPosition.MALE
 import io.github.ovso.hometraining.view.ui.main.BottomNavPosition.POPULAR
 import kotlinx.android.synthetic.main.activity_main.drawer_layout
+import kotlinx.android.synthetic.main.activity_main.nav_view_main
 import kotlinx.android.synthetic.main.app_bar_main.toolbar
 import kotlinx.android.synthetic.main.content_main.bottom_nav_main
+import org.jetbrains.anko.find
+import timber.log.Timber
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -43,13 +48,21 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
   }
 
   private fun initFragment(savedInstanceState: Bundle?) {
-    savedInstanceState ?: switchFragment(MALE)
+//    savedInstanceState ?: switchFragment(MALE)
+    val navPosition = BottomNavPosition.values()
+        .first {
+          it.position == NavPreferences.position
+        }
+    Timber.d("navPosition = $navPosition")
+    bottom_nav_main.selectedItemId = bottom_nav_main.menu[navPosition.position].itemId
+    switchFragment(navPosition)
   }
 
   /**
    * Immediately execute transactions with FragmentManager#executePendingTransactions.
    */
   private fun switchFragment(navPosition: BottomNavPosition): Boolean {
+    NavPreferences.position = navPosition.position
     return findFragment(navPosition).let {
       if (it.isAdded) return false
       supportFragmentManager.detach() // Extension function

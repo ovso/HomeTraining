@@ -5,6 +5,7 @@ import github.agustarc.koap.Koap
 import io.github.ovso.hometraining.BuildConfig
 import io.github.ovso.hometraining.R
 import io.github.ovso.hometraining.utils.prefs.KeyPreferences
+import io.github.ovso.hometraining.utils.prefs.NavPreferences
 import timber.log.Timber
 import timber.log.Timber.DebugTree
 
@@ -21,7 +22,7 @@ class App : Application() {
   }
 
   private fun setupPrefs() {
-    Koap.bind(this, KeyPreferences)
+    Koap.bind(this, KeyPreferences, NavPreferences)
     if (KeyPreferences.index == resources.getStringArray(R.array.keys).lastIndex) {
       KeyPreferences.index = -1
     }
