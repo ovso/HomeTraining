@@ -7,32 +7,17 @@ import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import io.github.ovso.hometraining.BR
-import io.github.ovso.hometraining.R
 
-abstract class DataBindingDialogFragment<T : ViewDataBinding>(
+abstract class DataBindingFragment2<T : ViewDataBinding>(
     @LayoutRes private val layoutResId: Int,
     private val viewModelCls: Class<out ViewModel>
-) : DialogFragment() {
-
-    private lateinit var viewDataBinding: T
+) : Fragment() {
 
     protected lateinit var binding: T
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setupStyle()
-    }
-
-    private fun setupStyle() {
-        setStyle(
-            STYLE_NORMAL,
-            R.style.AppTheme_NoActionBar
-        )
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,7 +30,7 @@ abstract class DataBindingDialogFragment<T : ViewDataBinding>(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val owner = this@DataBindingDialogFragment
+        val owner = this@DataBindingFragment2
         with(binding) {
             setVariable(BR.viewModel, ViewModelProvider(owner)[viewModelCls])
             lifecycleOwner = owner

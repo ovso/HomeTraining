@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 
+@Deprecated("DataBindingFragment instead DataBindingFragment2")
 abstract class DataBindingFragment<T : ViewDataBinding, V : DisposableViewModel> : Fragment() {
 
   private lateinit var viewDataBinding: T
