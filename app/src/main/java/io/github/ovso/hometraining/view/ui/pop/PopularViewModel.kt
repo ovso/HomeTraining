@@ -1,7 +1,7 @@
 package io.github.ovso.hometraining.view.ui.pop
 
 import android.view.View
-import androidx.databinding.ObservableField
+import androidx.lifecycle.MutableLiveData
 import com.google.gson.JsonArray
 import com.google.gson.JsonElement
 import io.github.ovso.hometraining.R
@@ -14,18 +14,18 @@ import retrofit2.HttpException
 import timber.log.Timber
 
 class PopularViewModel : DisposableViewModel() {
-  val items = ObservableField<JsonArray>()
-  private val searchRequest2 by lazy {
+  val itemsLive = MutableLiveData<JsonArray>()
+  private val searchRequest by lazy {
     SearchRequest()
   }
 
   init {
-    reqSearch2()
+    reqSearch()
   }
 
-  private fun reqSearch2() {
+  private fun reqSearch() {
 
-    searchRequest2.api()
+    searchRequest.api()
         .search(getQueryMap())
         .subscribeOn(SchedulerProvider.io())
         .observeOn(SchedulerProvider.ui())
@@ -52,7 +52,7 @@ class PopularViewModel : DisposableViewModel() {
   }
 
   private fun onSuccess(it: JsonElement) {
-    items.set(it.asJsonObject["items"].asJsonArray)
+    itemsLive.value = it.asJsonObject["items"].asJsonArray
   }
 
   private fun onError(it: Throwable) {

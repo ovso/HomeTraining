@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import io.github.ovso.hometraining.view.base.AllRvAdapter
 
-object RvBindingAdapter {
+object RvBinding {
 
   @JvmStatic
   @BindingAdapter("items", "queries", requireAll = true)
