@@ -18,8 +18,8 @@ import kotlinx.android.synthetic.main.item_video.iv_video_item
 import org.jetbrains.anko.startActivity
 
 class VideoAdapter : RecyclerView.Adapter<MyViewHolder>() {
-  var items: JsonArray? = null
-  override fun getItemCount() = items?.size() ?: 0
+  private val items: JsonArray = JsonArray()
+  override fun getItemCount() = items.size()
   override fun onCreateViewHolder(
     parent: ViewGroup,
     viewType: Int
@@ -27,11 +27,16 @@ class VideoAdapter : RecyclerView.Adapter<MyViewHolder>() {
     return MyViewHolder.create(parent)
   }
 
+  fun addAll(_items: JsonArray) {
+    items.addAll(_items)
+    notifyDataSetChanged()
+  }
+
   override fun onBindViewHolder(
     holder: MyViewHolder,
     position: Int
   ) {
-    holder.bind(items!![position].asJsonObject!!)
+    holder.bind(items[position].asJsonObject!!)
   }
 
   class MyViewHolder(

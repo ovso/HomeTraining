@@ -1,9 +1,7 @@
 package io.github.ovso.hometraining.view.ui.video
 
 import android.view.View
-import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
-import androidx.databinding.ObservableInt
 import androidx.lifecycle.MutableLiveData
 import com.google.gson.JsonArray
 import com.google.gson.JsonElement
@@ -20,11 +18,10 @@ import timber.log.Timber
 
 class VideoViewModel : DisposableViewModel() {
 
-  val items = ObservableField<JsonArray>()
-  private val searchRequest2 by lazy {
+  private val searchRequest by lazy {
     SearchRequest()
   }
-
+  val itemsLive = MutableLiveData<JsonArray>()
   val errorDialogLive = MutableLiveData<Throwable>()
 
   val titleOb = ObservableField<String>()
@@ -45,7 +42,7 @@ class VideoViewModel : DisposableViewModel() {
   }
 
   private fun reqSearch() {
-    searchRequest2.api()
+    searchRequest.api()
         .search(getQueryMap())
         .subscribeOn(SchedulerProvider.io())
         .observeOn(SchedulerProvider.ui())
@@ -74,7 +71,7 @@ class VideoViewModel : DisposableViewModel() {
   }
 
   private fun onSuccess(it: JsonElement) {
-    items.set(it.asJsonObject["items"].asJsonArray)
+    itemsLive.value = it.asJsonObject["items"].asJsonArray
   }
 
   private fun onError(it: Throwable) {

@@ -22,4 +22,5 @@ class PopularFragment : DataBindingFragment<FragmentPopularBinding, PopularViewM
   override fun getVariableValue() = viewModel
 
   override fun getVariableId() = BR.viewModel
+
 }
