@@ -7,6 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import kotlinx.android.synthetic.main.app_bar_main.toolbar
 
+@Deprecated("DataBindingActivity instead DataBindingActivity2")
 abstract class DataBindingActivity<T : ViewDataBinding, V : DisposableViewModel> : AppCompatActivity() {
 
   private lateinit var viewDataBinding: T

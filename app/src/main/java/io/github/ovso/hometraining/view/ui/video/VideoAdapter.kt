@@ -3,9 +3,11 @@ package io.github.ovso.hometraining.view.ui.video
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.google.gson.JsonArray
+import com.google.gson.JsonElement
 import com.google.gson.JsonObject
 import io.github.ovso.hometraining.R
 import io.github.ovso.hometraining.utils.RxBusBehavior
@@ -17,9 +19,23 @@ import kotlinx.android.synthetic.main.item_video.fl_video_item_img_container
 import kotlinx.android.synthetic.main.item_video.iv_video_item
 import org.jetbrains.anko.startActivity
 
-class VideoAdapter : RecyclerView.Adapter<MyViewHolder>() {
-  var items: JsonArray? = null
-  override fun getItemCount() = items?.size() ?: 0
+private val diffUtil = object : DiffUtil.ItemCallback<JsonElement>() {
+  override fun areItemsTheSame(
+    oldItem: JsonElement,
+    newItem: JsonElement
+  ): Boolean {
+    return oldItem == newItem
+  }
+
+  override fun areContentsTheSame(
+    oldItem: JsonElement,
+    newItem: JsonElement
+  ): Boolean {
+    return areItemsTheSame(oldItem, newItem)
+  }
+}
+
+class VideoAdapter : ListAdapter<JsonElement, MyViewHolder>(diffUtil) {
   override fun onCreateViewHolder(
     parent: ViewGroup,
     viewType: Int
@@ -31,7 +47,7 @@ class VideoAdapter : RecyclerView.Adapter<MyViewHolder>() {
     holder: MyViewHolder,
     position: Int
   ) {
-    holder.bind(items!![position].asJsonObject!!)
+    holder.bind(getItem(position))
   }
 
   class MyViewHolder(
@@ -40,8 +56,8 @@ class VideoAdapter : RecyclerView.Adapter<MyViewHolder>() {
 
     private lateinit var json: JsonObject
 
-    fun bind(_json: JsonObject) {
-      json = _json
+    fun bind(_json: JsonElement) {
+      json = _json.asJsonObject
       loadImg()
       setClick()
     }

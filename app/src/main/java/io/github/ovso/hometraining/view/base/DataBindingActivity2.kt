@@ -14,7 +14,7 @@ abstract class DataBindingActivity2<T : ViewDataBinding>(
     private val viewModelCls: Class<out ViewModel>
 ) : AppCompatActivity() {
 
-    protected val binding by lazy {
+    protected val binding: T by lazy {
         DataBindingUtil.setContentView<T>(this, layoutResId)
     }
 

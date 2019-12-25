@@ -1,13 +1,21 @@
 package io.github.ovso.hometraining.view.ui.pop
 
+import android.os.Bundle
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import io.github.ovso.hometraining.BR
 import io.github.ovso.hometraining.R
 import io.github.ovso.hometraining.databinding.FragmentPopularBinding
-import io.github.ovso.hometraining.view.base.DataBindingFragment
+import io.github.ovso.hometraining.view.base.DataBindingFragment2
+import io.github.ovso.hometraining.view.ui.video.VideoAdapter
+import kotlinx.android.synthetic.main.fragment_popular.rv_popular
+import org.koin.android.ext.android.inject
 
-class PopularFragment : DataBindingFragment<FragmentPopularBinding, PopularViewModel>() {
+class PopularFragment : DataBindingFragment2<FragmentPopularBinding>(
+    layoutResId = R.layout.fragment_popular,
+    viewModelCls = PopularViewModel::class.java
+) {
 
+  private val adapter: VideoAdapter by inject()
   private val viewModel by lazy {
     ViewModelProvider(this)[PopularViewModel::class.java]
   }
@@ -17,9 +25,21 @@ class PopularFragment : DataBindingFragment<FragmentPopularBinding, PopularViewM
     fun newInstance() = PopularFragment()
   }
 
-  override fun getLayoutId() = R.layout.fragment_popular
+  override fun onActivityCreated(savedInstanceState: Bundle?) {
+    super.onActivityCreated(savedInstanceState)
+    setupRv()
+    observe()
+  }
 
-  override fun getVariableValue() = viewModel
+  private fun setupRv() {
+    rv_popular.adapter = adapter
+  }
 
-  override fun getVariableId() = BR.viewModel
+  private fun observe() {
+    val owner = viewLifecycleOwner
+    viewModel.itemsLive.observe(owner, Observer {
+      adapter.submitList(it.toMutableList())
+    })
+  }
+
 }
