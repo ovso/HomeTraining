@@ -1,6 +1,8 @@
 package io.github.ovso.hometraining
 
 import io.github.ovso.hometraining.data.api.SearchRequest
+import io.github.ovso.hometraining.utils.SchedulerProvider
+import io.github.ovso.hometraining.utils.TestSchedulerProvider
 import org.junit.Test
 import retrofit2.HttpException
 
@@ -23,7 +25,7 @@ class HomeTrainingUnitTest {
 
     fun getQueryMap() = hashMapOf(
         "q" to "홈트레이닝",
-        "maxResults" to 50,
+        "maxResults" to 1,
         "order" to "viewCount",
         "type" to "video",
         "videoSyndicated" to "any",
@@ -34,6 +36,8 @@ class HomeTrainingUnitTest {
 
     searchRequest.api()
         .search(getQueryMap())
+        .subscribeOn(TestSchedulerProvider.io())
+        .observeOn(TestSchedulerProvider.ui())
         .subscribe(
             {
               //              println(it)
