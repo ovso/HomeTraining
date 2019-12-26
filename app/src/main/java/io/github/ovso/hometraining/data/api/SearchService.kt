@@ -10,6 +10,9 @@ interface SearchService {
   @GET("youtube/v3/search")
   fun search(@QueryMap queryMap: Map<String, @JvmSuppressWildcards Any>): Single<JsonElement>
 
+  @GET("youtube/v3/channels")
+  fun channels(@QueryMap queryMap: Map<String, @JvmSuppressWildcards Any>): Single<JsonElement>
+
   @GET("youtube/v3/search")
   suspend fun searchCoroutine(@QueryMap queryMap: Map<String, @JvmSuppressWildcards Any>): Response<JsonElement>
 }
