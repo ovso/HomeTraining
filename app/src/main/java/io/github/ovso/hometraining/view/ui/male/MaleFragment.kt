@@ -13,4 +13,5 @@ class MaleFragment : DataBindingFragment2<FragmentMaleBinding>(
     val TAG: String = MaleFragment::class.java.simpleName
     fun newInstance() = MaleFragment()
   }
+
 }

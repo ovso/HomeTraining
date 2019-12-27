@@ -4,7 +4,6 @@
     >
 
   <data>
-
     <variable
         name="viewModel"
         type="io.github.ovso.hometraining.view.ui.male.MaleViewModel"

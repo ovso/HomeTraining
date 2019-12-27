@@ -13,4 +13,5 @@ class MaleViewModel : DisposableViewModel() {
     items.addAll(ResourceProvider.getStringArray(R.array.tabs_title_male))
     queries.addAll(ResourceProvider.getStringArray(R.array.queries_male))
   }
+
 }
