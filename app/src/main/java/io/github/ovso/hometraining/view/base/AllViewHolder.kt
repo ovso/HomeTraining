@@ -5,12 +5,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import io.github.ovso.hometraining.R
+import io.github.ovso.hometraining.exts.startActivity
 import io.github.ovso.hometraining.utils.RxBusBehavior
 import io.github.ovso.hometraining.view.ui.video.VideoActivity
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_all.card_all_item_container
 import kotlinx.android.synthetic.main.item_all.tv_all_item_title
-import org.jetbrains.anko.startActivity
 
 class AllViewHolder(override val containerView: View?) : RecyclerView.ViewHolder(containerView!!),
     LayoutContainer {
