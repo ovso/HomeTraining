@@ -23,6 +23,7 @@
     <item>홈트레이닝 여자 전신</item>
     <item>홈트레이닝 여자 등운동</item>
     <item>홈트레이닝 여자 복부</item>
+    <item>홈트레이닝 여자 가슴</item>
   </string-array>
   <string-array name="tabs_title_male">
     <item>남성 초보</item>
@@ -47,6 +48,7 @@
     <item>여성 전신</item>
     <item>여성 등운동</item>
     <item>여성 복부</item>
+    <item>여성 가슴</item>
   </string-array>
   <string-array name="keys">
     <item>AIzaSyA4pdIQO-74kZv7MLpPZs13oEYq2w5ki4E</item>

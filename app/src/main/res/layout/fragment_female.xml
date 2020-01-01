@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     >
 
   <data>
@@ -17,11 +18,11 @@
       >
 
     <androidx.recyclerview.widget.RecyclerView
-        items="@{viewModel.items}"
-        queries="@{viewModel.queries}"
+        android:id="@+id/rv_female"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_female"
         />
   </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

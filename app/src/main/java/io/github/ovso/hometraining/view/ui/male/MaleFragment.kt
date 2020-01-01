@@ -2,6 +2,7 @@ package io.github.ovso.hometraining.view.ui.male
 
 import android.os.Bundle
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.DividerItemDecoration
 import io.github.ovso.hometraining.R
 import io.github.ovso.hometraining.databinding.FragmentMaleBinding
 import io.github.ovso.hometraining.view.base.DataBindingFragment2
@@ -33,6 +34,9 @@ class MaleFragment : DataBindingFragment2<FragmentMaleBinding>(
   }
 
   private fun setupRv() {
-    rv_male.adapter = adapter
+    rv_male.apply {
+      addItemDecoration(DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL))
+      this.adapter = this@MaleFragment.adapter
+    }
   }
 }
