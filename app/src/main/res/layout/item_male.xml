@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <data>
+
+    <variable
+        name="item"
+        type="io.github.ovso.hometraining.view.ui.male.MaleItem"
+        />
+
+  </data>
+
+  <androidx.cardview.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
+      android:id="@+id/card_all_item_container"
+      android:layout_width="match_parent"
+      android:layout_height="100dp"
+      android:foreground="?android:attr/selectableItemBackground"
+      android:onClick="@{item::onClick}"
+      app:cardCornerRadius="0dp"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toBottomOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      >
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_all_item_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@{item.title}"
+        android:textSize="24sp"
+        tools:text="남성 다이어트"
+        />
+  </androidx.cardview.widget.CardView>
+
+</layout>

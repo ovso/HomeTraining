@@ -2,6 +2,9 @@ package io.github.ovso.hometraining.view.binding
 
 import android.view.View
 import androidx.databinding.BindingAdapter
+import io.github.ovso.hometraining.exts.gone
+import io.github.ovso.hometraining.exts.invisible
+import io.github.ovso.hometraining.exts.visible
 import java.util.concurrent.atomic.AtomicBoolean
 
 @BindingAdapter("onThrottleClick")
@@ -27,6 +30,34 @@ class OnThrottleClickListener(
         }, delayMillis)
         clickListener.onClick(v)
       }
+    }
+  }
+}
+
+@BindingAdapter("visible_space")
+fun setSpaceVisible(
+  v: View,
+  enable: Boolean?
+) {
+  enable?.let {
+    if (it) {
+      v.visible()
+    } else {
+      v.invisible()
+    }
+  }
+}
+
+@BindingAdapter("visible")
+fun setVisible(
+  v: View,
+  enable: Boolean?
+) {
+  enable?.let {
+    if (it) {
+      v.visible()
+    } else {
+      v.gone()
     }
   }
 }

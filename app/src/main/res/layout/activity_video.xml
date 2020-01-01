@@ -41,13 +41,13 @@
         android:layout_height="wrap_content"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:listitem="@layout/item_video"
+        tools:listitem="@layout/item_male"
         />
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animationView"
+        visible="@{viewModel.isLoading()}"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="@{viewModel.isLoadingView()}"
         airbnb:lottie_autoPlay="true"
         airbnb:lottie_fileName="character_run_cycle.json"
         airbnb:lottie_loop="true"
