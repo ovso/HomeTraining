@@ -26,7 +26,7 @@ class VideoViewModel : DisposableViewModel() {
   private var query: String? = null
 
   init {
-    RxBusBehavior.toObservable()
+    compositeDisposable += RxBusBehavior.toObservable()
         .subscribe {
           if (it is VideoData) {
             titleOb.set(it.title)
@@ -34,17 +34,13 @@ class VideoViewModel : DisposableViewModel() {
             reqSearch()
           }
         }
-        .apply {
-          addDisposable(this)
-        }
   }
 
   private fun reqSearch() {
 
-    fun getQueryMap(): Map<String, Any> {
-      val q = query ?: ResourceProvider.getString(R.string.app_name)
-      return hashMapOf(
-          "q" to q,
+    fun getQueryMap() =
+      mapOf(
+          "q" to (query ?: ResourceProvider.getString(R.string.app_name)),
           "maxResults" to 50,
           "order" to "viewCount",
           "type" to "video",
@@ -53,7 +49,6 @@ class VideoViewModel : DisposableViewModel() {
           "part" to "snippet",
           "fields" to "items(id,snippet(title,thumbnails(medium)))"
       )
-    }
 
     fun onSuccess(it: JsonElement) {
       itemsLive.value = it.asJsonObject["items"].asJsonArray
