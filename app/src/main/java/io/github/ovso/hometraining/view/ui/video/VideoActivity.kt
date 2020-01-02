@@ -3,6 +3,7 @@ package io.github.ovso.hometraining.view.ui.video
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.DividerItemDecoration
 import io.github.ovso.hometraining.R
 import io.github.ovso.hometraining.databinding.ActivityVideoBinding
 import io.github.ovso.hometraining.view.base.DataBindingActivity2
@@ -33,7 +34,10 @@ class VideoActivity : DataBindingActivity2<ActivityVideoBinding>(
   }
 
   private fun setupRv() {
-    rv_video.adapter = adapter
+    with(rv_video) {
+      addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+      adapter = this@VideoActivity.adapter
+    }
   }
 
   override fun onOptionsItemSelected(item: MenuItem): Boolean {
