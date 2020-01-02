@@ -55,6 +55,15 @@ class VideoViewModel : DisposableViewModel() {
       )
     }
 
+    fun onSuccess(it: JsonElement) {
+      itemsLive.value = it.asJsonObject["items"].asJsonArray
+    }
+
+    fun onError(it: Throwable) {
+      Timber.e(it)
+      Timber.d((it as? HttpException)?.response()?.errorBody()?.string())
+    }
+
     compositeDisposable += searchRequest.api()
         .search(getQueryMap())
         .subscribeOn(SchedulerProvider.io())
@@ -63,15 +72,6 @@ class VideoViewModel : DisposableViewModel() {
         .doOnSuccess { isLoading.set(false) }
         .doOnError { isLoading.set(false) }
         .subscribe(::onSuccess, ::onError)
-  }
-
-  private fun onSuccess(it: JsonElement) {
-    itemsLive.value = it.asJsonObject["items"].asJsonArray
-  }
-
-  private fun onError(it: Throwable) {
-    Timber.e(it)
-    Timber.d((it as? HttpException)?.response()?.errorBody()?.string())
   }
 
   data class VideoData(
