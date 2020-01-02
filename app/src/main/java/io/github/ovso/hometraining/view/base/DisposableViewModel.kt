@@ -9,7 +9,7 @@ import io.reactivex.rxjava3.disposables.Disposable
 
 abstract class DisposableViewModel : ViewModel() {
 
-  private val compositeDisposable = CompositeDisposable()
+  protected val compositeDisposable = CompositeDisposable()
   val isLoading = ObservableBoolean(false)
   val isLoadingView = ObservableInt(View.GONE)
 

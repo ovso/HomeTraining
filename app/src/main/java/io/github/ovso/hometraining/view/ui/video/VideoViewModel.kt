@@ -6,6 +6,7 @@ import com.google.gson.JsonArray
 import com.google.gson.JsonElement
 import io.github.ovso.hometraining.R
 import io.github.ovso.hometraining.data.api.SearchRequest
+import io.github.ovso.hometraining.exts.plusAssign
 import io.github.ovso.hometraining.utils.ResourceProvider
 import io.github.ovso.hometraining.utils.RxBusBehavior
 import io.github.ovso.hometraining.utils.SchedulerProvider
@@ -54,7 +55,7 @@ class VideoViewModel : DisposableViewModel() {
       )
     }
 
-    searchRequest.api()
+    compositeDisposable += searchRequest.api()
         .search(getQueryMap())
         .subscribeOn(SchedulerProvider.io())
         .observeOn(SchedulerProvider.ui())
@@ -62,9 +63,6 @@ class VideoViewModel : DisposableViewModel() {
         .doOnSuccess { isLoading.set(false) }
         .doOnError { isLoading.set(false) }
         .subscribe(::onSuccess, ::onError)
-        .apply {
-          addDisposable(this)
-        }
   }
 
   private fun onSuccess(it: JsonElement) {
@@ -76,7 +74,6 @@ class VideoViewModel : DisposableViewModel() {
     Timber.d((it as? HttpException)?.response()?.errorBody()?.string())
   }
 
-  data class RxBusVideoTitle(var text: String)
   data class VideoData(
     val title: String,
     val query: String
