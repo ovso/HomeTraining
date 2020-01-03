@@ -16,6 +16,7 @@
       android:layout_width="match_parent"
       android:layout_height="100dp"
       android:foreground="?android:attr/selectableItemBackground"
+      android:background="@android:color/white"
       android:onClick="@{item::onClick}"
       app:cardCornerRadius="0dp"
       app:layout_constraintLeft_toLeftOf="parent"

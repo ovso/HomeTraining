@@ -1,7 +1,6 @@
 package io.github.ovso.hometraining
 
 import io.github.ovso.hometraining.data.api.SearchRequest
-import io.github.ovso.hometraining.utils.SchedulerProvider
 import io.github.ovso.hometraining.utils.TestSchedulerProvider
 import org.junit.Test
 import retrofit2.HttpException
@@ -25,41 +24,6 @@ class HomeTrainingUnitTest {
 
     searchRequest.api()
         .search(
-            hashMapOf(
-                "q" to "홈트레이닝",
-                "maxResults" to 1,
-                "order" to "viewCount",
-                "type" to "video",
-                "videoSyndicated" to "any",
-                "key" to getApiKey(),
-                "part" to "snippet",
-                "fields" to "items(id,snippet(title,thumbnails(medium)))"
-            )
-        )
-        .subscribeOn(TestSchedulerProvider.io())
-        .observeOn(TestSchedulerProvider.ui())
-        .subscribe(
-            {
-              //              println(it)
-              println("검색 성공 <<<<")
-            },
-            {
-              println((it as? HttpException)?.response()?.errorBody()?.string())
-              println("검색 실패 <<<<")
-            }
-        )
-  }
-  @Test
-  fun channels_test() {
-
-    fun getApiKey(): String {
-      val keys =
-        "AIzaSyA4pdIQO-74kZv7MLpPZs13oEYq2w5ki4E//AIzaSyCDlPMTU-TsKp8k7t6875jkAIRWrl2XCfE//AIzaSyCe8fJ3dw_8YzFq1L7X3Iip9Bs_KZ66bNM//AIzaSyBT2wy_F43ouGtgmNBmklik6qYHYFIVtbA"
-      return keys.split("//")[0]
-    }
-
-    searchRequest.api()
-        .channels(
             hashMapOf(
                 "q" to "홈트레이닝",
                 "maxResults" to 1,
