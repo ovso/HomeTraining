@@ -3,6 +3,7 @@ package io.github.ovso.hometraining.view.ui.pop
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
 import io.github.ovso.hometraining.R
 import io.github.ovso.hometraining.databinding.FragmentPopularBinding
 import io.github.ovso.hometraining.view.base.DataBindingFragment2
@@ -32,6 +33,10 @@ class PopularFragment : DataBindingFragment2<FragmentPopularBinding>(
   }
 
   private fun setupRv() {
+    with(rv_popular) {
+      addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+      adapter = this@PopularFragment.adapter
+    }
     rv_popular.adapter = adapter
   }
 
