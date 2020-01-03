@@ -43,6 +43,7 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:listitem="@layout/item_male"
         />
+
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animationView"
         visible="@{viewModel.isLoading()}"
