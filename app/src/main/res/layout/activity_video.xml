@@ -15,7 +15,8 @@
       xmlns:tools="http://schemas.android.com/tools"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      tools:context=".view.ui.main.MainActivity"
+      android:fitsSystemWindows="true"
+      tools:context=".view.ui.video.VideoActivity"
       >
 
     <com.google.android.material.appbar.AppBarLayout
