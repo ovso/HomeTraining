@@ -1,7 +1,6 @@
 package io.github.ovso.hometraining
 
 import io.github.ovso.hometraining.data.api.SearchRequest
-import io.github.ovso.hometraining.utils.SchedulerProvider
 import io.github.ovso.hometraining.utils.TestSchedulerProvider
 import org.junit.Test
 import retrofit2.HttpException
