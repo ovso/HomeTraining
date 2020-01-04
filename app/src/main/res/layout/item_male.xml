@@ -16,8 +16,8 @@
       android:layout_width="match_parent"
       android:layout_height="100dp"
       android:foreground="?android:attr/selectableItemBackground"
-      android:background="@android:color/white"
       android:onClick="@{item::onClick}"
+      app:cardBackgroundColor="@android:color/white"
       app:cardCornerRadius="0dp"
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"
@@ -31,6 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@{item.title}"
+        android:textColor="@color/textColor"
         android:textSize="24sp"
         tools:text="남성 다이어트"
         />
