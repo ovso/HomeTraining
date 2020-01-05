@@ -2,6 +2,7 @@ package io.github.ovso.hometraining.view.ui.video
 
 import android.os.Bundle
 import android.view.MenuItem
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import io.github.ovso.hometraining.R
@@ -17,6 +18,7 @@ class VideoActivity : DataBindingActivity2<ActivityVideoBinding>(
 ) {
 
     private val adapter: VideoAdapter by inject()
+    private val itemDivider: DividerItemDecoration by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +38,7 @@ class VideoActivity : DataBindingActivity2<ActivityVideoBinding>(
 
     private fun setupRv() {
         with(rv_video) {
-            addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+            addItemDecoration(itemDivider)
             adapter = this@VideoActivity.adapter
         }
     }
