@@ -16,32 +16,33 @@ class VideoActivity : DataBindingActivity2<ActivityVideoBinding>(
     viewModelCls = VideoViewModel::class.java
 ) {
 
-  private val adapter: VideoAdapter by inject()
+    private val adapter: VideoAdapter by inject()
 
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    setSupportActionBar(toolbar)
-    supportActionBar?.setDisplayHomeAsUpEnabled(true)
-    setupRv()
-    observe()
-  }
-
-  private fun observe() {
-    val owner = this
-    binding.viewModel?.itemsLive?.observe(owner, Observer {
-      adapter.submitList(it.toMutableList())
-    })
-  }
-
-  private fun setupRv() {
-    with(rv_video) {
-      addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
-      adapter = this@VideoActivity.adapter
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back)
+        setupRv()
+        observe()
     }
-  }
 
-  override fun onOptionsItemSelected(item: MenuItem): Boolean {
-    finish()
-    return super.onOptionsItemSelected(item)
-  }
+    private fun observe() {
+        val owner = this
+        binding.viewModel?.itemsLive?.observe(owner, Observer {
+            adapter.submitList(it.toMutableList())
+        })
+    }
+
+    private fun setupRv() {
+        with(rv_video) {
+            addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+            adapter = this@VideoActivity.adapter
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        finish()
+        return super.onOptionsItemSelected(item)
+    }
 }

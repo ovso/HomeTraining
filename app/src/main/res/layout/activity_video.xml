@@ -1,61 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
 
-  <data>
+    <data>
 
-    <variable
-        name="viewModel"
-        type="io.github.ovso.hometraining.view.ui.video.VideoViewModel"
-        />
-  </data>
+        <variable
+            name="viewModel"
+            type="io.github.ovso.hometraining.view.ui.video.VideoViewModel" />
+    </data>
 
-  <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-      xmlns:airbnb="http://schemas.android.com/apk/res-auto"
-      xmlns:app="http://schemas.android.com/apk/res-auto"
-      xmlns:tools="http://schemas.android.com/tools"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:fitsSystemWindows="true"
-      tools:context=".view.ui.video.VideoActivity"
-      >
-
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay"
-        >
-
-      <androidx.appcompat.widget.Toolbar
-          android:id="@+id/toolbar"
-          android:layout_width="match_parent"
-          android:layout_height="?attr/actionBarSize"
-          android:background="?attr/colorPrimary"
-          app:popupTheme="@style/AppTheme.PopupOverlay"
-          app:title="@{viewModel.titleOb}"
-          app:titleTextColor="@color/textColor"
-          />
-
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_video"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:listitem="@layout/item_male"
-        />
-
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/animationView"
-        visible="@{viewModel.isLoading()}"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:airbnb="http://schemas.android.com/apk/res-auto"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        airbnb:lottie_autoPlay="true"
-        airbnb:lottie_fileName="character_run_cycle.json"
-        airbnb:lottie_loop="true"
-        tools:visibility="gone"
-        />
-  </androidx.coordinatorlayout.widget.CoordinatorLayout>
+        android:fitsSystemWindows="true"
+        tools:context=".view.ui.video.VideoActivity">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/AppTheme.PopupOverlay"
+                app:title="@{viewModel.titleOb}"
+                app:titleTextColor="@color/textColor" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_video"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            tools:listitem="@layout/item_male" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animationView"
+            visible="@{viewModel.isLoading()}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            airbnb:lottie_autoPlay="true"
+            airbnb:lottie_fileName="character_run_cycle.json"
+            airbnb:lottie_loop="true"
+            tools:visibility="gone" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </layout>
