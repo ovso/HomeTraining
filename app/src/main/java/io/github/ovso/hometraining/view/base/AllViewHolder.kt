@@ -31,13 +31,13 @@ class AllViewHolder(override val containerView: View?) : RecyclerView.ViewHolder
     }
 
     fun toBindData(
-      title: String,
-      query: String
+        title: String,
+        query: String
     ) = TitleAndQuery(title, query)
   }
 
   data class TitleAndQuery(
-    val title: String,
-    val query: String
+      val title: String,
+      val query: String
   )
 }

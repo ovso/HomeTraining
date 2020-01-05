@@ -52,8 +52,8 @@ class PlayerActivity : DataBindingActivity2<ActivityPlayerBinding>(
   inner class ChromeClient :
       WebChromeClient() {
     override fun onProgressChanged(
-      view: WebView?,
-      newProgress: Int
+        view: WebView?,
+        newProgress: Int
     ) {
       super.onProgressChanged(view, newProgress)
       if (newProgress == 100) {
@@ -62,9 +62,7 @@ class PlayerActivity : DataBindingActivity2<ActivityPlayerBinding>(
           binding?.viewModel?.canGoForwardOb?.set(it.canGoForward())
         }
       }
-
     }
-
   }
 
   override fun onDestroy() {

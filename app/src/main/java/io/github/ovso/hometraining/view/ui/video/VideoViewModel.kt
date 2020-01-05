@@ -70,7 +70,7 @@ class VideoViewModel : DisposableViewModel() {
   }
 
   data class VideoData(
-    val title: String,
-    val query: String
+      val title: String,
+      val query: String
   )
 }

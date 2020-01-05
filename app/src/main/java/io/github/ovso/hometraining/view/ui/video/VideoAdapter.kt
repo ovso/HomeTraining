@@ -20,84 +20,83 @@ import kotlinx.android.synthetic.main.item_video.iv_video_item
 import org.jetbrains.anko.startActivity
 
 private val diffUtil = object : DiffUtil.ItemCallback<JsonElement>() {
-  override fun areItemsTheSame(
-    oldItem: JsonElement,
-    newItem: JsonElement
-  ): Boolean {
-    return oldItem == newItem
-  }
+    override fun areItemsTheSame(
+        oldItem: JsonElement,
+        newItem: JsonElement
+    ): Boolean {
+        return oldItem == newItem
+    }
 
-  override fun areContentsTheSame(
-    oldItem: JsonElement,
-    newItem: JsonElement
-  ): Boolean {
-    return areItemsTheSame(oldItem, newItem)
-  }
+    override fun areContentsTheSame(
+        oldItem: JsonElement,
+        newItem: JsonElement
+    ): Boolean {
+        return areItemsTheSame(oldItem, newItem)
+    }
 }
 
 class VideoAdapter : ListAdapter<JsonElement, MyViewHolder>(diffUtil) {
-  override fun onCreateViewHolder(
-    parent: ViewGroup,
-    viewType: Int
-  ): MyViewHolder {
-    return MyViewHolder.create(parent)
-  }
-
-  override fun onBindViewHolder(
-    holder: MyViewHolder,
-    position: Int
-  ) {
-    holder.bind(getItem(position))
-  }
-
-  class MyViewHolder(
-    override val containerView: View?
-  ) : RecyclerView.ViewHolder(containerView!!), LayoutContainer {
-
-    private lateinit var json: JsonObject
-
-    fun bind(_json: JsonElement) {
-      json = _json.asJsonObject
-      loadImg()
-      setClick()
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): MyViewHolder {
+        return MyViewHolder.create(parent)
     }
 
-    private fun loadImg() {
-      Glide.with(itemView)
-          .load(getImgUrl())
-          .into(iv_video_item)
+    override fun onBindViewHolder(
+        holder: MyViewHolder,
+        position: Int
+    ) {
+        holder.bind(getItem(position))
     }
 
-    private fun setClick() {
-      fl_video_item_img_container.setOnClickListener {
-        RxBusBehavior.send(toVideoId())
-        it.context.startActivity<Player2Activity>()
-      }
+    class MyViewHolder(
+        override val containerView: View?
+    ) : RecyclerView.ViewHolder(containerView!!), LayoutContainer {
+
+        private lateinit var json: JsonObject
+
+        fun bind(_json: JsonElement) {
+            json = _json.asJsonObject
+            loadImg()
+            setClick()
+        }
+
+        private fun loadImg() {
+            Glide.with(itemView)
+                .load(getImgUrl())
+                .into(iv_video_item)
+        }
+
+        private fun setClick() {
+            fl_video_item_img_container.setOnClickListener {
+                RxBusBehavior.send(toVideoId())
+                it.context.startActivity<Player2Activity>()
+            }
+        }
+
+        private fun toVideoId() = VideoId(json["id"].asJsonObject["videoId"].asString)
+
+        private fun getImgUrl(): String? {
+            return json["snippet"]?.asJsonObject?.get("thumbnails")
+                ?.asJsonObject?.get("medium")
+                ?.asJsonObject?.get("url")
+                ?.asString
+        }
+
+        companion object {
+            fun create(parent: ViewGroup): MyViewHolder {
+                val view = LayoutInflater.from(parent.context)
+                    .inflate(
+                        R.layout.item_video,
+                        parent,
+                        false
+                    )
+
+                return MyViewHolder(view)
+            }
+        }
     }
-
-    private fun toVideoId() = VideoId(json["id"].asJsonObject["videoId"].asString)
-
-    private fun getImgUrl(): String? {
-      return json["snippet"]?.asJsonObject?.get("thumbnails")
-          ?.asJsonObject?.get("medium")
-          ?.asJsonObject?.get("url")
-          ?.asString
-    }
-
-    companion object {
-      fun create(parent: ViewGroup): MyViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(
-                R.layout.item_video,
-                parent,
-                false
-            )
-
-        return MyViewHolder(view)
-      }
-    }
-
-  }
 }
 
 /*

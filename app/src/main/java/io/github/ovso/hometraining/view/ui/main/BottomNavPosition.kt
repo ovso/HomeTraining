@@ -10,8 +10,8 @@ import io.github.ovso.hometraining.view.ui.male.MaleFragment
 import io.github.ovso.hometraining.view.ui.pop.PopularFragment
 
 enum class BottomNavPosition(
-  val position: Int,
-  val id: Int
+    val position: Int,
+    val id: Int
 ) {
   MALE(0, R.id.bottom_nv_male),
   FEMALE(1, R.id.bottom_nv_female),

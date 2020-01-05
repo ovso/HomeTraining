@@ -19,5 +19,4 @@ class ExampleInstrumentedTest {
     val appContext = InstrumentationRegistry.getTargetContext()
     assertEquals("io.github.ovso.hometraining", appContext.packageName)
   }
-
 }

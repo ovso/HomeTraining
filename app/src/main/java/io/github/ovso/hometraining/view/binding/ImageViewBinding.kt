@@ -9,8 +9,8 @@ object ImageViewBinding {
   @JvmStatic
   @BindingAdapter("load")
   fun loadImage(
-    view: AppCompatImageView,
-    imgUrl: String?
+      view: AppCompatImageView,
+      imgUrl: String?
   ) {
     Glide.with(view)
         .load(imgUrl)

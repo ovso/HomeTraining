@@ -7,12 +7,11 @@ object WebViewBinding {
   @JvmStatic
   @BindingAdapter("load_url")
   fun loadUrl(
-    view: WebView,
-    url: String?
+      view: WebView,
+      url: String?
   ) {
     url?.let {
       view.loadUrl(it)
     }
   }
-
 }

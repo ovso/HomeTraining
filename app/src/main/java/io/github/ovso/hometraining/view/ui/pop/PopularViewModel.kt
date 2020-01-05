@@ -59,7 +59,6 @@ class PopularViewModel : DisposableViewModel() {
     Timber.e(it)
     Timber.d((it as? HttpException)?.response()?.errorBody()?.string())
   }
-
 }
 
 /*

@@ -38,10 +38,10 @@ fun EditText.hideKeyboard() {
 }
 
 fun View.margin(
-  left: Float? = null,
-  top: Float? = null,
-  right: Float? = null,
-  bottom: Float? = null
+    left: Float? = null,
+    top: Float? = null,
+    right: Float? = null,
+    bottom: Float? = null
 ) {
   layoutParams<ViewGroup.MarginLayoutParams> {
     left?.run { leftMargin = dpToPx(this) }

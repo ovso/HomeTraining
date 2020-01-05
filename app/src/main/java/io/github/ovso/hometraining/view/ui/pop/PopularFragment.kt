@@ -46,5 +46,4 @@ class PopularFragment : DataBindingFragment2<FragmentPopularBinding>(
       adapter.submitList(it.toMutableList())
     })
   }
-
 }

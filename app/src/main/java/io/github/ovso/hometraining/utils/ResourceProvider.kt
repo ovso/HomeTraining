@@ -101,5 +101,4 @@ object ResourceProvider {
     fun loadAnimation(@AnimRes id: Int): Animation {
         return AnimationUtils.loadAnimation(context, id)
     }
-
 }

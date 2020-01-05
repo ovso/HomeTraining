@@ -31,7 +31,6 @@ abstract class DataBindingActivity2<T : ViewDataBinding>(
             executePendingBindings()
         }
     }
-
 }
 /*
 protected val binding2 by lazy {

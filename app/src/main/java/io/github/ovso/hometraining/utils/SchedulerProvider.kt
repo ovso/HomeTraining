@@ -1,8 +1,8 @@
 package io.github.ovso.hometraining.utils
 
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Scheduler
 import io.reactivex.rxjava3.schedulers.Schedulers
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 
 interface Providers {
   fun io() = Schedulers.io()
