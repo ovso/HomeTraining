@@ -20,6 +20,6 @@
     <string name="title_activity_player">PlayerActivity</string>
     <string name="video_title">비디오</string>
     <string name="popular_query">홈트레이닝</string>
-  <string name="dialog_msg_first_page">첫 페이지 입니다.</string>
+    <string name="dialog_msg_first_page">첫 페이지 입니다.</string>
     <string name="dialog_msg_last_page">마지막 페이지 입니다.</string>
 </resources>
