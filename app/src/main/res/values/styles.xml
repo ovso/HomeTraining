@@ -29,6 +29,10 @@
     <item name="android:background">@color/colorOverlay</item>
   </style>
 
+  <style name="SplashTheme" parent="Theme.MaterialComponents.NoActionBar">
+    <item name="android:windowBackground">@drawable/splash_background</item>
+  </style>
+
   <style name="WebNavBtn">
     <item name="android:layout_width">0dp</item>
     <item name="android:layout_height">match_parent</item>
