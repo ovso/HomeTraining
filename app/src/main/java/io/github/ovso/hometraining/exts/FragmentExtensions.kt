@@ -15,8 +15,8 @@ object FragmentExtensions {
   }
 
   fun FragmentManager.attach(
-    fragment: Fragment,
-    tag: String
+      fragment: Fragment,
+      tag: String
   ) {
     if (fragment.isDetached) {
       beginTransaction().attach(fragment)

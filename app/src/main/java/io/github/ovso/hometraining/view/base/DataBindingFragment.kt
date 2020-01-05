@@ -22,17 +22,17 @@ abstract class DataBindingFragment<T : ViewDataBinding, V : DisposableViewModel>
   abstract fun getVariableId(): Int
 
   override fun onCreateView(
-    inflater: LayoutInflater,
-    container: ViewGroup?,
-    savedInstanceState: Bundle?
+      inflater: LayoutInflater,
+      container: ViewGroup?,
+      savedInstanceState: Bundle?
   ): View? {
     viewDataBinding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false)
     return viewDataBinding.root
   }
 
   override fun onViewCreated(
-    view: View,
-    savedInstanceState: Bundle?
+      view: View,
+      savedInstanceState: Bundle?
   ) {
     super.onViewCreated(view, savedInstanceState)
     with(viewDataBinding) {

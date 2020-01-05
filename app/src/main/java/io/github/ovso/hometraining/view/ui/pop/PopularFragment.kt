@@ -16,35 +16,36 @@ class PopularFragment : DataBindingFragment2<FragmentPopularBinding>(
     viewModelCls = PopularViewModel::class.java
 ) {
 
-  private val adapter: VideoAdapter by inject()
-  private val viewModel by lazy {
-    ViewModelProvider(this)[PopularViewModel::class.java]
-  }
+    private val adapter: VideoAdapter by inject()
+    private val itemDivider: DividerItemDecoration by inject()
 
-  companion object {
-    val TAG: String = PopularFragment::class.java.simpleName
-    fun newInstance() = PopularFragment()
-  }
-
-  override fun onActivityCreated(savedInstanceState: Bundle?) {
-    super.onActivityCreated(savedInstanceState)
-    setupRv()
-    observe()
-  }
-
-  private fun setupRv() {
-    with(rv_popular) {
-      addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
-      adapter = this@PopularFragment.adapter
+    private val viewModel by lazy {
+        ViewModelProvider(this)[PopularViewModel::class.java]
     }
-    rv_popular.adapter = adapter
-  }
 
-  private fun observe() {
-    val owner = viewLifecycleOwner
-    viewModel.itemsLive.observe(owner, Observer {
-      adapter.submitList(it.toMutableList())
-    })
-  }
+    companion object {
+        val TAG: String = PopularFragment::class.java.simpleName
+        fun newInstance() = PopularFragment()
+    }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        setupRv()
+        observe()
+    }
+
+    private fun setupRv() {
+        with(rv_popular) {
+            addItemDecoration(itemDivider)
+            adapter = this@PopularFragment.adapter
+        }
+        rv_popular.adapter = adapter
+    }
+
+    private fun observe() {
+        val owner = viewLifecycleOwner
+        viewModel.itemsLive.observe(owner, Observer {
+            adapter.submitList(it.toMutableList())
+        })
+    }
 }

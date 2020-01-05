@@ -33,5 +33,4 @@ abstract class DataBindingActivity<T : ViewDataBinding, V : DisposableViewModel>
       executePendingBindings()
     }
   }
-
 }

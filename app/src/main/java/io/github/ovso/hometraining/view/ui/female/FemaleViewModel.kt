@@ -37,7 +37,5 @@ class FemaleViewModel : DisposableViewModel() {
         .subscribeOn(SchedulerProvider.io())
         .observeOn(SchedulerProvider.ui())
         .subscribe(::onSuccess, ::onFailure)
-
   }
-
 }

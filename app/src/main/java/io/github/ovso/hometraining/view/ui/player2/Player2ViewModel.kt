@@ -23,7 +23,6 @@ class Player2ViewModel : DisposableViewModel() {
           }
         }
     )
-
   }
 
   override fun onCleared() {

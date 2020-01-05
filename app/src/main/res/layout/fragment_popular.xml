@@ -2,39 +2,37 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:airbnb="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    >
+    xmlns:tools="http://schemas.android.com/tools">
 
-  <data>
+    <data>
 
-    <variable
-        name="viewModel"
-        type="io.github.ovso.hometraining.view.ui.pop.PopularViewModel"
-        />
-  </data>
+        <variable
+            name="viewModel"
+            type="io.github.ovso.hometraining.view.ui.pop.PopularViewModel" />
+    </data>
 
-  <androidx.constraintlayout.widget.ConstraintLayout
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      >
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_popular"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_video"
-        />
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/animationView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="@{viewModel.isLoadingView()}"
-        airbnb:lottie_autoPlay="true"
-        airbnb:lottie_fileName="character_run_cycle.json"
-        airbnb:lottie_loop="true"
-        tools:visibility="gone"
-        />
+        android:layout_height="match_parent">
 
-  </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_popular"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingTop="10dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_video" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animationView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{viewModel.isLoadingView()}"
+            airbnb:lottie_autoPlay="true"
+            airbnb:lottie_fileName="character_run_cycle.json"
+            airbnb:lottie_loop="true"
+            tools:visibility="gone" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

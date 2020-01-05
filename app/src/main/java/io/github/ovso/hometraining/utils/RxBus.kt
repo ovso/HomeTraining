@@ -17,5 +17,4 @@ object RxBus {
   fun hasObservable(): Boolean {
     return bus.hasObservers()
   }
-
 }

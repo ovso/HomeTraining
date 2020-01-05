@@ -10,8 +10,8 @@ import io.github.ovso.hometraining.BR
 import io.github.ovso.hometraining.BuildConfig
 
 open class GenderViewHolder(
-  @LayoutRes layoutRes: Int,
-  parent: ViewGroup?
+    @LayoutRes layoutRes: Int,
+    parent: ViewGroup?
 ) : RecyclerView.ViewHolder(
     LayoutInflater.from(parent?.context).inflate(layoutRes, parent, false)
 ) {

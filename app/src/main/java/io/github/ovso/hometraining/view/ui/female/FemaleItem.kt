@@ -7,8 +7,8 @@ import io.github.ovso.hometraining.view.ui.video.VideoActivity
 import io.github.ovso.hometraining.view.ui.video.VideoViewModel.VideoData
 
 data class FemaleItem(
-  val title: String,
-  val query: String
+    val title: String,
+    val query: String
 ) {
 
   fun onClick(v: View) {

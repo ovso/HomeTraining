@@ -28,8 +28,8 @@ class Player2Activity : DataBindingActivity2<ActivityPlayer2Binding>(
         }
 
         override fun onCurrentSecond(
-          youTubePlayer: YouTubePlayer,
-          second: Float
+            youTubePlayer: YouTubePlayer,
+            second: Float
         ) {
           super.onCurrentSecond(youTubePlayer, second)
           binding?.viewModel?.second = second
