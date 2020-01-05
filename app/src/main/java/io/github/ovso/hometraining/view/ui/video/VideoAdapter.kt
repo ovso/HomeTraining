@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.item_video.fl_video_item_img_container
 import kotlinx.android.synthetic.main.item_video.iv_video_item
 import org.jetbrains.anko.startActivity
 
-private val diffUtil = object : DiffUtil.ItemCallback<JsonElement>() {
+private val DIFF_UTIL = object : DiffUtil.ItemCallback<JsonElement>() {
     override fun areItemsTheSame(
         oldItem: JsonElement,
         newItem: JsonElement
@@ -35,7 +35,7 @@ private val diffUtil = object : DiffUtil.ItemCallback<JsonElement>() {
     }
 }
 
-class VideoAdapter : ListAdapter<JsonElement, MyViewHolder>(diffUtil) {
+class VideoAdapter : ListAdapter<JsonElement, MyViewHolder>(DIFF_UTIL) {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
