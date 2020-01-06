@@ -31,7 +31,7 @@ ext {
             'legacy_preference_v14': '1.0.0',
             'legacy_support_v4'    : '1.0.0',
             'licensedialog'        : '2.1.0',
-            'firebase_ads'         : '18.2.0',
+            'firebase_ads'         : '18.3.0',
             'firebase_core'        : '17.2.0',
             'google_service'       : '4.3.0',
             'rssparser'            : '2.0.3',
@@ -94,7 +94,7 @@ ext {
 
             'firebase'      : [
                     'ads' : "com.google.firebase:firebase-ads:$versions.firebase_ads",
-                    'core': "com.google.firebase:firebase-core:$versions.firebase_core",
+                    //'core': "com.google.firebase:firebase-core:$versions.firebase_core",
             ],
 
 
