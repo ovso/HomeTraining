@@ -65,8 +65,9 @@ dependencies {
     implementation deps.youtube_player
     implementation deps.koap
     implementation deps.lottie
-    implementation deps.firebase.values()
+//    implementation deps.firebase.values()
     testImplementation deps.tsl.values()
+    implementation 'com.google.android.gms:play-services-ads-lite:18.3.0'
     androidTestImplementation deps.atsl.values()
 }
 

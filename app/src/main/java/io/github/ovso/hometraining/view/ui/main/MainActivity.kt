@@ -8,6 +8,8 @@ import androidx.core.view.GravityCompat
 import androidx.core.view.get
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
 import com.google.android.material.navigation.NavigationView
 import io.github.ovso.hometraining.R
 import io.github.ovso.hometraining.exts.FragmentExtensions.attach
@@ -30,6 +32,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     initFragment(savedInstanceState)
     addEvent()
+    setupAds()
+  }
+
+  private fun setupAds() {
+    MobileAds.initialize(this)
+    val adRequest = AdRequest.Builder().build()
+    adView.loadAd(adRequest)
   }
 
   private fun addEvent() {
