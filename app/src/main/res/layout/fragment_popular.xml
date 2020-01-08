@@ -28,7 +28,7 @@
             android:id="@+id/animationView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="@{viewModel.isLoadingView()}"
+            visible="@{viewModel.isLoading()}"
             airbnb:lottie_autoPlay="true"
             airbnb:lottie_fileName="character_run_cycle.json"
             airbnb:lottie_loop="true"
