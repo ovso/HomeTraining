@@ -32,20 +32,19 @@
             style="@style/Widget.MaterialComponents.BottomNavigationView.PrimarySurface"
             android:layout_width="0dp"
             android:layout_height="?actionBarSize"
-            app:layout_constraintBottom_toTopOf="@id/adView"
+            app:layout_constraintBottom_toTopOf="@id/ad_container"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:menu="@menu/main" />
 
-        <com.google.android.gms.ads.AdView
-            android:id="@+id/adView"
-            android:layout_width="wrap_content"
+        <FrameLayout
+            android:id="@+id/ad_container"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            ads:adSize="BANNER"
-            ads:adUnitId="ca-app-pub-3940256099942544/6300978111"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
+            app:layout_constraintRight_toRightOf="parent"
+            tools:layout_height="?attr/actionBarSize" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

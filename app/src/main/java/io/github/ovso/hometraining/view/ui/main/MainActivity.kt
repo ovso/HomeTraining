@@ -3,62 +3,63 @@ package io.github.ovso.hometraining.view.ui.main
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.core.view.get
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.ads.AdSize
+import com.google.android.gms.ads.AdView
 import com.google.android.material.navigation.NavigationView
 import io.github.ovso.hometraining.R
+import io.github.ovso.hometraining.databinding.ActivityMainBinding
 import io.github.ovso.hometraining.exts.FragmentExtensions.attach
 import io.github.ovso.hometraining.exts.FragmentExtensions.detach
 import io.github.ovso.hometraining.utils.ResourceProvider
 import io.github.ovso.hometraining.utils.prefs.NavPreferences
-import io.github.ovso.hometraining.view.ui.main.BottomNavPosition.*
+import io.github.ovso.hometraining.view.base.DataBindingActivity2
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*
-import timber.log.Timber
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : DataBindingActivity2<ActivityMainBinding>(
+    layoutResId = R.layout.activity_main,
+    viewModelCls = MainViewModel::class.java
+), NavigationView.OnNavigationItemSelectedListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
         setupActionBar()
 //    setupDrawer()
-
-        initFragment(savedInstanceState)
+        initFragment()
         addEvent()
         setupAds()
     }
 
     private fun setupAds() {
-        MobileAds.initialize(this)
+        val adView = AdView(this)
+        adView.adSize = AdSize.BANNER
+        adView.adUnitId = "ca-app-pub-3940256099942544/6300978111"
         val adRequest = AdRequest.Builder().build()
         adView.loadAd(adRequest)
+        ad_container.addView(adView)
     }
 
     private fun addEvent() {
         bottom_nav_main.setOnNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.bottom_nv_male -> switchFragment(MALE)
-                R.id.bottom_nv_female -> switchFragment(FEMALE)
-                else -> switchFragment(POPULAR)
+                R.id.bottom_nv_male -> switchFragment(BottomNavPosition.MALE)
+                R.id.bottom_nv_female -> switchFragment(BottomNavPosition.FEMALE)
+                else -> switchFragment(BottomNavPosition.POPULAR)
             }
-            true
         }
     }
 
-    private fun initFragment(savedInstanceState: Bundle?) {
-//    savedInstanceState ?: switchFragment(MALE)
+    private fun initFragment() {
         val navPosition = BottomNavPosition.values()
             .first {
                 it.position == NavPreferences.position
             }
-        Timber.d("navPosition = $navPosition")
         bottom_nav_main.selectedItemId = bottom_nav_main.menu[navPosition.position].itemId
         switchFragment(navPosition)
     }
