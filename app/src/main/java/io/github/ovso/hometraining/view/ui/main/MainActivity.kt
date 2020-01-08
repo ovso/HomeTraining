@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
 import com.google.android.material.navigation.NavigationView
 import io.github.ovso.hometraining.R
 import io.github.ovso.hometraining.databinding.ActivityMainBinding
@@ -37,6 +38,7 @@ class MainActivity : DataBindingActivity2<ActivityMainBinding>(
     }
 
     private fun setupAds() {
+        MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713")
         val adView = AdView(this)
         adView.adSize = AdSize.BANNER
         adView.adUnitId = "ca-app-pub-3940256099942544/6300978111"

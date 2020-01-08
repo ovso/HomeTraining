@@ -24,11 +24,6 @@ class App : Application() {
         setupTimber()
         setupPrefs()
         setupDi()
-        setupAds()
-    }
-
-    private fun setupAds() {
-        MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713")
     }
 
     private fun setupDi() {
