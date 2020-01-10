@@ -38,7 +38,6 @@ class MainActivity : DataBindingActivity2<ActivityMainBinding>(
     }
 
     private fun setupAds() {
-        MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713")
         val adView = AdView(this)
         adView.adSize = AdSize.BANNER
         adView.adUnitId = "ca-app-pub-3940256099942544/6300978111"
@@ -131,5 +130,18 @@ class MainActivity : DataBindingActivity2<ActivityMainBinding>(
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    override fun onPause() {
+        super.onPause()
+    }
+
+
+    override fun onResume() {
+        super.onResume()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
     }
 }
