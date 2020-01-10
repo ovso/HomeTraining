@@ -24,6 +24,11 @@ class App : Application() {
         setupTimber()
         setupPrefs()
         setupDi()
+        setupAds()
+    }
+
+    private fun setupAds() {
+        MobileAds.initialize(this, getString(R.string.ads_app_id))
     }
 
     private fun setupDi() {

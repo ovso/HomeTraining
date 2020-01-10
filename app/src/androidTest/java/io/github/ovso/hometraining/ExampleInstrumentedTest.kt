@@ -13,10 +13,20 @@ import org.junit.runner.RunWith
  */
 @RunWith(AndroidJUnit4::class)
 class ExampleInstrumentedTest {
-  @Test
-  fun useAppContext() {
-    // Context of the app under test.
-    val appContext = InstrumentationRegistry.getTargetContext()
-    assertEquals("io.github.ovso.hometraining", appContext.packageName)
-  }
+    @Test
+    fun useAppContext() {
+        // Context of the app under test.
+        val appContext = InstrumentationRegistry.getTargetContext()
+        assertEquals("io.github.ovso.hometraining", appContext.packageName)
+    }
+
+    @Test
+    fun adsIdTest() {
+        // Context of the app under test.
+        val appContext = InstrumentationRegistry.getTargetContext()
+        val adsAppId = appContext.getString(R.string.ads_app_id)
+        val adsBannerUnitId = appContext.getString(R.string.ads_banner_unit_id)
+        assertEquals("ca-app-pub-3940256099942544~3347511713", adsAppId)
+        assertEquals("ca-app-pub-3940256099942544/6300978111", adsBannerUnitId)
+    }
 }

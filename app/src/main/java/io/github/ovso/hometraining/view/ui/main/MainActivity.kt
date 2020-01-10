@@ -38,7 +38,6 @@ class MainActivity : DataBindingActivity2<ActivityMainBinding>(
     }
 
     private fun setupAds() {
-        MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713")
         val adView = AdView(this)
         adView.adSize = AdSize.BANNER
         adView.adUnitId = "ca-app-pub-3940256099942544/6300978111"
