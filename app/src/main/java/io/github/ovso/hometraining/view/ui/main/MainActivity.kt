@@ -132,4 +132,17 @@ class MainActivity : DataBindingActivity2<ActivityMainBinding>(
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
+
+    override fun onPause() {
+        super.onPause()
+    }
+
+
+    override fun onResume() {
+        super.onResume()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+    }
 }
