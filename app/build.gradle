@@ -22,8 +22,8 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            resValue("string", "ads_app_id", "ca-app-pub-3940256099942544~3347511713")
-            resValue("string", "ads_banner_unit_id", "ca-app-pub-3940256099942544/6300978111")
+            resValue("string", "ads_app_id", "ca-app-pub-8679189423397017~6466927509")
+            resValue("string", "ads_banner_unit_id", "ca-app-pub-8679189423397017/7417526027")
         }
     }
 
