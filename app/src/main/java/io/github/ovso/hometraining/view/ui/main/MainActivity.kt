@@ -5,6 +5,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.core.view.get
+import androidx.core.view.size
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.google.android.gms.ads.AdRequest
@@ -22,6 +23,7 @@ import io.github.ovso.hometraining.view.base.DataBindingActivity2
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*
+import kotlinx.android.synthetic.main.layout_ads_banner.*
 
 class MainActivity : DataBindingActivity2<ActivityMainBinding>(
     layoutResId = R.layout.activity_main,
@@ -34,16 +36,8 @@ class MainActivity : DataBindingActivity2<ActivityMainBinding>(
 //    setupDrawer()
         initFragment()
         addEvent()
-        setupAds()
-    }
-
-    private fun setupAds() {
-        val adView = AdView(this)
-        adView.adSize = AdSize.BANNER
-        adView.adUnitId = "ca-app-pub-3940256099942544/6300978111"
         val adRequest = AdRequest.Builder().build()
-        adView.loadAd(adRequest)
-        ad_container.addView(adView)
+        all_ads_banner.loadAd(adRequest)
     }
 
     private fun addEvent() {
