@@ -53,6 +53,8 @@ class VideoViewModel : DisposableViewModel() {
 
         fun onSuccess(it: JsonElement) {
             (itemsLive as? MutableLiveData<JsonArray>)?.value = it.asJsonObject["items"].asJsonArray
+            val value = itemsLive.value
+            println(value?.get(0).toString())
         }
 
         fun onError(it: Throwable) {
