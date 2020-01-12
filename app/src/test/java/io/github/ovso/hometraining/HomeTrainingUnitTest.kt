@@ -62,17 +62,20 @@ class HomeTrainingUnitTest {
         }
 
         fun onSuccess(it: Video) {
+            println("성공")
             println("onSuccess = $it")
         }
 
         fun onFailure(it: Throwable) {
+            println("실패")
+            println(it)
             println(it.message)
             println((it as? HttpException)?.response()?.errorBody()?.string())
         }
 
         fun getParams() = mapOf(
-            "q" to "인기 홈트레이닝",
-            "maxResults" to 1,
+            "q" to "홈트레이닝",
+            "maxResults" to 6,
             "order" to "viewCount",
             "type" to "video",
             "videoSyndicated" to "any",
@@ -83,8 +86,36 @@ class HomeTrainingUnitTest {
 
         searchRequest.api()
             .search(getParams())
+            .map {
+                val mutableList = mutableListOf<Item>()
+                it.items?.forEach { item ->
+                    mutableList.add(item.copy())
+                }
+
+                for (i in 0 until mutableList.count() + 5 step 2) {
+                    println(i)
+                }
+
+                it
+            }
             .subscribeOn(TestSchedulerProvider.io())
             .observeOn(TestSchedulerProvider.ui())
             .subscribe(::onSuccess, ::onFailure)
+    }
+
+    @Test
+    fun loop_test() {
+        val originItems = mutableListOf("F", "F", "F", "F", "F", "F", "F", "F", "F", "F", "F", "F")
+        val customItems = mutableListOf<String>()
+        val custom = "-"
+//        println(originItems.count() + (originItems.count() / 1))
+        for (i in 0 until (originItems.count() * 3)) {
+            if (i % 3 == 0) {
+                println(i)
+                originItems.add(i, custom)
+            }
+        }
+
+        println(originItems)
     }
 }
