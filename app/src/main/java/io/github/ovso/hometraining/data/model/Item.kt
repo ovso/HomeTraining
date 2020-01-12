@@ -12,7 +12,8 @@ data class Item(
     @SerializedName("id")
     val id: Id? = Id(),
     @SerializedName("snippet")
-    val snippet: Snippet? = Snippet()
+    val snippet: Snippet? = Snippet(),
+    val isAds: Boolean = false
 )
 
 data class Id(
