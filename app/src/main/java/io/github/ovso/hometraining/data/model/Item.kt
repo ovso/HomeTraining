@@ -3,6 +3,11 @@ package io.github.ovso.hometraining.data.model
 
 import com.google.gson.annotations.SerializedName
 
+data class Video(
+    @SerializedName(value = "items")
+    val items: List<Item>? = null
+)
+
 data class Item(
     @SerializedName("id")
     val id: Id? = Id(),
