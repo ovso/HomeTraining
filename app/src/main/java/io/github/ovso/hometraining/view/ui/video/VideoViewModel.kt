@@ -62,11 +62,11 @@ class VideoViewModel : DisposableViewModel() {
 
         compositeDisposable += searchRequest.api()
             .search(getQueryMap())
-            .subscribeOn(SchedulerProvider.io())
-            .observeOn(SchedulerProvider.ui())
             .doOnSubscribe { isLoading.set(true) }
             .doOnSuccess { isLoading.set(false) }
             .doOnError { isLoading.set(false) }
+            .subscribeOn(SchedulerProvider.io())
+            .observeOn(SchedulerProvider.ui())
             .subscribe(::onSuccess, ::onError)
     }
 
