@@ -5,9 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.google.gson.JsonElement
-import com.google.gson.JsonObject
 import io.github.ovso.hometraining.R
+import io.github.ovso.hometraining.data.model.Item
 import io.github.ovso.hometraining.utils.RxBusBehavior
 import io.github.ovso.hometraining.view.ui.player2.Player2Activity
 import kotlinx.android.extensions.LayoutContainer
@@ -18,10 +17,10 @@ class VideoViewHolder(
     override val containerView: View?
 ) : RecyclerView.ViewHolder(containerView!!), LayoutContainer {
 
-    private lateinit var json: JsonObject
+    private lateinit var item: Item
 
-    fun bind(_json: JsonElement) {
-        json = _json.asJsonObject
+    fun bind(_item: Item) {
+        item = _item
         loadImg()
         setClick()
     }
@@ -39,13 +38,10 @@ class VideoViewHolder(
         }
     }
 
-    private fun toVideoId() = RxBusBehavior.VideoId(json["id"].asJsonObject["videoId"].asString)
+    private fun toVideoId() = RxBusBehavior.VideoId(item.id?.videoId!!)
 
     private fun getImgUrl(): String? {
-        return json["snippet"]?.asJsonObject?.get("thumbnails")
-            ?.asJsonObject?.get("medium")
-            ?.asJsonObject?.get("url")
-            ?.asString
+        return item.snippet?.thumbnails?.medium?.url
     }
 
     companion object {

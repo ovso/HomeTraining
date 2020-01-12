@@ -1,6 +1,6 @@
 package io.github.ovso.hometraining.data.api
 
-class SearchRequest : BaseRequest2<SearchService>(
+class SearchRequest : BaseRequest<SearchService>(
     BASE_URL,
     SearchService::class.java
 )

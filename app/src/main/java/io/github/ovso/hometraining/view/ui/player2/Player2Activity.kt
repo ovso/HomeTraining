@@ -14,6 +14,7 @@ import io.github.ovso.hometraining.exts.visible
 import io.github.ovso.hometraining.view.base.DataBindingActivity2
 import kotlinx.android.synthetic.main.activity_player2.*
 import kotlinx.android.synthetic.main.layout_ads_banner.*
+import org.koin.android.ext.android.inject
 import timber.log.Timber
 
 
@@ -21,6 +22,8 @@ class Player2Activity : DataBindingActivity2<ActivityPlayer2Binding>(
     layoutResId = R.layout.activity_player2,
     viewModelCls = Player2ViewModel::class.java
 ) {
+
+    private val adRequest: AdRequest by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,7 +53,6 @@ class Player2Activity : DataBindingActivity2<ActivityPlayer2Binding>(
         resources.configuration.run {
             if (orientation == Configuration.ORIENTATION_PORTRAIT) {
                 player_ads_banner_container.visible()
-                val adRequest = AdRequest.Builder().build()
                 all_ads_banner.loadAd(adRequest)
             } else {
                 player_ads_banner_container.gone()

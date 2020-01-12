@@ -5,14 +5,8 @@ import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.core.view.get
-import androidx.core.view.size
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.AdSize
-import com.google.android.gms.ads.AdView
-import com.google.android.gms.ads.MobileAds
-import com.google.android.material.navigation.NavigationView
 import io.github.ovso.hometraining.R
 import io.github.ovso.hometraining.databinding.ActivityMainBinding
 import io.github.ovso.hometraining.exts.FragmentExtensions.attach
@@ -24,11 +18,14 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.android.synthetic.main.layout_ads_banner.*
+import org.koin.android.ext.android.inject
 
 class MainActivity : DataBindingActivity2<ActivityMainBinding>(
     layoutResId = R.layout.activity_main,
     viewModelCls = MainViewModel::class.java
-), NavigationView.OnNavigationItemSelectedListener {
+) {
+
+    private val adRequest: AdRequest by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +33,6 @@ class MainActivity : DataBindingActivity2<ActivityMainBinding>(
 //    setupDrawer()
         initFragment()
         addEvent()
-        val adRequest = AdRequest.Builder().build()
         all_ads_banner.loadAd(adRequest)
     }
 
@@ -104,38 +100,19 @@ class MainActivity : DataBindingActivity2<ActivityMainBinding>(
         }
     }
 
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        // Handle navigation view item clicks here.
-        when (item.itemId) {
-            R.id.nav_home -> {
-                // Handle the camera action
-            }
-            R.id.nav_gallery -> {
-            }
-            R.id.nav_slideshow -> {
-            }
-            R.id.nav_tools -> {
-            }
-            R.id.nav_share -> {
-            }
-            R.id.nav_send -> {
-            }
-        }
-        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
-        drawerLayout.closeDrawer(GravityCompat.START)
-        return true
-    }
-
     override fun onPause() {
+        all_ads_banner.pause()
         super.onPause()
     }
 
 
     override fun onResume() {
+        all_ads_banner.resume()
         super.onResume()
     }
 
     override fun onDestroy() {
+        all_ads_banner.destroy()
         super.onDestroy()
     }
 }
