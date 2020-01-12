@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 const val BASE_URL = "https://www.googleapis.com"
 
-abstract class BaseRequest2<T>(
+abstract class BaseRequest<T>(
     private val baseUrl: String,
     private val cls: Class<T>
 ) {

@@ -1,10 +1,10 @@
 package io.github.ovso.hometraining.view.ui.pop
 
 import androidx.lifecycle.MutableLiveData
-import com.google.gson.JsonArray
-import com.google.gson.JsonElement
 import io.github.ovso.hometraining.R
 import io.github.ovso.hometraining.data.api.SearchRequest
+import io.github.ovso.hometraining.data.model.Item
+import io.github.ovso.hometraining.data.model.Video
 import io.github.ovso.hometraining.exts.plusAssign
 import io.github.ovso.hometraining.utils.ResourceProvider
 import io.github.ovso.hometraining.utils.SchedulerProvider
@@ -14,7 +14,7 @@ import retrofit2.HttpException
 import timber.log.Timber
 
 class PopularViewModel : DisposableViewModel() {
-    val itemsLive = MutableLiveData<JsonArray>()
+    val itemsLive = MutableLiveData<List<Item>>()
     private val searchRequest by lazy {
         SearchRequest()
     }
@@ -24,18 +24,17 @@ class PopularViewModel : DisposableViewModel() {
     }
 
     private fun reqSearch() {
-        compositeDisposable += searchRequest.api()
-            .search(getQueryMap())
-            .subscribeOn(SchedulerProvider.io())
-            .observeOn(SchedulerProvider.ui())
-            .doOnSubscribe { showLoading() }
-            .doOnError { hideLoading() }
-            .doFinally { hideLoading() }
-            .subscribe(::onSuccess, ::onError)
-    }
 
-    private fun getQueryMap(): Map<String, Any> {
-        return hashMapOf(
+        fun onSuccess(it: Video) {
+            itemsLive.value = it.items
+        }
+
+        fun onError(it: Throwable) {
+            Timber.e(it)
+            Timber.d((it as? HttpException)?.response()?.errorBody()?.string())
+        }
+
+        fun getParams() = mapOf(
             "q" to ResourceProvider.getString(R.string.popular_query),
             "maxResults" to 50,
             "order" to "viewCount",
@@ -45,16 +44,17 @@ class PopularViewModel : DisposableViewModel() {
             "part" to "snippet",
             "fields" to "items(id,snippet(title,thumbnails(medium)))"
         )
+
+        compositeDisposable += searchRequest.api()
+            .search(getParams())
+            .subscribeOn(SchedulerProvider.io())
+            .observeOn(SchedulerProvider.ui())
+            .doOnSubscribe { showLoading() }
+            .doOnError { hideLoading() }
+            .doFinally { hideLoading() }
+            .subscribe(::onSuccess, ::onError)
     }
 
-    private fun onSuccess(it: JsonElement) {
-        itemsLive.value = it.asJsonObject["items"].asJsonArray
-    }
-
-    private fun onError(it: Throwable) {
-        Timber.e(it)
-        Timber.d((it as? HttpException)?.response()?.errorBody()?.string())
-    }
 }
 
 /*

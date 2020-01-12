@@ -9,10 +9,7 @@ import retrofit2.http.QueryMap
 
 interface SearchService {
     @GET("youtube/v3/search")
-    fun search(@QueryMap queryMap: Map<String, @JvmSuppressWildcards Any>): Single<JsonElement>
-
-    @GET("youtube/v3/search")
-    fun search2(@QueryMap queryMap: Map<String, @JvmSuppressWildcards Any>): Single<Video>
+    fun search(@QueryMap queryMap: Map<String, @JvmSuppressWildcards Any>): Single<Video>
 
     @GET("youtube/v3/channels")
     fun channels(@QueryMap queryMap: Map<String, @JvmSuppressWildcards Any>): Single<JsonElement>

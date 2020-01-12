@@ -3,10 +3,10 @@ package io.github.ovso.hometraining.view.ui.video
 import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.google.gson.JsonArray
-import com.google.gson.JsonElement
 import io.github.ovso.hometraining.R
 import io.github.ovso.hometraining.data.api.SearchRequest
+import io.github.ovso.hometraining.data.model.Item
+import io.github.ovso.hometraining.data.model.Video
 import io.github.ovso.hometraining.exts.plusAssign
 import io.github.ovso.hometraining.utils.ResourceProvider
 import io.github.ovso.hometraining.utils.RxBusBehavior
@@ -21,7 +21,7 @@ class VideoViewModel : DisposableViewModel() {
     private val searchRequest by lazy {
         SearchRequest()
     }
-    val itemsLive: LiveData<JsonArray> = MutableLiveData<JsonArray>()
+    val itemsLive: LiveData<List<Item>> = MutableLiveData<List<Item>>()
 
     val titleOb = ObservableField<String>()
     private var query: String? = null
@@ -51,10 +51,9 @@ class VideoViewModel : DisposableViewModel() {
                 "fields" to "items(id,snippet(title,thumbnails(medium)))"
             )
 
-        fun onSuccess(it: JsonElement) {
-            (itemsLive as? MutableLiveData<JsonArray>)?.value = it.asJsonObject["items"].asJsonArray
-            val value = itemsLive.value
-            println(value?.get(0).toString())
+        fun onSuccess(it: Video) {
+            Timber.d("onSuccess")
+            (itemsLive as? MutableLiveData<List<Item>>)?.value = it.items
         }
 
         fun onError(it: Throwable) {

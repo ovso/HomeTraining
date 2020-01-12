@@ -3,9 +3,9 @@ package io.github.ovso.hometraining.view.ui.video
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import com.google.gson.JsonElement
+import io.github.ovso.hometraining.data.model.Item
 
-class VideoAdapter : ListAdapter<JsonElement, VideoViewHolder>(DIFF_UTIL) {
+class VideoAdapter : ListAdapter<Item, VideoViewHolder>(DIFF_UTIL) {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -21,17 +21,17 @@ class VideoAdapter : ListAdapter<JsonElement, VideoViewHolder>(DIFF_UTIL) {
     }
 
     companion object {
-        private val DIFF_UTIL = object : DiffUtil.ItemCallback<JsonElement>() {
+        private val DIFF_UTIL = object : DiffUtil.ItemCallback<Item>() {
             override fun areItemsTheSame(
-                oldItem: JsonElement,
-                newItem: JsonElement
+                oldItem: Item,
+                newItem: Item
             ): Boolean {
                 return oldItem == newItem
             }
 
             override fun areContentsTheSame(
-                oldItem: JsonElement,
-                newItem: JsonElement
+                oldItem: Item,
+                newItem: Item
             ): Boolean {
                 return areItemsTheSame(oldItem, newItem)
             }
