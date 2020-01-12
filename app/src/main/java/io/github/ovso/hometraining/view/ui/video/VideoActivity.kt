@@ -19,6 +19,7 @@ class VideoActivity : DataBindingActivity2<ActivityVideoBinding>(
 
     private val adapter: VideoAdapter by inject()
     private val itemDivider: DividerItemDecoration by inject()
+    private val adRequest: AdRequest by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +28,6 @@ class VideoActivity : DataBindingActivity2<ActivityVideoBinding>(
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back)
         setupRv()
         observe()
-        val adRequest = AdRequest.Builder().build()
         all_ads_banner.loadAd(adRequest)
     }
 
