@@ -3,9 +3,15 @@ package io.github.ovso.hometraining.view.ui.video
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import io.github.ovso.hometraining.R
 import io.github.ovso.hometraining.data.model.Item
+import io.github.ovso.hometraining.exts.gone
+import io.github.ovso.hometraining.exts.visible
+import kotlinx.android.synthetic.main.item_video.view.*
 
-class VideoAdapter : ListAdapter<Item, VideoViewHolder>(DIFF_UTIL) {
+class VideoAdapter : ListAdapter<Item, VideoViewHolder>(DiffUtil()) {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -18,25 +24,29 @@ class VideoAdapter : ListAdapter<Item, VideoViewHolder>(DIFF_UTIL) {
         position: Int
     ) {
         holder.bind(getItem(position))
-    }
+        with(holder.itemView) {
+            if (position % 2 == 0) {
+                all_ads_banner.visible()
+                all_ads_banner.findViewById<AdView>(R.id.all_ads_banner)
+                    .loadAd(AdRequest.Builder().build())
 
-    companion object {
-        private val DIFF_UTIL = object : DiffUtil.ItemCallback<Item>() {
-            override fun areItemsTheSame(
-                oldItem: Item,
-                newItem: Item
-            ): Boolean {
-                return oldItem == newItem
+            } else {
+                all_ads_banner.gone()
             }
 
-            override fun areContentsTheSame(
-                oldItem: Item,
-                newItem: Item
-            ): Boolean {
-                return areItemsTheSame(oldItem, newItem)
-            }
         }
     }
+}
+
+private class DiffUtil : DiffUtil.ItemCallback<Item>() {
+    override fun areItemsTheSame(oldItem: Item, newItem: Item): Boolean {
+        return oldItem == newItem
+    }
+
+    override fun areContentsTheSame(oldItem: Item, newItem: Item): Boolean {
+        return areItemsTheSame(oldItem, newItem)
+    }
+
 }
 
 /*
