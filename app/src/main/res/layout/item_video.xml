@@ -21,7 +21,7 @@
             android:focusable="true"
             android:foreground="?android:attr/selectableItemBackground"
             app:cardCornerRadius="14dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/all_ads_banner"
             app:layout_constraintDimensionRatio="320:180"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -35,5 +35,17 @@
                 tools:srcCompat="@android:drawable/ic_menu_share" />
         </com.google.android.material.card.MaterialCardView>
 
+        <com.google.android.gms.ads.AdView
+            xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/all_ads_banner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/ads_banner_unit_id"
+            tools:layout_height="?attr/actionBarSize"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
