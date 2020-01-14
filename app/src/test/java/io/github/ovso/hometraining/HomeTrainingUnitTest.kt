@@ -108,8 +108,6 @@ class HomeTrainingUnitTest {
         val originItems =
             immutableListOf("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11")
         val newItems = mutableListOf<String>()
-        val custom = "-"
-        val lastIndex = originItems.lastIndex
         val count = originItems.count()
         for (i in 0 until count step 5) {
             val toIndex = if (i + 5 > count) count else i + 5
@@ -118,7 +116,7 @@ class HomeTrainingUnitTest {
             newItems.addAll(originItems.subList(i, toIndex))
             println(i)
         }
-
-        println(newItems)
+        val newItems2 = ArrayList(newItems)
+        println(newItems2)
     }
 }
