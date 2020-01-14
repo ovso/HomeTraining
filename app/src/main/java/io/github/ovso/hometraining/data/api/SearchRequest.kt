@@ -1,9 +1,32 @@
 package io.github.ovso.hometraining.data.api
 
+import io.github.ovso.hometraining.data.model.Video
+import io.github.ovso.hometraining.view.ui.video.model.VideoItem
+
 class SearchRequest : BaseRequest<SearchService>(
     BASE_URL,
     SearchService::class.java
-)
+) {
+
+    fun toVideoItems(video: Video, adsStep: Int = 5): List<VideoItem> {
+        val originItems = video.items
+        val newItems = mutableListOf<VideoItem>()
+        val count = originItems.count()
+        for (i in 0 until count step adsStep) {
+            println(i)
+            val toIndex = if (i + adsStep > count) count else i + adsStep
+            val subList = originItems.subList(i, toIndex).map {
+                VideoItem(
+                    videoId = it.id.videoId,
+                    imgUrl = it.snippet.thumbnails.medium.url
+                )
+            }.toList()
+            newItems.add(VideoItem())
+            newItems.addAll(subList)
+        }
+        return ArrayList(newItems)
+    }
+}
 /*
 
             "kind": "youtube#searchResult",

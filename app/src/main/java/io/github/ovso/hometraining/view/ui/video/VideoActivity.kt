@@ -33,7 +33,7 @@ class VideoActivity : DataBindingActivity2<ActivityVideoBinding>(
 
     private fun observe() {
         val owner = this
-        binding.viewModel?.itemsLive?.observe(owner, Observer {
+        binding.viewModel?.items?.observe(owner, Observer {
             adapter.submitList(it)
         })
     }
