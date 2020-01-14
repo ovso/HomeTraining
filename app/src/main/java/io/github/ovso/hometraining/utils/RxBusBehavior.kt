@@ -14,11 +14,4 @@ object RxBusBehavior {
   fun toObservable(): Observable<Any> {
     return bus
   }
-
-  data class VideoTitleAndQuery(
-      val title: String,
-      val query: String
-  )
-
-  class VideoId(val id: String)
 }

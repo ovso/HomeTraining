@@ -39,7 +39,7 @@ class PopularFragment : DataBindingFragment2<FragmentPopularBinding>(
 
     private fun observe() {
         val owner = viewLifecycleOwner
-        binding.viewModel?.itemsLive?.observe(owner, Observer {
+        binding.viewModel?.items?.observe(owner, Observer {
             adapter.submitList(it)
         })
     }

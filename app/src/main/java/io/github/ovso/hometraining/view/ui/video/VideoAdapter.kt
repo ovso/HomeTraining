@@ -3,47 +3,46 @@ package io.github.ovso.hometraining.view.ui.video
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.AdView
-import io.github.ovso.hometraining.R
-import io.github.ovso.hometraining.data.model.Item
-import io.github.ovso.hometraining.exts.gone
-import io.github.ovso.hometraining.exts.visible
-import kotlinx.android.synthetic.main.item_video.view.*
+import androidx.recyclerview.widget.RecyclerView
+import io.github.ovso.hometraining.view.base.AdsViewHolder
+import io.github.ovso.hometraining.view.ui.video.model.VideoItem
 
-class VideoAdapter : ListAdapter<Item, VideoViewHolder>(DiffUtil()) {
+private const val VIEW_TYPE_ITEM = 1
+private const val VIEW_TYPE_ADS = 2
+
+class VideoAdapter : ListAdapter<VideoItem, RecyclerView.ViewHolder>(DiffUtil()) {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): VideoViewHolder {
-        return VideoViewHolder.create(parent)
+    ): RecyclerView.ViewHolder {
+        return when (viewType == VIEW_TYPE_ITEM) {
+            true -> VideoViewHolder.from(parent)
+            false -> AdsViewHolder.from(parent)
+        }
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return if (getItem(position).videoId.isEmpty()) VIEW_TYPE_ADS else VIEW_TYPE_ITEM
     }
 
     override fun onBindViewHolder(
-        holder: VideoViewHolder,
+        holder: RecyclerView.ViewHolder,
         position: Int
     ) {
-        holder.bind(getItem(position))
-        with(holder.itemView) {
-            if (position % 2 == 0) {
-                all_ads_banner.visible()
-                all_ads_banner.findViewById<AdView>(R.id.all_ads_banner)
-                    .loadAd(AdRequest.Builder().build())
-
-            } else {
-                all_ads_banner.gone()
-            }
-
+        if (holder is VideoViewHolder) {
+            holder.bind(getItem(position))
+        } else if (holder is AdsViewHolder) {
+            holder.bind(getItem(position))
         }
     }
 }
 
-private class DiffUtil : DiffUtil.ItemCallback<Item>() {
-    override fun areItemsTheSame(oldItem: Item, newItem: Item): Boolean {
+private class DiffUtil : DiffUtil.ItemCallback<VideoItem>() {
+    override fun areItemsTheSame(oldItem: VideoItem, newItem: VideoItem): Boolean {
         return oldItem == newItem
     }
 
-    override fun areContentsTheSame(oldItem: Item, newItem: Item): Boolean {
+    override fun areContentsTheSame(oldItem: VideoItem, newItem: VideoItem): Boolean {
         return areItemsTheSame(oldItem, newItem)
     }
 

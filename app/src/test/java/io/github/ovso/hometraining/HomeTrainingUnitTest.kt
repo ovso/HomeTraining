@@ -1,9 +1,9 @@
 package io.github.ovso.hometraining
 
 import io.github.ovso.hometraining.data.api.SearchRequest
-import io.github.ovso.hometraining.data.model.Item
 import io.github.ovso.hometraining.data.model.Video
 import io.github.ovso.hometraining.utils.TestSchedulerProvider
+import io.github.ovso.hometraining.view.ui.video.model.VideoItem
 import okhttp3.internal.immutableListOf
 import org.junit.Test
 import retrofit2.HttpException
@@ -61,9 +61,9 @@ class HomeTrainingUnitTest {
             return keys.split("//")[0]
         }
 
-        fun onSuccess(it: Video) {
+        fun onSuccess(it: List<VideoItem>) {
             println("성공")
-            println("onSuccess = $it")
+            println("onSuccess = ${it.size}")
         }
 
         fun onFailure(it: Throwable) {
@@ -87,16 +87,7 @@ class HomeTrainingUnitTest {
         searchRequest.api()
             .search(getParams())
             .map {
-                val mutableList = mutableListOf<Item>()
-                it.items?.forEach { item ->
-                    mutableList.add(item.copy())
-                }
-
-                for (i in 0 until mutableList.count() + 5 step 2) {
-                    println(i)
-                }
-
-                it
+                searchRequest.toVideoItems(it, 5)
             }
             .subscribeOn(TestSchedulerProvider.io())
             .observeOn(TestSchedulerProvider.ui())
