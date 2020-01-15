@@ -4,6 +4,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import io.github.ovso.hometraining.R
 import io.github.ovso.hometraining.view.base.AdsViewHolder
 import io.github.ovso.hometraining.view.ui.video.model.VideoItem
 
@@ -15,14 +16,14 @@ class VideoAdapter : ListAdapter<VideoItem, RecyclerView.ViewHolder>(DiffUtil())
         parent: ViewGroup,
         viewType: Int
     ): RecyclerView.ViewHolder {
-        return when (viewType == VIEW_TYPE_ITEM) {
-            true -> VideoViewHolder.from(parent)
+        return when (viewType == R.layout.item_video) {
+            true -> VideoViewHolder(parent, viewType)
             false -> AdsViewHolder.from(parent)
         }
     }
 
     override fun getItemViewType(position: Int): Int {
-        return if (getItem(position).videoId.isEmpty()) VIEW_TYPE_ADS else VIEW_TYPE_ITEM
+        return if (getItem(position).videoId.isEmpty()) R.layout.item_ads_banner else R.layout.item_video
     }
 
     override fun onBindViewHolder(
@@ -30,7 +31,7 @@ class VideoAdapter : ListAdapter<VideoItem, RecyclerView.ViewHolder>(DiffUtil())
         position: Int
     ) {
         if (holder is VideoViewHolder) {
-            holder.bind(getItem(position))
+            holder.onBindViewHolder(getItem(position))
         } else if (holder is AdsViewHolder) {
             holder.bind(getItem(position))
         }
