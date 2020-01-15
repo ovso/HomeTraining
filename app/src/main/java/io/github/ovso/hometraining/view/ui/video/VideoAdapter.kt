@@ -8,9 +8,6 @@ import io.github.ovso.hometraining.R
 import io.github.ovso.hometraining.view.base.AdsViewHolder
 import io.github.ovso.hometraining.view.ui.video.model.VideoItem
 
-private const val VIEW_TYPE_ITEM = 1
-private const val VIEW_TYPE_ADS = 2
-
 class VideoAdapter : ListAdapter<VideoItem, RecyclerView.ViewHolder>(DiffUtil()) {
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -18,7 +15,7 @@ class VideoAdapter : ListAdapter<VideoItem, RecyclerView.ViewHolder>(DiffUtil())
     ): RecyclerView.ViewHolder {
         return when (viewType == R.layout.item_video) {
             true -> VideoViewHolder(parent, viewType)
-            false -> AdsViewHolder.from(parent)
+            false -> AdsViewHolder(parent, viewType)
         }
     }
 
