@@ -1,59 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string-array name="queries_male">
-    <item>홈트레이닝 남자 초보</item>
-    <item>홈트레이닝 남자 루틴</item>
-    <item>홈트레이닝 남자 다이어트</item>
-    <item>홈트레이닝 남자 어깨</item>
-    <item>홈트레이닝 남자 복근</item>
-    <item>홈트레이닝 남자 상체</item>
-    <item>홈트레이닝 남자 변화</item>
-    <item>홈트레이닝 남자 하체</item>
-    <item>홈트레이닝 남자 유산소</item>
-    <item>홈트레이닝 남자 등</item>
-  </string-array>
-  <string-array name="queries_female">
-    <item>홈트레이닝 여자 초보</item>
-    <item>홈트레이닝 여자 스트레칭</item>
-    <item>홈트레이닝 여자 복근</item>
-    <item>홈트레이닝 여자 근력</item>
-    <item>홈트레이닝 여자 뱃살</item>
-    <item>홈트레이닝 여자 다이어트</item>
-    <item>홈트레이닝 여자 유산소</item>
-    <item>홈트레이닝 여자 전신</item>
-    <item>홈트레이닝 여자 등운동</item>
-    <item>홈트레이닝 여자 복부</item>
-    <item>홈트레이닝 여자 가슴</item>
-  </string-array>
-  <string-array name="tabs_title_male">
-    <item>남성 초보</item>
-    <item>남성 루틴</item>
-    <item>남성 다이어트</item>
-    <item>남성 어깨</item>
-    <item>남성 복근</item>
-    <item>남성 상체</item>
-    <item>남성 변화</item>
-    <item>남성 하체</item>
-    <item>남성 유산소</item>
-    <item>남성 등</item>
-  </string-array>
-  <string-array name="tabs_title_female">
-    <item>여성 초보</item>
-    <item>여성 스트레칭</item>
-    <item>여성 복근</item>
-    <item>여성 근력</item>
-    <item>여성 뱃살</item>
-    <item>여성 다이어트</item>
-    <item>여성 유산소</item>
-    <item>여성 전신</item>
-    <item>여성 등운동</item>
-    <item>여성 복부</item>
-    <item>여성 가슴</item>
-  </string-array>
-  <string-array name="keys">
-    <item>AIzaSyA4pdIQO-74kZv7MLpPZs13oEYq2w5ki4E</item>
-    <item>AIzaSyCDlPMTU-TsKp8k7t6875jkAIRWrl2XCfE</item>
-    <item>AIzaSyCe8fJ3dw_8YzFq1L7X3Iip9Bs_KZ66bNM</item>
-    <item>AIzaSyBT2wy_F43ouGtgmNBmklik6qYHYFIVtbA</item>
-  </string-array>
+    <string-array name="queries_male">
+        <item>Home training man beginner</item>
+        <item>Home Training Men\'s Routine</item>
+        <item>Home Training Men\'s Diet</item>
+        <item>Home training man shoulder</item>
+        <item>Home training male abs</item>
+        <item>Home training male upper body</item>
+        <item>Home training man change</item>
+        <item>Home training male lower body</item>
+        <item>Home Training Men\'s Cardio</item>
+        <item>Home training male back</item>
+    </string-array>
+    <string-array name="queries_female">
+        <item>Home training girl beginner</item>
+        <item>Home training woman stretching</item>
+        <item>Home training female abs</item>
+        <item>Home training female strength</item>
+        <item>Home training woman belly fat</item>
+        <item>Home Training Women\'s Diet</item>
+        <item>Home Training Women\'s Cardio</item>
+        <item>Home training woman full body</item>
+        <item>Home training female back exercise</item>
+        <item>Home training female abdomen</item>
+        <item>Home training female chest</item>
+    </string-array>
+    <string-array name="tabs_title_male">
+        <item>Men Starter</item>
+        <item>Male routine</item>
+        <item>Men\'s Diet</item>
+        <item>Male shoulder</item>
+        <item>Male abs</item>
+        <item>Male upper body</item>
+        <item>Men change</item>
+        <item>Male lower body</item>
+        <item>male aerobic</item>
+        <item>Male back</item>
+    </string-array>
+    <string-array name="tabs_title_female">
+        <item>female beginner</item>
+        <item>Woman stretching</item>
+        <item>Female abs</item>
+        <item>Female strength</item>
+        <item>Female belly fat</item>
+        <item>Women\'s Diet</item>
+        <item>Women\'s Aerobic</item>
+        <item>Female full body</item>
+        <item>Women\'s back workout</item>
+        <item>Female abdomen</item>
+        <item>Female breasts</item>
+    </string-array>
 </resources>

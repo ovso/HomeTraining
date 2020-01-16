@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Home training</string>
+    <string name="app_name">홈트레이닝</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -13,13 +13,13 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
-    <string name="main_nav_title_male"> Male hometraining</string>
-    <string name="main_nav_title_female">Female hometraining</string>
-    <string name="main_nav_title_popular">Popular hometraining</string>
+    <string name="main_nav_title_male">홈트레이닝 남성</string>
+    <string name="main_nav_title_female">홈트레이닝 여성</string>
+    <string name="main_nav_title_popular">인기 홈트레이닝</string>
 
     <string name="title_activity_player">PlayerActivity</string>
-    <string name="video_title">Video</string>
-    <string name="popular_query">Hometraining</string>
-    <string name="dialog_msg_first_page">First page</string>
-    <string name="dialog_msg_last_page">Last page</string>
+    <string name="video_title">비디오</string>
+    <string name="popular_query">홈트레이닝</string>
+    <string name="dialog_msg_first_page">첫 페이지 입니다.</string>
+    <string name="dialog_msg_last_page">마지막 페이지 입니다.</string>
 </resources>
