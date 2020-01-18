@@ -1,25 +1,23 @@
 <resources>
-    <string name="app_name">홈트레이닝</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="app_name">घर का प्रशिक्षण</string>
+    <string name="navigation_drawer_open">नेविगेशन नेविगेशन खोलें</string>
+    <string name="navigation_drawer_close">नेविगेशन ड्रावर बंद करें</string>
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
-
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
-    <string name="menu_tools">Tools</string>
-    <string name="menu_share">Share</string>
+    <string name="nav_header_desc">नेविगेशन हेडर</string>
+    <string name="action_settings">सेटिंग्स</string>
+    <string name="menu_home">होम</string>
+    <string name="menu_gallery">गैलरी</string>
+    <string name="menu_slideshow">स्लाइड शो</string>
+    <string name="menu_tools">टूल्स</string>
+    <string name="menu_share">शेयर</string>
     <string name="menu_send">Send</string>
-    <string name="main_nav_title_male">홈트레이닝 남성</string>
-    <string name="main_nav_title_female">홈트레이닝 여성</string>
-    <string name="main_nav_title_popular">인기 홈트레이닝</string>
-
-    <string name="title_activity_player">PlayerActivity</string>
-    <string name="video_title">비디오</string>
-    <string name="popular_query">홈트레이닝</string>
-    <string name="dialog_msg_first_page">첫 페이지 입니다.</string>
-    <string name="dialog_msg_last_page">마지막 페이지 입니다.</string>
+    <string name="main_nav_title_male">गृहनगर नर</string>
+    <string name="main_nav_title_female">गृहनगर महिला</string>
+    <string name="main_nav_title_popular">लोकप्रिय गृहनगर</string>
+    <string name="title_activity_player">प्लेयरएक्टिविटी</string>
+    <string name="video_title">वीडियो</string>
+    <string name="popular_query">Hometraining</string>
+    <string name="dialog_msg_first_page">पहला पृष्ठ</string>
+    <string name="dialog_msg_last_page">अंतिम पृष्ठ</string>
 </resources>

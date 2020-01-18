@@ -1,53 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string-array name="queries_male">
-    <item>홈트레이닝 남자 초보</item>
-    <item>홈트레이닝 남자 루틴</item>
-    <item>홈트레이닝 남자 다이어트</item>
-    <item>홈트레이닝 남자 어깨</item>
-    <item>홈트레이닝 남자 복근</item>
-    <item>홈트레이닝 남자 상체</item>
-    <item>홈트레이닝 남자 변화</item>
-    <item>홈트레이닝 남자 하체</item>
-    <item>홈트레이닝 남자 유산소</item>
-    <item>홈트레이닝 남자 등</item>
-  </string-array>
-  <string-array name="queries_female">
-    <item>홈트레이닝 여자 초보</item>
-    <item>홈트레이닝 여자 스트레칭</item>
-    <item>홈트레이닝 여자 복근</item>
-    <item>홈트레이닝 여자 근력</item>
-    <item>홈트레이닝 여자 뱃살</item>
-    <item>홈트레이닝 여자 다이어트</item>
-    <item>홈트레이닝 여자 유산소</item>
-    <item>홈트레이닝 여자 전신</item>
-    <item>홈트레이닝 여자 등운동</item>
-    <item>홈트레이닝 여자 복부</item>
-    <item>홈트레이닝 여자 가슴</item>
-  </string-array>
-  <string-array name="tabs_title_male">
-    <item>남성 초보</item>
-    <item>남성 루틴</item>
-    <item>남성 다이어트</item>
-    <item>남성 어깨</item>
-    <item>남성 복근</item>
-    <item>남성 상체</item>
-    <item>남성 변화</item>
-    <item>남성 하체</item>
-    <item>남성 유산소</item>
-    <item>남성 등</item>
-  </string-array>
-  <string-array name="tabs_title_female">
-    <item>여성 초보</item>
-    <item>여성 스트레칭</item>
-    <item>여성 복근</item>
-    <item>여성 근력</item>
-    <item>여성 뱃살</item>
-    <item>여성 다이어트</item>
-    <item>여성 유산소</item>
-    <item>여성 전신</item>
-    <item>여성 등운동</item>
-    <item>여성 복부</item>
-    <item>여성 가슴</item>
-  </string-array>
+    <string-array name="queries_male">
+        <item>होम ट्रेनिंग मैन बिगिनर</item>
+        <item>घर प्रशिक्षण पुरुषों के दिनचर्या</item>
+        <item>घर प्रशिक्षण पुरुषों का आहार</item>
+        <item>पुरुषों के कंधे पर गृहनगर</item>
+        <item>होम ट्रेनिंग पुरुष एब्स</item>
+        <item>घर प्रशिक्षण पुरुष ऊपरी शरीर</item>
+        <item>होम ट्रेनिंग पुरुष परिवर्तन</item>
+        <item>होम ट्रेनिंग पुरुष लोअर बॉडी</item>
+        <item>होम ट्रेनिंग मेन्स कार्डियो</item>
+        <item>होम प्रशिक्षण पुरुष वापस</item>
+    </string-array>
+    <string-array name="queries_female">
+        <item>होम ट्रेनिंग गर्ल बिगिनर</item>
+        <item>होम ट्रेनिंग महिला स्ट्रेचिंग</item>
+        <item>होम प्रशिक्षण महिला एब्स</item>
+        <item>घर प्रशिक्षण महिला शक्ति</item>
+        <item>घर प्रशिक्षण महिला पेट वसा</item>
+        <item>होम ट्रेनिंग महिलाओं का आहार</item>
+        <item>होम ट्रेनिंग महिलाओं का कार्डियो</item>
+        <item>घर प्रशिक्षण महिला पूर्ण शरीर</item>
+        <item>घर प्रशिक्षण महिला वापस व्यायाम</item>
+        <item>घरेलू प्रशिक्षण महिला पेट</item>
+        <item>घरेलू प्रशिक्षण महिला छाती</item>
+    </string-array>
+    <string-array name="tabs_title_male">
+        <item>मेन स्टार्टर</item>
+        <item>पुरुष दिनचर्या</item>
+        <item>पुरुषों का आहार</item>
+        <item>पुरुष कंधे</item>
+        <item>पुरुष एब्स</item>
+        <item>पुरुष ऊपरी शरीर</item>
+        <item>पुरुष परिवर्तन</item>
+        <item>पुरुष निचला शरीर</item>
+        <item>पुरुष एरोबिक</item>
+        <item>पुरुषों की पीठ</item>
+    </string-array>
+    <string-array name="tabs_title_female">
+        <item>महिला शुरुआत</item>
+        <item>महिला स्ट्रेचिंग</item>
+        <item>महिला एब्स</item>
+        <item>महिला शक्ति</item>
+        <item>महिला पेट वसा</item>
+        <item>महिलाओं का आहार</item>
+        <item>महिला एरोबिक</item>
+        <item>महिला पूर्ण शरीर</item>
+        <item>महिलाओं की पीठ की कसरत</item>
+        <item>महिला पेट</item>
+        <item>महिला स्तन</item>
+    </string-array>
 </resources>
