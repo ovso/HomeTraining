@@ -6,5 +6,5 @@
 
     <color name="colorOverlay">#82B1FF</color>
     <color name="colorItem">#E3F2FD</color>
-  <color name="textColor">#363636</color>
+    <color name="textColor">#363636</color>
 </resources>
