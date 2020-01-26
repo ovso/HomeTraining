@@ -18,7 +18,7 @@ allprojects {
   addRepos(repositories)
 }
 
-subprojects {
+subprojects { // 앱 내 모듈까지 모두 적용하기 위함
   repositories {
     jcenter()
   }
