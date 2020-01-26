@@ -58,8 +58,8 @@ class PlayerActivity : DataBindingActivity2<ActivityPlayerBinding>(
             super.onProgressChanged(view, newProgress)
             if (newProgress == 100) {
                 view?.let {
-                    binding?.viewModel?.canGoBackOb?.set(it.canGoBack())
-                    binding?.viewModel?.canGoForwardOb?.set(it.canGoForward())
+                    binding.viewModel?.canGoBackOb?.set(it.canGoBack())
+                    binding.viewModel?.canGoForwardOb?.set(it.canGoForward())
                 }
             }
         }
