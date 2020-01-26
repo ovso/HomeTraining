@@ -10,7 +10,8 @@ import io.github.ovso.hometraining.BR
 import io.github.ovso.hometraining.view.ui.video.model.VideoItem
 
 class AdsViewHolder(
-    parent: ViewGroup, @LayoutRes layoutRes: Int
+    parent: ViewGroup,
+    @LayoutRes layoutRes: Int
 ) : RecyclerView.ViewHolder(
     LayoutInflater.from(parent.context).inflate(layoutRes, parent, false)
 ) {

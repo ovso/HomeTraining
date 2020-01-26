@@ -19,31 +19,37 @@ allprojects {
 }
 
 subprojects {
+  repositories {
+    jcenter()
+  }
+
   configurations {
     ktlint
   }
 
   dependencies {
-    ktlint 'com.github.shyiko:ktlint:0.36.0'
+    ktlint "com.pinterest:ktlint:0.36.0"
+    // additional 3rd party ruleset(s) can be specified here
+    // just add them to the classpath (e.g. ktlint 'groupId:artifactId:version') and
+    // ktlint will pick them up
   }
 
-  // 스타일을 검사하는 태스크
-  task ktlint(type: JavaExec) {
-    main = 'com.github.shyiko.ktlint.Main'
+  task ktlint(type: JavaExec, group: "verification") {
+    description = "Check Kotlin code style."
     classpath = configurations.ktlint
-    args 'src/**/*.kt'
+    main = "com.pinterest.ktlint.Main"
+    args "src/**/*.kt"
+    // to generate report in checkstyle format prepend following args:
+    // "--reporter=plain", "--reporter=checkstyle,output=${buildDir}/ktlint.xml"
+    // see https://github.com/pinterest/ktlint#usage for more
   }
+//  check.dependsOn ktlint
 
-  // 스타일을 검사하고 맞지 않는 부분을 수정해주는 태스크
-  task ktlintFormat(type: JavaExec) {
-    main = 'com.github.shyiko.ktlint.Main'
+  task ktlintFormat(type: JavaExec, group: "formatting") {
+    description = "Fix Kotlin code style deviations."
     classpath = configurations.ktlint
-    args '-F', 'src/**/*.kt'
-  }
-
-  // 'check' 태스크가 실행될 때 'ktlint' 태스크가 함께 수행되도록 합니다.
-  afterEvaluate { project ->
-    check.dependsOn ktlint
+    main = "com.pinterest.ktlint.Main"
+    args "-F", "src/**/*.kt"
   }
 }
 

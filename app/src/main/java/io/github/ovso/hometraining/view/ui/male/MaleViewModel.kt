@@ -9,33 +9,33 @@ import io.reactivex.rxjava3.core.Observable
 import timber.log.Timber
 
 class MaleViewModel : DisposableViewModel() {
-  val itemsLive = MutableLiveData<MutableList<MaleItem>>()
+    val itemsLive = MutableLiveData<MutableList<MaleItem>>()
 
-  init {
-    fetchList()
-  }
-
-  private fun fetchList() {
-    fun onSuccess(_items: MutableList<MaleItem>) {
-      itemsLive.value = _items
+    init {
+        fetchList()
     }
 
-    fun onFailure(t: Throwable) {
-      Timber.e(t)
-    }
-
-    val titles = ResourceProvider.getStringArray(R.array.tabs_title_male)
-        .toMutableList()
-    val queries = ResourceProvider.getStringArray(R.array.queries_male)
-    Observable.fromIterable(titles)
-        .map { title ->
-          val index = titles.indexOf(title)
-          val query = queries[index]
-          MaleItem(title, query)
+    private fun fetchList() {
+        fun onSuccess(_items: MutableList<MaleItem>) {
+            itemsLive.value = _items
         }
-        .toList()
-        .subscribeOn(SchedulerProvider.io())
-        .observeOn(SchedulerProvider.ui())
-        .subscribe(::onSuccess, ::onFailure)
-  }
+
+        fun onFailure(t: Throwable) {
+            Timber.e(t)
+        }
+
+        val titles = ResourceProvider.getStringArray(R.array.tabs_title_male)
+            .toMutableList()
+        val queries = ResourceProvider.getStringArray(R.array.queries_male)
+        Observable.fromIterable(titles)
+            .map { title ->
+                val index = titles.indexOf(title)
+                val query = queries[index]
+                MaleItem(title, query)
+            }
+            .toList()
+            .subscribeOn(SchedulerProvider.io())
+            .observeOn(SchedulerProvider.ui())
+            .subscribe(::onSuccess, ::onFailure)
+    }
 }

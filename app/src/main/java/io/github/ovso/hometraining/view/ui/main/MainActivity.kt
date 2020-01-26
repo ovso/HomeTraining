@@ -1,7 +1,6 @@
 package io.github.ovso.hometraining.view.ui.main
 
 import android.os.Bundle
-import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.core.view.get
@@ -104,7 +103,6 @@ class MainActivity : DataBindingActivity2<ActivityMainBinding>(
         all_ads_banner.pause()
         super.onPause()
     }
-
 
     override fun onResume() {
         all_ads_banner.resume()

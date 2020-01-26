@@ -1,6 +1,5 @@
 package io.github.ovso.hometraining.data.model
 
-
 import com.google.gson.annotations.SerializedName
 
 data class Video(

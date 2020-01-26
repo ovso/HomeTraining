@@ -56,7 +56,6 @@ class PopularViewModel : DisposableViewModel() {
             .doFinally { hideLoading() }
             .subscribe(::onSuccess, ::onError)
     }
-
 }
 
 /*

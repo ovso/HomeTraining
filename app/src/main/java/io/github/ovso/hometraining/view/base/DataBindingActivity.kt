@@ -8,29 +8,30 @@ import androidx.databinding.ViewDataBinding
 import kotlinx.android.synthetic.main.app_bar_main.toolbar
 
 @Deprecated("DataBindingActivity instead DataBindingActivity2")
-abstract class DataBindingActivity<T : ViewDataBinding, V : DisposableViewModel> : AppCompatActivity() {
+abstract class DataBindingActivity<T : ViewDataBinding, V : DisposableViewModel> :
+    AppCompatActivity() {
 
-  private lateinit var viewDataBinding: T
+    private lateinit var viewDataBinding: T
 
-  @LayoutRes
-  abstract fun getLayoutId(): Int
+    @LayoutRes
+    abstract fun getLayoutId(): Int
 
-  abstract fun getVariableValue(): V
+    abstract fun getVariableValue(): V
 
-  abstract fun getVariableId(): Int
+    abstract fun getVariableId(): Int
 
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    performDataBinding()
-    setSupportActionBar(toolbar)
-  }
-
-  private fun performDataBinding() {
-    viewDataBinding = DataBindingUtil.setContentView(this, getLayoutId())
-    with(viewDataBinding) {
-      lifecycleOwner = this@DataBindingActivity
-      setVariable(getVariableId(), getVariableValue())
-      executePendingBindings()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        performDataBinding()
+        setSupportActionBar(toolbar)
     }
-  }
+
+    private fun performDataBinding() {
+        viewDataBinding = DataBindingUtil.setContentView(this, getLayoutId())
+        with(viewDataBinding) {
+            lifecycleOwner = this@DataBindingActivity
+            setVariable(getVariableId(), getVariableValue())
+            executePendingBindings()
+        }
+    }
 }

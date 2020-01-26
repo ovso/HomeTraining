@@ -17,7 +17,6 @@ import kotlinx.android.synthetic.main.layout_ads_banner.*
 import org.koin.android.ext.android.inject
 import timber.log.Timber
 
-
 class Player2Activity : DataBindingActivity2<ActivityPlayer2Binding>(
     layoutResId = R.layout.activity_player2,
     viewModelCls = Player2ViewModel::class.java
@@ -59,5 +58,4 @@ class Player2Activity : DataBindingActivity2<ActivityPlayer2Binding>(
             }
         }
     }
-
 }

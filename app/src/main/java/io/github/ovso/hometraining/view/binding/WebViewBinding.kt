@@ -4,14 +4,14 @@ import android.webkit.WebView
 import androidx.databinding.BindingAdapter
 
 object WebViewBinding {
-  @JvmStatic
-  @BindingAdapter("load_url")
-  fun loadUrl(
-      view: WebView,
-      url: String?
-  ) {
-    url?.let {
-      view.loadUrl(it)
+    @JvmStatic
+    @BindingAdapter("load_url")
+    fun loadUrl(
+        view: WebView,
+        url: String?
+    ) {
+        url?.let {
+            view.loadUrl(it)
+        }
     }
-  }
 }

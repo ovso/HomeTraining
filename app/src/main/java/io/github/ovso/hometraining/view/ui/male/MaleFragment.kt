@@ -14,29 +14,34 @@ class MaleFragment : DataBindingFragment2<FragmentMaleBinding>(
     viewModelCls = MaleViewModel::class.java
 ) {
 
-  private val adapter: MaleAdapter by inject()
+    private val adapter: MaleAdapter by inject()
 
-  companion object {
-    val TAG: String = MaleFragment::class.java.simpleName
-    fun newInstance() = MaleFragment()
-  }
-
-  override fun onActivityCreated(savedInstanceState: Bundle?) {
-    super.onActivityCreated(savedInstanceState)
-    setupRv()
-    observe()
-  }
-
-  private fun observe() {
-    binding.viewModel?.itemsLive?.observe(viewLifecycleOwner, Observer {
-      adapter.submitList(it)
-    })
-  }
-
-  private fun setupRv() {
-    rv_male.apply {
-      addItemDecoration(DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL))
-      this.adapter = this@MaleFragment.adapter
+    companion object {
+        val TAG: String = MaleFragment::class.java.simpleName
+        fun newInstance() = MaleFragment()
     }
-  }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        setupRv()
+        observe()
+    }
+
+    private fun observe() {
+        binding.viewModel?.itemsLive?.observe(viewLifecycleOwner, Observer {
+            adapter.submitList(it)
+        })
+    }
+
+    private fun setupRv() {
+        rv_male.apply {
+            addItemDecoration(
+                DividerItemDecoration(
+                    requireContext(),
+                    DividerItemDecoration.VERTICAL
+                )
+            )
+            this.adapter = this@MaleFragment.adapter
+        }
+    }
 }

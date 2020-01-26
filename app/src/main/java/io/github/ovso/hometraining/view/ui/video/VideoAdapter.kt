@@ -43,7 +43,6 @@ private class DiffUtil : DiffUtil.ItemCallback<VideoItem>() {
     override fun areContentsTheSame(oldItem: VideoItem, newItem: VideoItem): Boolean {
         return areItemsTheSame(oldItem, newItem)
     }
-
 }
 
 /*

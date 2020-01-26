@@ -13,26 +13,26 @@ enum class BottomNavPosition(
     val position: Int,
     val id: Int
 ) {
-  MALE(0, R.id.bottom_nv_male),
-  FEMALE(1, R.id.bottom_nv_female),
-  POPULAR(2, R.id.bottom_nv_popular)
+    MALE(0, R.id.bottom_nv_male),
+    FEMALE(1, R.id.bottom_nv_female),
+    POPULAR(2, R.id.bottom_nv_popular)
 }
 
 fun findNavigationPositionById(id: Int): BottomNavPosition = when (id) {
-  MALE.id -> MALE
-  FEMALE.id -> FEMALE
-  POPULAR.id -> POPULAR
-  else -> MALE
+    MALE.id -> MALE
+    FEMALE.id -> FEMALE
+    POPULAR.id -> POPULAR
+    else -> MALE
 }
 
 fun BottomNavPosition.createFragment(): Fragment = when (this) {
-  MALE -> MaleFragment.newInstance()
-  FEMALE -> FemaleFragment.newInstance()
-  POPULAR -> PopularFragment.newInstance()
+    MALE -> MaleFragment.newInstance()
+    FEMALE -> FemaleFragment.newInstance()
+    POPULAR -> PopularFragment.newInstance()
 }
 
 fun BottomNavPosition.getTag(): String = when (this) {
-  MALE -> MaleFragment.TAG
-  FEMALE -> FemaleFragment.TAG
-  POPULAR -> PopularFragment.TAG
+    MALE -> MaleFragment.TAG
+    FEMALE -> FemaleFragment.TAG
+    POPULAR -> PopularFragment.TAG
 }

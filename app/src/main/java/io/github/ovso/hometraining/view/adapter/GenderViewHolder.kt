@@ -15,18 +15,18 @@ open class GenderViewHolder(
 ) : RecyclerView.ViewHolder(
     LayoutInflater.from(parent?.context).inflate(layoutRes, parent, false)
 ) {
-  protected val binding: ViewDataBinding = DataBindingUtil.bind(itemView)!!
+    protected val binding: ViewDataBinding = DataBindingUtil.bind(itemView)!!
 
-  open fun onBindViewHolder(item: Any?) {
-    try {
-      binding.run {
-        setVariable(BR.item, item)
-        executePendingBindings()
-      }
-    } catch (e: Exception) {
-      if (BuildConfig.DEBUG) {
-        e.printStackTrace()
-      }
+    open fun onBindViewHolder(item: Any?) {
+        try {
+            binding.run {
+                setVariable(BR.item, item)
+                executePendingBindings()
+            }
+        } catch (e: Exception) {
+            if (BuildConfig.DEBUG) {
+                e.printStackTrace()
+            }
+        }
     }
-  }
 }

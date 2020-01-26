@@ -15,29 +15,29 @@ import kotlinx.android.synthetic.main.item_all.tv_all_item_title
 class AllViewHolder(override val containerView: View?) : RecyclerView.ViewHolder(containerView!!),
     LayoutContainer {
 
-  fun bind(data: TitleAndQuery) {
-    tv_all_item_title.text = data.title
-    card_all_item_container.setOnClickListener {
-      RxBusBehavior.send(data)
-      it.context.startActivity<VideoActivity>()
-    }
-  }
-
-  companion object {
-    fun create(parent: ViewGroup): AllViewHolder {
-      return AllViewHolder(
-          LayoutInflater.from(parent.context).inflate(R.layout.item_all, parent, false)
-      )
+    fun bind(data: TitleAndQuery) {
+        tv_all_item_title.text = data.title
+        card_all_item_container.setOnClickListener {
+            RxBusBehavior.send(data)
+            it.context.startActivity<VideoActivity>()
+        }
     }
 
-    fun toBindData(
-        title: String,
-        query: String
-    ) = TitleAndQuery(title, query)
-  }
+    companion object {
+        fun create(parent: ViewGroup): AllViewHolder {
+            return AllViewHolder(
+                LayoutInflater.from(parent.context).inflate(R.layout.item_all, parent, false)
+            )
+        }
 
-  data class TitleAndQuery(
-      val title: String,
-      val query: String
-  )
+        fun toBindData(
+            title: String,
+            query: String
+        ) = TitleAndQuery(title, query)
+    }
+
+    data class TitleAndQuery(
+        val title: String,
+        val query: String
+    )
 }

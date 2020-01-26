@@ -6,14 +6,14 @@ import com.bumptech.glide.Glide
 
 object ImageViewBinding {
 
-  @JvmStatic
-  @BindingAdapter("load")
-  fun loadImage(
-      view: AppCompatImageView,
-      imgUrl: String?
-  ) {
-    Glide.with(view)
-        .load(imgUrl)
-        .into(view)
-  }
+    @JvmStatic
+    @BindingAdapter("load")
+    fun loadImage(
+        view: AppCompatImageView,
+        imgUrl: String?
+    ) {
+        Glide.with(view)
+            .load(imgUrl)
+            .into(view)
+    }
 }
