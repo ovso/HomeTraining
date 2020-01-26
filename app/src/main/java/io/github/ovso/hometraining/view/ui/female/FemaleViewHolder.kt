@@ -12,12 +12,12 @@ class FemaleViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
     LayoutInflater.from(parent.context).inflate(R.layout.item_female, parent, false)
 ) {
 
-  private val binding = DataBindingUtil.bind<ViewDataBinding>(itemView)!!
+    private val binding = DataBindingUtil.bind<ViewDataBinding>(itemView)!!
 
-  fun onBindViewHolder(item: FemaleItem) {
-    binding.run {
-      setVariable(BR.item, item)
-      executePendingBindings()
+    fun onBindViewHolder(item: FemaleItem) {
+        binding.run {
+            setVariable(BR.item, item)
+            executePendingBindings()
+        }
     }
-  }
 }

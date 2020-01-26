@@ -11,8 +11,8 @@ data class MaleItem(
     val query: String
 ) {
 
-  fun onClick(v: View) {
-    RxBusBehavior.send(VideoData(title, query))
-    v.context.startActivity<VideoActivity>()
-  }
+    fun onClick(v: View) {
+        RxBusBehavior.send(VideoData(title, query))
+        v.context.startActivity<VideoActivity>()
+    }
 }

@@ -9,17 +9,17 @@ import io.github.ovso.hometraining.view.ui.video.model.VideoItem
 private const val BASE_URL_YOUTUBE = "https://www.youtube.com/watch?v="
 
 class PlayerViewModel : DisposableViewModel() {
-  val videoUrlOb = ObservableField<String>()
-  val canGoBackOb = ObservableBoolean(false)
-  val canGoForwardOb = ObservableBoolean(false)
+    val videoUrlOb = ObservableField<String>()
+    val canGoBackOb = ObservableBoolean(false)
+    val canGoForwardOb = ObservableBoolean(false)
 
-  init {
-    addDisposable(
-        RxBusBehavior.toObservable().subscribe {
-          if (it is VideoItem) {
-            videoUrlOb.set("$BASE_URL_YOUTUBE${it.videoId}")
-          }
-        }
-    )
-  }
+    init {
+        addDisposable(
+            RxBusBehavior.toObservable().subscribe {
+                if (it is VideoItem) {
+                    videoUrlOb.set("$BASE_URL_YOUTUBE${it.videoId}")
+                }
+            }
+        )
+    }
 }

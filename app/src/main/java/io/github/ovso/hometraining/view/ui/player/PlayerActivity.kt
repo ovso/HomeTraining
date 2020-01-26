@@ -20,61 +20,61 @@ class PlayerActivity : DataBindingActivity2<ActivityPlayerBinding>(
     viewModelCls = PlayerViewModel::class.java
 ) {
 
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    setupWebView()
-    addEvent()
-  }
-
-  private fun addEvent() {
-    btn_web_back.setOnClickListener { wv_player.goBack() }
-    btn_web_forward.setOnClickListener { wv_player.goForward() }
-    btn_web_share.setOnClickListener {
-      startActivity(
-          Intent.createChooser(Intent(Intent.ACTION_SEND).apply {
-            type = "text/plain"
-            putExtra(Intent.EXTRA_TEXT, wv_player.url)
-          }, "")
-      )
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setupWebView()
+        addEvent()
     }
-  }
 
-  private fun setupWebView() {
-    with(wv_player) {
-      settings.javaScriptEnabled = true
-      webViewClient = ViewClient()
-      webChromeClient = ChromeClient()
-    }
-  }
-
-  class ViewClient : WebViewClient()
-
-  inner class ChromeClient :
-      WebChromeClient() {
-    override fun onProgressChanged(
-        view: WebView?,
-        newProgress: Int
-    ) {
-      super.onProgressChanged(view, newProgress)
-      if (newProgress == 100) {
-        view?.let {
-          binding?.viewModel?.canGoBackOb?.set(it.canGoBack())
-          binding?.viewModel?.canGoForwardOb?.set(it.canGoForward())
+    private fun addEvent() {
+        btn_web_back.setOnClickListener { wv_player.goBack() }
+        btn_web_forward.setOnClickListener { wv_player.goForward() }
+        btn_web_share.setOnClickListener {
+            startActivity(
+                Intent.createChooser(Intent(Intent.ACTION_SEND).apply {
+                    type = "text/plain"
+                    putExtra(Intent.EXTRA_TEXT, wv_player.url)
+                }, "")
+            )
         }
-      }
     }
-  }
 
-  override fun onDestroy() {
-    wv_player.destroy()
-    super.onDestroy()
-  }
-
-  override fun onBackPressed() {
-    if (wv_player.canGoBack()) {
-      wv_player.goBack()
-    } else {
-      super.onBackPressed()
+    private fun setupWebView() {
+        with(wv_player) {
+            settings.javaScriptEnabled = true
+            webViewClient = ViewClient()
+            webChromeClient = ChromeClient()
+        }
     }
-  }
+
+    class ViewClient : WebViewClient()
+
+    inner class ChromeClient :
+        WebChromeClient() {
+        override fun onProgressChanged(
+            view: WebView?,
+            newProgress: Int
+        ) {
+            super.onProgressChanged(view, newProgress)
+            if (newProgress == 100) {
+                view?.let {
+                    binding?.viewModel?.canGoBackOb?.set(it.canGoBack())
+                    binding?.viewModel?.canGoForwardOb?.set(it.canGoForward())
+                }
+            }
+        }
+    }
+
+    override fun onDestroy() {
+        wv_player.destroy()
+        super.onDestroy()
+    }
+
+    override fun onBackPressed() {
+        if (wv_player.canGoBack()) {
+            wv_player.goBack()
+        } else {
+            super.onBackPressed()
+        }
+    }
 }
