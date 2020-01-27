@@ -12,8 +12,10 @@ android {
         applicationId config.applicationId
         minSdkVersion config.minSdkVersion
         targetSdkVersion config.targetSdkVersion
-        versionCode config.versionCode
-        versionName config.versionName
+        versionCode gitVersionCode
+        versionName gitVersionName
+        println(versionCode)
+        println(versionName)
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
