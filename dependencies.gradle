@@ -246,7 +246,7 @@ ext {
             "versionNameMajor" : 1,
             "versionNameMinor" : 0,
             "versionNamePatch" : 0,
-            'versionName'      : '1.0.0',
+            'versionName'      : '2.0.0',
     ]
 }
 
