@@ -242,11 +242,11 @@ ext {
             'applicationId'    : 'io.github.ovso.hometraining',
             'targetSdkVersion' : 29,
             'minSdkVersion'    : 21,
-            'versionCode'      : 2,
+            'versionCode'      : 1,
             "versionNameMajor" : 1,
             "versionNameMinor" : 0,
             "versionNamePatch" : 0,
-            'versionName'      : '2.0.0',
+            'versionName'      : '1.0.0',
     ]
 }
 
