@@ -3,14 +3,17 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
+apply from: '../versioning.gradle'
+apply from: '../ktlint.gradle'
+
 android {
     compileSdkVersion config.compileSdkVersion
     defaultConfig {
         applicationId config.applicationId
         minSdkVersion config.minSdkVersion
         targetSdkVersion config.targetSdkVersion
-        versionCode config.versionCode
-        versionName config.versionsName
+        versionCode gitVersionCode
+        versionName gitVersionName
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -53,6 +56,7 @@ android {
     lintOptions {
         disable 'MissingTranslation'
     }
+
 }
 
 dependencies {
