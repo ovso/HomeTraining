@@ -88,7 +88,6 @@ class MainActivity : DataBindingActivity2<ActivityMainBinding>(
     private fun setupActionBar() {
         setSupportActionBar(toolbar)
         supportActionBar?.title = ResourceProvider.getString(R.string.app_name)
-        // query..
     }
 
     override fun onBackPressed() {
