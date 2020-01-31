@@ -26,9 +26,9 @@ class Player2Activity : DataBindingActivity2<ActivityPlayer2Binding>(
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        lifecycle.addObserver(youtube_player_view)
         val v = binding.viewModel
         v?.videoIdLive?.observe(this, Observer {
-            lifecycle.addObserver(youtube_player_view)
             youtube_player_view.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
                 override fun onReady(youTubePlayer: YouTubePlayer) {
                     super.onReady(youTubePlayer)

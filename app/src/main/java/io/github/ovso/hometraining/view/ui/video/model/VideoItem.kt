@@ -5,6 +5,7 @@ import com.google.android.gms.ads.AdRequest
 import io.github.ovso.hometraining.exts.startActivity
 import io.github.ovso.hometraining.utils.RxBusBehavior
 import io.github.ovso.hometraining.view.ui.player2.Player2Activity
+import io.github.ovso.hometraining.view.ui.player2.Player2ViewModel
 
 data class VideoItem(
     val imgUrl: String = "",
@@ -12,7 +13,7 @@ data class VideoItem(
 ) {
 
     fun onClick(v: View) {
-        RxBusBehavior.send(RxBusBehavior.send(this))
+        RxBusBehavior.send(Player2ViewModel.VideoId(videoId))
         v.context.startActivity<Player2Activity>()
     }
 
