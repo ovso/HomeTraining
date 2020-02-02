@@ -14,16 +14,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <com.airbnb.lottie.LottieAnimationView
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:elevation="5dp"
-            app:layout_constraintBottom_toBottomOf="@id/cardv_video_item"
-            app:layout_constraintRight_toRightOf="@id/cardv_video_item"
-            app:srcCompat="@drawable/ic_favorite" />
-
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardv_video_item"
             onThrottleClick="@{item::onClick}"
