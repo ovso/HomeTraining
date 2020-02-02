@@ -39,12 +39,7 @@ class App : Application() {
     }
 
     private fun setupPrefs() {
-        Koap.bind(this, KeyPreferences, NavPreferences)
-        if (KeyPreferences.index == resources.getStringArray(R.array.keys).lastIndex) {
-            KeyPreferences.index = -1
-        }
-        ++KeyPreferences.index
-        Timber.d("KeyPreferences.index = ${KeyPreferences.index}")
+        Koap.bind(this, NavPreferences)
     }
 
     private fun setupTimber() {

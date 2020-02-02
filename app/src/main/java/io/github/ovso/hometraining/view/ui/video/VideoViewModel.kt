@@ -44,7 +44,7 @@ class VideoViewModel : DisposableViewModel() {
                 "order" to "viewCount",
                 "type" to "video",
                 "videoSyndicated" to "any",
-                "key" to ResourceProvider.getStringArray(R.array.keys)[KeyPreferences.index],
+                "key" to ResourceProvider.getStringArray(R.array.keys).first(),
                 "part" to "snippet",
                 "fields" to "items(id,snippet(title,thumbnails(medium)))"
             )
