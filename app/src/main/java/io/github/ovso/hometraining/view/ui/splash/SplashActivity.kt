@@ -11,9 +11,12 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         startActivity<MainActivity>()
         finish()
+
     }
 
     override fun onBackPressed() {
         // super.onBackPressed()
+
+
     }
 }
