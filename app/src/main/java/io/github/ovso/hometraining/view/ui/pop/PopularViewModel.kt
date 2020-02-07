@@ -6,7 +6,6 @@ import io.github.ovso.hometraining.data.api.SearchRequest
 import io.github.ovso.hometraining.exts.plusAssign
 import io.github.ovso.hometraining.utils.ResourceProvider
 import io.github.ovso.hometraining.utils.SchedulerProvider
-import io.github.ovso.hometraining.utils.prefs.KeyPreferences
 import io.github.ovso.hometraining.view.base.DisposableViewModel
 import io.github.ovso.hometraining.view.ui.video.model.VideoItem
 import retrofit2.HttpException
@@ -39,7 +38,7 @@ class PopularViewModel : DisposableViewModel() {
             "order" to "viewCount",
             "type" to "video",
             "videoSyndicated" to "any",
-            "key" to ResourceProvider.getStringArray(R.array.keys)[KeyPreferences.index],
+            "key" to ResourceProvider.getStringArray(R.array.keys).first(),
             "part" to "snippet",
             "fields" to "items(id,snippet(title,thumbnails(medium)))"
         )

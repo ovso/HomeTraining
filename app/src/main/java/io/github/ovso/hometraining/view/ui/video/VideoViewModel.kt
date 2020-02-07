@@ -8,7 +8,6 @@ import io.github.ovso.hometraining.exts.plusAssign
 import io.github.ovso.hometraining.utils.ResourceProvider
 import io.github.ovso.hometraining.utils.RxBusBehavior
 import io.github.ovso.hometraining.utils.SchedulerProvider
-import io.github.ovso.hometraining.utils.prefs.KeyPreferences
 import io.github.ovso.hometraining.view.base.DisposableViewModel
 import io.github.ovso.hometraining.view.ui.video.model.VideoItem
 import retrofit2.HttpException
