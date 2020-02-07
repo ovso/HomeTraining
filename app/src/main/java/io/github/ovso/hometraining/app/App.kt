@@ -6,7 +6,6 @@ import github.agustarc.koap.Koap
 import io.github.ovso.hometraining.BuildConfig
 import io.github.ovso.hometraining.R
 import io.github.ovso.hometraining.di.appModule
-import io.github.ovso.hometraining.utils.prefs.KeyPreferences
 import io.github.ovso.hometraining.utils.prefs.NavPreferences
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
